@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5287D6"
+    android:background="@color/blue"
     android:id="@+id/background"
     tools:context=".MainActivity">
 
@@ -62,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/langage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
         app:layout_constraintTop_toTopOf="@+id/bottom_light" />
 
     <LinearLayout
+        android:visibility="invisible"
         android:id="@+id/options_lang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,14 +93,11 @@
             android:id="@+id/english"
             android:layout_width="154dp"
             android:layout_height="75dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="0dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
+            android:shadowColor="#FFFFFF"
             android:text="@string/english"
-            android:textColor="#000000"
+            android:textColor="@color/blue_dark"
             android:textSize="20sp"
             app:cornerRadius="13dp"
             app:layout_constraintEnd_toStartOf="@+id/arabic"

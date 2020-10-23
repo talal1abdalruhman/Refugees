@@ -36,12 +36,16 @@ public class LogOptions extends AppCompatActivity {
     ImageView search_icon;
     TextView search_text;
     TextView dis;
-
+    LinearLayout form;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         language = getIntent().getStringExtra("language");
-        setApplocale(language);
+        try {
+            setApplocale(language);
+        } catch( java.lang.NullPointerException e) {
+            setApplocale("en");
+        }
         setContentView(R.layout.activity_log_options);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
@@ -52,7 +56,7 @@ public class LogOptions extends AppCompatActivity {
                 setup();
             }
         });
-
+//        form = findViewById(R.id.form);
         options_lang = findViewById(R.id.options_lang);
         options_log = findViewById(R.id.options_log);
         skip = findViewById(R.id.skip);
@@ -79,6 +83,18 @@ public class LogOptions extends AppCompatActivity {
         back.animate().setDuration(duration).translationXBy(back.getMeasuredWidth() * mul).setStartDelay(delay);
         search.animate().setDuration(duration).translationXBy(search.getMeasuredWidth() * mul).setStartDelay(delay);
         dis.animate().setDuration(duration).translationXBy(dis.getMeasuredWidth() * mul).setStartDelay(delay);
+//        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay);
+
+        options_lang.setVisibility(View.VISIBLE);
+        language2.setVisibility(View.VISIBLE);
+
+        option_search.setVisibility(View.VISIBLE);
+        back.setVisibility(View.VISIBLE);
+        search.setVisibility(View.VISIBLE);
+        dis.setVisibility(View.VISIBLE);
+
+//        form.setVisibility(View.VISIBLE);
+
     }
     public void setApplocale(String language) {
         Resources resources = getResources();
@@ -107,48 +123,54 @@ public class LogOptions extends AppCompatActivity {
     }
 
     public void signup(View view) {
-        move_away();
-        move_in();
-        scale_down();
-    }
-    public void scale_down() {
         int duration = 500;
+        float mul = -3;
+        int delay = 0;
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
         bottom_light.setPivotY(bottom_light.getHeight());
         bottom_light.animate().setDuration(duration).scaleY((float)0.13);
-    }
-    public void move_away() {
-        int duration = 500;
-        float mul = -3;
-        int delay = 0;
+
         options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
         logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
-        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-            }
-        });
-    }
-    public void move_in() {
-        int duration = 500;
-        float mul = -3;
-        int delay = 0;
+        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
+
         option_search.animate().setDuration(duration).translationXBy(option_search.getMeasuredWidth() * mul).setStartDelay(delay);
         back.animate().setDuration(duration).translationXBy(back.getMeasuredWidth() * mul).setStartDelay(delay);
         search.animate().setDuration(duration).translationXBy(search.getMeasuredWidth() * mul).setStartDelay(delay);
         dis.animate().setDuration(duration).translationXBy(dis.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                next();
+                Intent intent = new Intent(context, Searchable.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
             }
         });
     }
-    public void next() {
-        Intent intent = new Intent(this, Searchable.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(intent);
-        finish();
+//    public void login(View view) {
+//        int duration = 500;
+//        float mul = -3;
+//        int delay = 0;
+//        bottom_dark.setPivotY(bottom_dark.getHeight());
+//        bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
+//        bottom_light.setPivotY(bottom_light.getHeight());
+//        bottom_light.animate().setDuration(duration).scaleY((float)0.13);
+//
+//        options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
+//        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
+//        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                Intent intent = new Intent(context, test.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//    }
+    public void login(View view) {
+
     }
     @Override
     public void onPause() {

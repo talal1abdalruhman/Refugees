@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5287D6"
+    android:background="@color/blue"
     android:id="@+id/background"
     tools:context=".Language"
     >
@@ -63,9 +63,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
+        android:visibility="invisible"
         android:id="@+id/options_log"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="251dp"
         android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,14 +78,13 @@
             android:id="@+id/login"
             android:layout_width="154dp"
             android:layout_height="75dp"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginRight="0dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
             android:text="@string/log_in_en"
-            android:textColor="#000000"
+            android:textColor="@color/blue_dark"
             android:textSize="22sp"
             app:cornerRadius="13dp"
             app:layout_constraintEnd_toStartOf="@+id/arabic"
@@ -109,6 +109,7 @@
     </LinearLayout>
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/skip"
         android:layout_width="104dp"
         android:layout_height="60dp"
@@ -125,6 +126,7 @@
         app:strokeWidth="1dp" />
 
     <LinearLayout
+        android:visibility="invisible"
         android:id="@+id/options_log_ar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -139,14 +141,13 @@
             android:id="@+id/login_ar"
             android:layout_width="154dp"
             android:layout_height="75dp"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginRight="0dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
             android:text="@string/log_in_ar"
-            android:textColor="#000000"
+            android:textColor="@color/blue_dark"
             android:textSize="22sp"
             app:cornerRadius="13dp"
             app:layout_constraintEnd_toStartOf="@+id/arabic"
@@ -171,6 +172,7 @@
     </LinearLayout>
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/skip_ar"
         android:layout_width="104dp"
         android:layout_height="60dp"
@@ -218,13 +220,12 @@
             android:layout_height="75dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginRight="0dp"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/roboto"
-            android:onClick="move_slide"
             android:text="@string/english"
-            android:textColor="#000000"
+            android:textColor="@color/blue_dark"
+            android:onClick="move_slide"
             android:textSize="20sp"
             app:cornerRadius="13dp"
             app:layout_constraintEnd_toStartOf="@+id/arabic"
@@ -240,10 +241,10 @@
             android:layout_marginEnd="0dp"
             android:backgroundTint="#5F93E1"
             android:fontFamily="@font/roboto"
-            android:onClick="move_slide"
             android:text="@string/arabic"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
+            android:onClick="move_slide"
             app:cornerRadius="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/langage" />

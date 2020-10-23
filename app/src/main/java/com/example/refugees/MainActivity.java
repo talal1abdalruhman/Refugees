@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 move_logo();
             }
         });
+        language.setVisibility(View.VISIBLE);
+        options_lang.setVisibility(View.VISIBLE);
     }
     public void move_logo() {
         int duration = 600;

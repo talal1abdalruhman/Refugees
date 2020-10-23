@@ -48,13 +48,17 @@ public class Language extends AppCompatActivity {
     }
     public void setup() {
         int duration = 0;
-        float mul = 2;
+        float mul = 3;
         int delay = 0;
-        mul = 3;
         options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
         options_log_ar.animate().setDuration(duration).translationXBy(options_log_ar.getMeasuredWidth() * mul).setStartDelay(delay);
         skip_ar.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
         skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
+
+        options_log.setVisibility(View.VISIBLE);
+        options_log_ar.setVisibility(View.VISIBLE);
+        skip_ar.setVisibility(View.VISIBLE);
+        skip.setVisibility(View.VISIBLE);
     }
     public void move_slide(View view) {
         message = ((Button)view).getText().toString();
