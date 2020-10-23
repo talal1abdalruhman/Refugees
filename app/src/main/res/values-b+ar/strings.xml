@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Refugees</string>
+    <string name="english">انجليزي</string>
+    <string name="language">اللغه</string>
+    <string name="arabic">عربي</string>
+    <string name="sign_up">تسجيل</string>
+    <string name="log_in">دخول</string>
+    <string name="skip">تخطي</string>
+    <string name="sign_up_ar">تسجيل</string>
+    <string name="log_in_ar">دخول</string>
+    <string name="skip_ar">تخطي</string>
+    <string name="log_in_en">LOG IN</string>
+    <string name="sign_up_en">SIGN UP</string>
+    <string name="skip_en">SKIP</string>
+    <string name="message">بتفعيل هذا الخيار سيتمكن باقي المستخدمين من رؤيتك في نتائج وارسال طلبات لاستعراض معلوماتك الشخصية، يمكن ان يكون هؤلاء الاشخاص من افراد اسرتك او اصدقائك او اي مستخدمين آخرين</string>
+    <string name="searchable">الظهور في نتائج البحث</string>
+    <string name="disable">تعطيل</string>
+    <string name="enable">تفعيل</string>
+</resources>
