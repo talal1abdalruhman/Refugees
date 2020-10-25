@@ -56,7 +56,7 @@ public class LogOptions extends AppCompatActivity {
                 setup();
             }
         });
-//        form = findViewById(R.id.form);
+        form = findViewById(R.id.form);
         options_lang = findViewById(R.id.options_lang);
         options_log = findViewById(R.id.options_log);
         skip = findViewById(R.id.skip);
@@ -83,7 +83,7 @@ public class LogOptions extends AppCompatActivity {
         back.animate().setDuration(duration).translationXBy(back.getMeasuredWidth() * mul).setStartDelay(delay);
         search.animate().setDuration(duration).translationXBy(search.getMeasuredWidth() * mul).setStartDelay(delay);
         dis.animate().setDuration(duration).translationXBy(dis.getMeasuredWidth() * mul).setStartDelay(delay);
-//        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay);
+        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay);
 
         options_lang.setVisibility(View.VISIBLE);
         language2.setVisibility(View.VISIBLE);
@@ -93,7 +93,7 @@ public class LogOptions extends AppCompatActivity {
         search.setVisibility(View.VISIBLE);
         dis.setVisibility(View.VISIBLE);
 
-//        form.setVisibility(View.VISIBLE);
+        form.setVisibility(View.VISIBLE);
 
     }
     public void setApplocale(String language) {
@@ -148,28 +148,27 @@ public class LogOptions extends AppCompatActivity {
             }
         });
     }
-//    public void login(View view) {
-//        int duration = 500;
-//        float mul = -3;
-//        int delay = 0;
-//        bottom_dark.setPivotY(bottom_dark.getHeight());
-//        bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
-//        bottom_light.setPivotY(bottom_light.getHeight());
-//        bottom_light.animate().setDuration(duration).scaleY((float)0.13);
-//
-//        options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
-//        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
-//        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
-//            @Override
-//            public void onAnimationEnd(Animator animation) {
-//                Intent intent = new Intent(context, test.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//    }
     public void login(View view) {
+        int duration = 500;
+        float mul = -3;
+        int delay = 0;
+        bottom_dark.setPivotY(bottom_dark.getHeight());
+        bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
+        bottom_light.setPivotY(bottom_light.getHeight());
+        bottom_light.animate().setDuration(duration).scaleY((float)0.13);
+
+        options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
+        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
+        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = new Intent(context, test.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
     @Override

@@ -63,7 +63,7 @@
         android:transformPivotY="450dp"
         android:scaleY="0.1"/>
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/form"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -134,7 +134,6 @@
             android:textAllCaps="false"
             android:textColor="@color/blue_dark"
             android:textSize="16sp" />
-
         <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
