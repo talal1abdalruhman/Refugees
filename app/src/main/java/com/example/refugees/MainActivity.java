@@ -165,4 +165,5 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+
 }

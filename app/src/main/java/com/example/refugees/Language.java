@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,15 +29,19 @@ public class Language extends AppCompatActivity {
     Button skip_ar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setExitTransition(null);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                setup();
+                @Override
+                public void onGlobalLayout() {
+            layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            if(Build.VERSION.SDK_INT  <= Build.VERSION_CODES.O) {
+                }
+                else
+                    setup();
             }
         });
         language2 = findViewById(R.id.langage);
@@ -45,6 +50,7 @@ public class Language extends AppCompatActivity {
         skip = findViewById(R.id.skip);
         options_log_ar = findViewById(R.id.options_log_ar);
         skip_ar = findViewById(R.id.skip_ar);
+        
     }
     public void setup() {
         int duration = 0;
@@ -61,13 +67,13 @@ public class Language extends AppCompatActivity {
         skip.setVisibility(View.VISIBLE);
     }
     public void move_slide(View view) {
-        message = ((Button)view).getText().toString();
+        message = ((Button) view).getText().toString();
         int duration = 500;
         float mul = -3;
         int delay = 0;
         options_lang.animate().setDuration(duration).translationXBy(options_lang.getMeasuredWidth() * mul).setStartDelay(delay);
         language2.animate().setDuration(duration).translationXBy(language2.getMeasuredWidth() * mul).setStartDelay(delay);
-        if(view == findViewById(R.id.english)){
+        if (view == findViewById(R.id.english)) {
             options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
             skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
                 @Override
@@ -76,8 +82,7 @@ public class Language extends AppCompatActivity {
                     next(message);
                 }
             });
-        }
-        else {
+        } else {
             options_log_ar.animate().setDuration(duration).translationXBy(options_log_ar.getMeasuredWidth() * mul).setStartDelay(delay);
             skip_ar.animate().setDuration(duration).translationXBy(options_log_ar.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
                 @Override
@@ -87,6 +92,7 @@ public class Language extends AppCompatActivity {
                 }
             });
         }
+        
     }
     public void next(String message) {
         Intent intent = new Intent(getApplicationContext(), LogOptions.class);
@@ -95,9 +101,9 @@ public class Language extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    @Override
-    public void onPause() {
-        super.onPause();
-        overridePendingTransition(0, 0);
-    }
+   @Override
+   public void onPause() {
+       super.onPause();
+       overridePendingTransition(0, 0);
+   }
 }

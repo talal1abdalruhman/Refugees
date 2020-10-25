@@ -16,4 +16,5 @@
     <string name="searchable">الظهور في نتائج البحث</string>
     <string name="disable">تعطيل</string>
     <string name="enable">تفعيل</string>
+    <string name="full_name">الاسم الكامل</string>
 </resources>
