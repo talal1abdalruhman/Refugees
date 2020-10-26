@@ -87,6 +87,7 @@ public class LogOptions extends AppCompatActivity {
 
 
     }
+
     public void setApplocale(String language) {
         Resources resources = getResources();
         Configuration configuration = resources.getConfiguration();
@@ -95,6 +96,7 @@ public class LogOptions extends AppCompatActivity {
         configuration.setLayoutDirection(new Locale(language));
         resources.updateConfiguration(configuration, displayMetrics);
     }
+
    @Override
    public void onBackPressed() {
     int duration = 500;
@@ -139,6 +141,7 @@ public class LogOptions extends AppCompatActivity {
            }
        });
     }
+
     public void login(View view) {
        int duration = 500;
        float mul = -3;
@@ -159,9 +162,12 @@ public class LogOptions extends AppCompatActivity {
            }
        });
     }
+
    @Override
    public void onPause() {
        super.onPause();
        overridePendingTransition(0, 0);
    }
+
+
 }

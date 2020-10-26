@@ -52,6 +52,7 @@ public class Signup extends AppCompatActivity {
         skip = findViewById(R.id.skip);
         warning = findViewById(R.id.warning);
     }
+
     public void setup() {
         int duration = 0;
         float mul = -3;
@@ -73,6 +74,7 @@ public class Signup extends AppCompatActivity {
         skip.setVisibility(View.VISIBLE);
         warning.setVisibility(View.VISIBLE);
     }
+
     @Override 
     public void onBackPressed() {
         int duration = 500;
@@ -103,11 +105,13 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+
     public void register(View view) {
         int duration = 500;
         float mul = -3;
@@ -126,4 +130,6 @@ public class Signup extends AppCompatActivity {
         });
 
     }
+
+
 }

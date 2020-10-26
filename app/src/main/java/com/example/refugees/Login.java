@@ -73,6 +73,7 @@ public class Login extends AppCompatActivity {
         form_signup.setVisibility(View.VISIBLE);
         findViewById(R.id.inner).setVisibility(View.VISIBLE);
     }
+
     @Override
     public void onBackPressed() {
 
@@ -115,6 +116,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     public void signup(View view) {
         int duration = 500;
         float mul = -3;
@@ -134,6 +136,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onPause() {
         super.onPause();
