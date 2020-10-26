@@ -1,5 +1,6 @@
 package com.example.refugees;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -8,15 +9,28 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class Login extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "language";
+    private static final String LOGIN_TAG = "loginProccess";
     Context context = this;
     LinearLayout options_log;
     Button skip;
@@ -27,6 +41,12 @@ public class Login extends AppCompatActivity {
     LinearLayout reset;
     ImageView top;
     ScrollView form_signup;
+
+    private TextInputEditText email, password;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mRef;
+    private CircularProgressButton loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +70,11 @@ public class Login extends AppCompatActivity {
         logo = findViewById(R.id.logo);
         reset = findViewById(R.id.reset);
         top = findViewById(R.id.top);
+
+        mAuth = FirebaseAuth.getInstance();
+        email = findViewById(R.id.login_email);
+        password = findViewById(R.id.login_password);
+        loginBtn = findViewById(R.id.login_btn);
     }
 
     public void setup() {
@@ -142,4 +167,63 @@ public class Login extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+
+    // TODO: uncomment this method when create Dashboard activity
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        FirebaseUser user = mAuth.getCurrentUser();
+//        if (user != null) {
+//            startActivity(new Intent(this, DashBoard.class));
+//            finish();
+//        }
+//    }
+
+    public void SignIn(View view) {
+
+        String textEmail = email.getText().toString();
+        String textPassword = password.getText().toString();
+
+        if (!textEmail.isEmpty() && !textPassword.isEmpty()) {
+            loginBtn.startAnimation();
+            mAuth.signInWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Log.d(LOGIN_TAG, "success");
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        boolean emailVerified = user.isEmailVerified();
+                        String token = FirebaseInstanceId.getInstance().getToken();
+                        mRef = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
+                        mRef.child("device_token").child("token").setValue(token).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful())
+                                    Log.d(LOGIN_TAG, "token success");
+                                else
+                                    Log.d(LOGIN_TAG, " token field");
+                                loginBtn.stopAnimation();
+                            }
+                        });
+                        if (emailVerified) {
+                            // TODO: uncomment this when create Dashboard activity
+//                            Intent intent = new Intent(Login.this, DashBoard.class);
+//                            startActivity(intent);
+                            loginBtn.stopAnimation();
+                        } else {
+                            Log.d(LOGIN_TAG, "NOT Verified");
+                            loginBtn.stopAnimation();
+                        }
+
+                    } else {
+                        Log.d(LOGIN_TAG, "NOT success");
+                        loginBtn.stopAnimation();
+                    }
+                }
+            });
+        }
+
+    }
+
+
 }
