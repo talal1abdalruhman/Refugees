@@ -26,11 +26,13 @@ import android.widget.ScrollView;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
+import com.example.refugees.HelperClasses.Validation;
 import com.example.refugees.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,6 +63,7 @@ public class Signup extends AppCompatActivity {
     private static final int GALLERY_REQUEST_CODE = 1;
     private String ADD_USER_TAG = "userRegister";
     private TextInputEditText fName, eMail, phoneNo, password, gover, city;
+    TextInputLayout nameLayout, emailLayout, phoneLayout, passwordLayout, governatorLayout, cityLayout;
     private String textName, textEmail, textPhone, textPassword, textGovern, textCity;
     private CircleImageView profileImg;
     private Uri imageUri = null;
@@ -187,6 +190,12 @@ public class Signup extends AppCompatActivity {
         gover = findViewById(R.id.register_govrnator);
         city = findViewById(R.id.register_City);
         profileImg = findViewById(R.id.register_img);
+        nameLayout = findViewById(R.id.register_layout_name);
+        emailLayout = findViewById(R.id.register_layout_email);
+        passwordLayout = findViewById(R.id.register_layout_password);
+        phoneLayout = findViewById(R.id.register_layout_phone);
+        governatorLayout = findViewById(R.id.register_layout_govrnator);
+        cityLayout = findViewById(R.id.register_layout_city);
     }
 
     public void RegisterUser(View view) {
@@ -197,6 +206,9 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
+        if(!Validation.validateName(nameLayout) | !Validation.validateEmail(emailLayout) |
+                !Validation.validatePassword(passwordLayout) | !Validation.validatePhoneNo(phoneLayout) |
+                !Validation.validateNotEmpty(governatorLayout) | !Validation.validateNotEmpty(cityLayout)) return;
         VerifyUserByEmail();
     }
 
