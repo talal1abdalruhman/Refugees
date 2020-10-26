@@ -17,4 +17,18 @@
     <string name="disable">تعطيل</string>
     <string name="enable">تفعيل</string>
     <string name="full_name">الاسم الكامل</string>
+    <string name="e_mail_address">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forgot_password">نسيت كلمة المرور؟</string>
+    <string name="don_t_have_account"> ليس لديك حساب؟ </string>
+    <string name="phone_no">رقم الهاتف</string>
+    <string name="address">العنوان</string>
+    <string name="city">المدينة/القرية</string>
+    <string name="governorate">المحافظة</string>
+    <string name="register">تسجيل</string>
+    <string name="we_send_you_link_to_reset_your_password_nplease_check_your_email_address_n">لقد قمنا بإرسال رابط اعادة تعيين كلمة المرور\nالرجاء التحقق من بريدك الإلكتروني:\n</string>
+    <string name="enter_your_email_address_please">أدخل بريدك الإلكتروني رجاءاً:</string>
+    <string name="your_email_address">بريدك الإلكتروني</string>
+    <string name="send">ارسال</string>
+    <string name="reset_password">إعادة تعيين كلمة المرور:</string>
 </resources>

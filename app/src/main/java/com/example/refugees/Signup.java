@@ -19,6 +19,7 @@ import android.widget.ScrollView;
 import com.example.refugees.R;
 
 public class Signup extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "language";
     Context context = this;
     LinearLayout options_log;
     Button skip;
@@ -93,8 +94,10 @@ public class Signup extends AppCompatActivity {
         form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(context, LogOptions.class);
+                Intent intent = new Intent(getApplicationContext(), LogOptions.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                String message = getResources().getConfiguration().locale.getLanguage();
+                intent.putExtra(EXTRA_MESSAGE, message);
                 startActivity(intent);
                 finish();
             }

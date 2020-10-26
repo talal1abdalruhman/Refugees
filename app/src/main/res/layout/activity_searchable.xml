@@ -159,7 +159,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    <!--This is the signup form-->
     <ScrollView
         android:id="@+id/form_signup"
         android:layout_width="match_parent"
@@ -329,7 +328,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -434,3 +434,4 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--This is the signup form-->
