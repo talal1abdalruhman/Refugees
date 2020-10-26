@@ -123,13 +123,15 @@ public class LogOptions extends AppCompatActivity {
         bottom_light.animate().setDuration(duration).scaleY((float)0.13);
         top.setPivotY(0);
         top.animate().setDuration(duration).scaleY((float)0.2);
+
         options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
         logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
         skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
+        
         form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
            @Override
            public void onAnimationEnd(Animator animation) {
-               Intent intent = new Intent(context, test.class);
+               Intent intent = new Intent(context, Signup.class);
                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                startActivity(intent);
                finish();

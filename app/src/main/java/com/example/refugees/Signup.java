@@ -2,6 +2,7 @@ package com.example.refugees;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,22 +14,26 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
-public class Login extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "language";
+import com.example.refugees.R;
+
+public class Signup extends AppCompatActivity {
     Context context = this;
     LinearLayout options_log;
     Button skip;
     ImageView bottom_dark;
     ImageView bottom_light;
-    LinearLayout form;
     ImageView logo;
-    LinearLayout reset;
+    ImageView top;
+    ScrollView form_signup;
+    ConstraintLayout warning;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        final ConstraintLayout layout = findViewById(R.id.background);
+        setContentView(R.layout.activity_signup);
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -37,55 +42,59 @@ public class Login extends AppCompatActivity {
                 setup();
             }
         });
-
-        form = findViewById(R.id.form);
-
-        options_log = findViewById(R.id.options_log);
-        skip = findViewById(R.id.skip);
+        top = findViewById(R.id.top);
         bottom_dark = findViewById(R.id.bottom_dark);
         bottom_light = findViewById(R.id.bottom_light);
         logo = findViewById(R.id.logo);
-        reset = findViewById(R.id.reset);
+        form_signup = findViewById(R.id.form_signup);
+        options_log = findViewById(R.id.options_log);
+        skip = findViewById(R.id.skip);
+        warning = findViewById(R.id.warning);
     }
-
     public void setup() {
         int duration = 0;
         float mul = -3;
         int delay = 0;
+
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
         bottom_light.setPivotY(bottom_light.getHeight());
         bottom_light.animate().setDuration(duration).scaleY((float)0.13);
 
         options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
-        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
-        options_log.setVisibility(View.VISIBLE);
-        skip.setVisibility(View.VISIBLE);
+        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
+        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
         mul = 3;
-        reset.animate().setDuration(duration).translationXBy(reset.getMeasuredWidth() * mul).setStartDelay(delay);        
-        reset.setVisibility(View.VISIBLE);
-        
-    }
-    @Override
-    public void onBackPressed() {
+        warning.animate().setDuration(duration).translationXBy(warning.getMeasuredWidth() * mul);
 
+        options_log.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
+        skip.setVisibility(View.VISIBLE);
+        warning.setVisibility(View.VISIBLE);
+    }
+    @Override 
+    public void onBackPressed() {
         int duration = 500;
         float mul = 3;
         int delay = 0;
+
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_dark.animate().setDuration(duration).scaleY((float)1);
         bottom_light.setPivotY(bottom_light.getHeight());
         bottom_light.animate().setDuration(duration).scaleY((float)1);
+        top.setPivotY(0);
+        top.animate().setDuration(duration).scaleY((float)1);
+
 
         options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
-        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
-        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
+        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
+
+        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(getApplicationContext(), LogOptions.class);
+                Intent intent = new Intent(context, LogOptions.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                String message = getResources().getConfiguration().locale.getLanguage();
-                intent.putExtra(EXTRA_MESSAGE, message);
                 startActivity(intent);
                 finish();
             }
@@ -96,21 +105,22 @@ public class Login extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
-
-    public void reset(View view) {
+    public void register(View view) {
         int duration = 500;
         float mul = -3;
         int delay = 0;
-        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
-        reset.animate().setDuration(duration).translationXBy(reset.getMeasuredWidth() * mul).setStartDelay(delay);        
-        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+        top.setPivotY(0);
+        top.animate().setDuration(duration).scaleY((float)1);
+        warning.animate().setDuration(duration).translationXBy(warning.getMeasuredWidth() * mul).setStartDelay(delay);
+        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(context, test.class);
+                Intent intent = new Intent(context, Searchable.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
             }
         });
+
     }
 }
