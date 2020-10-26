@@ -92,6 +92,7 @@ public class LogOptions extends AppCompatActivity {
         Configuration configuration = resources.getConfiguration();
         DisplayMetrics displayMetrics = resources.getDisplayMetrics();
         configuration.locale = new Locale(language);
+        configuration.setLayoutDirection(new Locale(language));
         resources.updateConfiguration(configuration, displayMetrics);
     }
    @Override
