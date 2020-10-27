@@ -1,44 +1,29 @@
 package com.example.refugees;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 
-import java.util.Locale;
-import java.util.Objects;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 public class Animate extends AppCompatActivity {
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    ImageView logo;
-    LinearLayout log;
     ConstraintLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    String language;
     int duration = 500;
-    int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
     int direction;

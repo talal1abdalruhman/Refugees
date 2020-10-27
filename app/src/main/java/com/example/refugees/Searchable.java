@@ -1,52 +1,38 @@
 package com.example.refugees;
 
-import androidx.annotation.RequiresApi;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Locale;
-import java.util.Objects;
-
 public class Searchable extends AppCompatActivity {
-    private String ADD_USER_TAG = "userRegister";
-    public static final String EXTRA_MESSAGE = "language";
+    private final String ADD_USER_TAG = "userRegister";
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    ImageView logo;
-    LinearLayout log;
     ConstraintLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    String language;
+
     int duration = 500;
-    int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
     int direction;

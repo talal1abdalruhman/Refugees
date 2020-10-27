@@ -1,9 +1,5 @@
 package com.example.refugees;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
@@ -15,17 +11,19 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 public class Splash extends AppCompatActivity {
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
     ImageView logo;
-
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
     int duration = 500;
-    int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
 

@@ -1,30 +1,24 @@
 package com.example.refugees;
 
-import androidx.annotation.RequiresApi;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,9 +31,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
-import java.util.Locale;
-import java.util.Objects;
-
 public class Login extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "language";
     private static final String LOGIN_TAG = "loginProccess";
@@ -49,23 +40,19 @@ public class Login extends AppCompatActivity {
     ImageView bottom_light;
     ImageView logo;
     LinearLayout reset;
-    ImageView top;
-    ScrollView form_signup;
+    LinearLayout form;
+    Interpolator interpolator = new FastOutSlowInInterpolator() ;
+
+    int duration = 500;
+    float ScreenWidth;
+    float ScreenHeight;
+    int direction;
 
     private TextInputEditText email, password;
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private CircularProgressButton loginBtn;
 
-    LinearLayout log;
-    LinearLayout form;
-    Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    String language;
-    int duration = 500;
-    int delay = 100;
-    float ScreenWidth;
-    float ScreenHeight;
-    int direction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,37 +88,10 @@ public class Login extends AppCompatActivity {
         form = findViewById(R.id.form);
     }
     public void setup() {
-        int duration = 0;
-        float mul = -3;
-        int delay = 0;
-        bottom_dark.setPivotY(bottom_dark.getHeight());
-        bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
-        bottom_light.setPivotY(bottom_light.getHeight());
-        bottom_light.animate().setDuration(duration).scaleY((float)0.13);
-
-        options_log.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay);
-        skip.animate().setDuration(duration).translationXBy(options_log.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator animation) {}} );
-        options_log.setVisibility(View.VISIBLE);
-        skip.setVisibility(View.VISIBLE);
-        mul = 3;
-        reset.animate().setDuration(duration).translationXBy(reset.getMeasuredWidth() * mul).setStartDelay(delay);
-        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay);
-
-        reset.setVisibility(View.VISIBLE);
-        form_signup.setVisibility(View.VISIBLE);
-        findViewById(R.id.inner).setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onBackPressed() {
-
-        int duration = 500;
-        float mul = 3;
-        int delay = 0;
         form.setX(ScreenWidth * direction);
+        top.setPivotY(0);
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_light.setPivotY(bottom_light.getHeight());
-        top.setPivotY(0);
         bottom_dark.setScaleY(0.1f);
         bottom_light.setScaleY(0.13f);
         top.setScaleY(0.2f);
@@ -147,7 +107,7 @@ public class Login extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context,  Signup.class);;
+                Intent intent = new Intent(context,  Signup.class);;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
@@ -166,16 +126,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void signup(View view) {
-        int duration = 500;
-        float mul = -3;
-        int delay = 0;
-        top.setPivotY(0);
-        top.animate().setDuration(duration).scaleY((float)0.2);
-
-        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
-        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {@Override public void onAnimationEnd(Animator animation) {}});
-        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
     @Override
     public void onBackPressed() {
         animate(direction).setListener(new AnimatorListenerAdapter() {

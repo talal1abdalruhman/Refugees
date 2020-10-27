@@ -1,42 +1,32 @@
 package com.example.refugees;
 
-import androidx.annotation.RequiresApi;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.ViewTreeObserver;
+import android.view.animation.Interpolator;
+import android.widget.ImageView;
+import android.widget.ScrollView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
-import android.graphics.Bitmap;
-import android.graphics.ImageDecoder;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.ViewTreeObserver;
-import android.view.animation.Interpolator;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-
-import java.util.Locale;
-import java.util.Objects;
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
-import com.example.refugees.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -61,14 +51,10 @@ public class Signup extends AppCompatActivity {
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    ImageView logo;
-    LinearLayout log;
     ScrollView form;
-
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    String language;
+
     int duration = 500;
-    int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
@@ -125,12 +111,16 @@ public class Signup extends AppCompatActivity {
     public ViewPropertyAnimator animate(int next) {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
     }
-    public void click(View view) {
+
+    // Register a new user methods
+    public void showSearchable(String userId) {}
+    public void animation(String userId) {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context,  Searchable.class);;
+                Intent intent = new Intent(context, Searchable.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("user_id", userId);
                 startActivity(intent);
                 finish();
             }
@@ -155,27 +145,6 @@ public class Signup extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
-    }
-
-    // Register a new user methods
-    public void showSearchable(String userId) {
-        int duration = 500;
-        float mul = -3;
-        int delay = 0;
-        top.setPivotY(0);
-        top.animate().setDuration(duration).scaleY((float)1);
-        warning.animate().setDuration(duration).translationXBy(warning.getMeasuredWidth() * mul).setStartDelay(delay);
-        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(context, Searchable.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                intent.putExtra("user_id", userId);
-                startActivity(intent);
-                finish();
-            }
-        });
-
     }
 
     public void InitializeFields() {
@@ -204,7 +173,6 @@ public class Signup extends AppCompatActivity {
 
         VerifyUserByEmail();
     }
-
     private void VerifyUserByEmail() {
 
         if (CheckValidation()) {
@@ -271,7 +239,7 @@ public class Signup extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(ADD_USER_TAG, "user info upload success");
-                                        showSearchable(userId);
+                                        animation(userId);
                                     }
                                 });
 
