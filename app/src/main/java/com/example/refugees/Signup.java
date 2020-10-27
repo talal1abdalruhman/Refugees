@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.NotificationCompat;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
@@ -23,18 +21,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
 import com.example.refugees.HelperClasses.Validation;
-import com.example.refugees.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,9 +41,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
 import java.io.IOException;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Signup extends AppCompatActivity {
@@ -206,15 +202,17 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
-        if(!Validation.validateName(nameLayout) | !Validation.validateEmail(emailLayout) |
-                !Validation.validatePassword(passwordLayout) | !Validation.validatePhoneNo(phoneLayout) |
-                !Validation.validateNotEmpty(governatorLayout) | !Validation.validateNotEmpty(cityLayout)) return;
+        Validation validator = new Validation(getResources());
+
+        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
         VerifyUserByEmail();
     }
 
     private void VerifyUserByEmail() {
-
-        if (CheckValidation()) {
+        emailLayout.setError(null);
+        emailLayout.setErrorEnabled(false);
             Log.d(ADD_USER_TAG, "VerifyUserByEmail start");
             mAuth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -234,28 +232,23 @@ public class Signup extends AppCompatActivity {
                                 }
                             }
                         });
-
-                    } else {
-                        Log.d(ADD_USER_TAG, "Error: " + task.getException().getMessage());
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    if(e instanceof FirebaseAuthUserCollisionException){
+                        emailLayout.setError(getString(R.string.email_already_used));
+                        emailLayout.requestFocus();
                     }
                 }
             });
-        } else {
-            Log.d(ADD_USER_TAG, "Error: NOT Valid");
-        }
+
     }
 
-    private boolean CheckValidation() {
-        if (imageUri != null && !textName.isEmpty()
-                && !textEmail.isEmpty() && !textPhone.isEmpty()
-                && !textPassword.isEmpty() && !textGovern.isEmpty()
-                && !textCity.isEmpty())
-            return true;
-        return false;
-    }
 
     private void UploadUserInfo() {
-        if (CheckValidation()) {
+        if (imageUri != null) {
             final String userId = mAuth.getCurrentUser().getUid();
             StorageReference imgRef = mStorageRef.child(userId + ".jpg");
             imgRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

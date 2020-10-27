@@ -31,4 +31,10 @@
     <string name="your_email_address">بريدك الإلكتروني</string>
     <string name="send">ارسال</string>
     <string name="reset_password">إعادة تعيين كلمة المرور:</string>
+    <string name="field_cannot_be_empty">لا يمكنك ترك هذا الحقل فارغاً</string>
+    <string name="invalid_email_address">البريد الالكتروني غير صالح</string>
+    <string name="password_is_too_weak">كلمة المرور ضعيفة</string>
+    <string name="email_address_not_register">البريد الالكتروني غير مسجل</string>
+    <string name="incorrect_password">كلمة المرور غير صحيحة</string>
+    <string name="email_already_used">البريد الالكتروني مسجل من قبل</string>
 </resources>

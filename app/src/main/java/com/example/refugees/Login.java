@@ -3,7 +3,6 @@ package com.example.refugees;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
@@ -16,11 +15,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -46,6 +49,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
     private CircularProgressButton loginBtn;
+    private TextInputLayout emailLayout, passwordLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,8 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
         loginBtn = findViewById(R.id.login_btn);
+        emailLayout =  findViewById(R.id.login_email_layout);
+        passwordLayout = findViewById(R.id.login_password_layout);
     }
 
     public void setup() {
@@ -183,13 +189,19 @@ public class Login extends AppCompatActivity {
 
         String textEmail = email.getText().toString();
         String textPassword = password.getText().toString();
+        Validation validator = new Validation(getResources());
+        emailLayout.setError(null);
+        emailLayout.setErrorEnabled(false);
+        passwordLayout.setError(null);
+        emailLayout.setErrorEnabled(false);
 
-        if (!textEmail.isEmpty() && !textPassword.isEmpty()) {
-            loginBtn.startAnimation();
+        if (!validator.validateLoginEmail(emailLayout) | !validator.validateLoginPassword(passwordLayout)) return;
+
             mAuth.signInWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        loginBtn.startAnimation();
                         Log.d(LOGIN_TAG, "success");
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         boolean emailVerified = user.isEmailVerified();
@@ -204,6 +216,7 @@ public class Login extends AppCompatActivity {
                                     Log.d(LOGIN_TAG, " token field");
                                 loginBtn.stopAnimation();
                             }
+
                         });
                         if (emailVerified) {
                             // TODO: uncomment this when create Dashboard activity
@@ -216,14 +229,18 @@ public class Login extends AppCompatActivity {
                         }
 
                     } else {
-                        Log.d(LOGIN_TAG, "NOT success");
-                        loginBtn.stopAnimation();
+
+                        if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
+                            passwordLayout.setError(getString(R.string.incorrect_password));
+                            passwordLayout.requestFocus();
+                        }else if (task.getException() instanceof FirebaseAuthInvalidUserException){
+                            emailLayout.setError(getString(R.string.email_address_not_register));
+                            emailLayout.requestFocus();
+                        }
                     }
                 }
+
             });
-        }
-
     }
-
 
 }
