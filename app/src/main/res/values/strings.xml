@@ -31,4 +31,7 @@
     <string name="your_email_address">Your Email Address</string>
     <string name="reset_password">Reset Password:</string>
     <string name="send">Send</string>
+    <string name="email_confirmation">Email Confirmation</string>
+    <string name="please_check_your_e_mail_address_ex_com_to_confirm_your_account_so_you_can_login_in">Please check your e-mail address ex*************.com to confirm your account so you can login in</string>
+    <string name="confirm">CONFIRM</string>
 </resources>

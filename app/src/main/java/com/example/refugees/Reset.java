@@ -27,16 +27,13 @@ import android.widget.ScrollView;
 import java.util.Locale;
 import java.util.Objects;
 
-public class Login extends AppCompatActivity {
+public class Reset extends AppCompatActivity {
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    ImageView logo;
-    LinearLayout log;
     LinearLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    String language;
     int duration = 700;
     int delay = 100;
     float ScreenWidth;
@@ -47,7 +44,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         direction = getIntent().getIntExtra("direction", 1);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_reset);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -65,7 +62,7 @@ public class Login extends AppCompatActivity {
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
-        form = findViewById(R.id.form);
+        form = findViewById(R.id.reset);
     }
     public void setup() {
         form.setX(ScreenWidth * direction);
@@ -99,7 +96,7 @@ public class Login extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(getApplicationContext(), LogOptions.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("direction", -1);
                 String message = getResources().getConfiguration().locale.getLanguage();

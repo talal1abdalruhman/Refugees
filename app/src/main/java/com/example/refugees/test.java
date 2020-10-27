@@ -46,9 +46,6 @@ public class test extends AppCompatActivity {
         top = findViewById(R.id.top);
         bottom_dark = findViewById(R.id.bottom_dark);
         bottom_light = findViewById(R.id.bottom_light);
-        logo = findViewById(R.id.logo);
-        form = findViewById(R.id.form);
-        reset = findViewById(R.id.reset);
     }
     public void setup() {
         int duration = 0;
@@ -61,34 +58,26 @@ public class test extends AppCompatActivity {
         bottom_light.animate().setDuration(duration).scaleY((float)0.13);
 
 
-       logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
-       form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay);
-        
-
-       logo.setVisibility(View.VISIBLE);
-       form.setVisibility(View.VISIBLE);
-
     }
-    @Override 
-    public void onBackPressed() {
-        int duration = 500;
-        float mul = 3;
-        int delay = 0;
-
-        reset.animate().setDuration(duration).translationXBy(reset.getMeasuredWidth() * mul).setStartDelay(delay);
-        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
-        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                String message = getResources().getConfiguration().locale.getLanguage();
-                startActivity(intent);
-                finish();
-            }
-        });
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        int duration = 500;
+//        float mul = 3;
+//        int delay = 0;
+//
+//        reset.animate().setDuration(duration).translationXBy(reset.getMeasuredWidth() * mul).setStartDelay(delay);
+//        logo.animate().setDuration(duration).translationXBy(logo.getMeasuredWidth() * mul).setStartDelay(delay);
+//        form.animate().setDuration(duration).translationXBy(form.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                Intent intent = new Intent(getApplicationContext(), Login.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                String message = getResources().getConfiguration().locale.getLanguage();
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//    }
     @Override
     public void onPause() {
         super.onPause();

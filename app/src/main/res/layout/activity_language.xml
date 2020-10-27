@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/blue"
     android:id="@+id/background"
-    tools:context=".Language"
-    >
+    tools:context=".Language">
 
 
     <ImageView
@@ -53,194 +52,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:visibility="invisible"
-        android:id="@+id/options_log"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="251dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottom_light">
 
-        <Button
-            android:id="@+id/login"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="0dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:text="@string/log_in_en"
-            android:textColor="@color/blue_dark"
-            android:textSize="22sp"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toStartOf="@+id/arabic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
 
-        <Button
-            android:id="@+id/signup"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:backgroundTint="#5F93E1"
-            android:fontFamily="@font/roboto"
-            android:text="@string/sign_up_en"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
-    </LinearLayout>
 
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/skip"
-        android:layout_width="104dp"
-        android:layout_height="60dp"
-        android:backgroundTint="#3762A2"
-        android:fontFamily="@font/roboto"
-        android:text="@string/skip_en"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cornerRadius="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/options_log"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="1dp" />
 
     <LinearLayout
-        android:visibility="invisible"
-        android:id="@+id/options_log_ar"
+        android:id="@+id/lang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="251dp"
-        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottom_light">
-
-        <Button
-            android:id="@+id/login_ar"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="0dp"
-            android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        android:layout_marginTop="170dp">
+        <TextView
+            android:id="@+id/langage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
-            android:text="@string/log_in_ar"
-            android:textColor="@color/blue_dark"
-            android:textSize="22sp"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toStartOf="@+id/arabic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
-
-        <Button
-            android:id="@+id/signup_ar"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:backgroundTint="#5F93E1"
-            android:fontFamily="@font/roboto"
-            android:text="@string/sign_up_ar"
+            android:gravity="center"
+            android:text="@string/language"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
+            android:textSize="42sp" />
+        <LinearLayout
+            android:id="@+id/options_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+            <Button
+                android:id="@+id/english"
+                android:layout_width="154dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:onClick="click"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/roboto"
+                android:text="@string/english"
+                android:textColor="@color/blue_dark"
+                android:textSize="20sp"
+                app:cornerRadius="13dp"
+                app:layout_constraintEnd_toStartOf="@+id/arabic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/langage" />
+
+            <Button
+                android:id="@+id/arabic"
+                android:layout_width="154dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:backgroundTint="#5F93E1"
+                android:onClick="click"
+                android:fontFamily="@font/roboto"
+                android:text="@string/arabic"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:cornerRadius="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/langage" />
+        </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:visibility="invisible"
-        android:id="@+id/skip_ar"
-        android:layout_width="104dp"
-        android:layout_height="60dp"
-        android:backgroundTint="#3762A2"
-        android:fontFamily="@font/roboto"
-        android:text="@string/skip_ar"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cornerRadius="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/options_log_ar"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="1dp" />
-
-    <TextView
-        android:id="@+id/langage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
-        android:text="@string/language"
-        android:textColor="#FFFFFF"
-        android:textSize="42sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottom_light" />
-
-    <LinearLayout
-        android:id="@+id/options_lang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/langage">
-
-        <Button
-            android:id="@+id/english"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="0dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/roboto"
-            android:text="@string/english"
-            android:textColor="@color/blue_dark"
-            android:onClick="move_slide"
-            android:textSize="20sp"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toStartOf="@+id/arabic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
-
-        <Button
-            android:id="@+id/arabic"
-            android:layout_width="154dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:backgroundTint="#5F93E1"
-            android:fontFamily="@font/roboto"
-            android:text="@string/arabic"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:onClick="move_slide"
-            app:cornerRadius="13dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
-    </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
