@@ -34,7 +34,7 @@ public class Reset extends AppCompatActivity {
     ImageView bottom_light;
     LinearLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    int duration = 700;
+    int duration = 500;
     int delay = 100;
     float ScreenWidth;
     float ScreenHeight;

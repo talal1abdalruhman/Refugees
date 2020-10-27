@@ -37,7 +37,7 @@ public class Searchable extends AppCompatActivity {
     ConstraintLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
     String language;
-    int duration = 700;
+    int duration = 500;
     int delay = 100;
     float ScreenWidth;
     float ScreenHeight;

@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     LinearLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
     String language;
-    int duration = 700;
+    int duration = 500;
     int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
@@ -88,6 +88,17 @@ public class Login extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Intent intent = intent = new Intent(context,  Signup.class);;
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public void reset(View view) {
+        animate(direction).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = intent = new Intent(context,  Reset.class);;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
