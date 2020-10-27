@@ -32,9 +32,12 @@ public class Animate extends AppCompatActivity {
     ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    LinearLayout form;
+    ImageView logo;
+    LinearLayout log;
+    ConstraintLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
-    int duration = 700;
+    String language;
+    int duration = 500;
     int delay = 100;
     float ScreenWidth;
     float ScreenHeight;
@@ -62,7 +65,7 @@ public class Animate extends AppCompatActivity {
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
-        form = findViewById(R.id.reset);
+        form = findViewById(R.id.warning);
     }
     public void setup() {
         form.setX(ScreenWidth * direction);
@@ -75,7 +78,7 @@ public class Animate extends AppCompatActivity {
         animate();
     }
     public ViewPropertyAnimator animate() {
-        return form.animate().setDuration(duration).translationXBy((ScreenWidth/2 + form.getWidth()/2f) * -1 * direction).setInterpolator(interpolator);
+        return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction).setInterpolator(interpolator);
     }
     public ViewPropertyAnimator animate(int next) {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
@@ -84,7 +87,7 @@ public class Animate extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context,  Signup.class);;
+                Intent intent = intent = new Intent(context,  Searchable.class);;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
@@ -96,13 +99,13 @@ public class Animate extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-            Intent intent = new Intent(getApplicationContext(), LogOptions.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            intent.putExtra("direction", -1);
-            String message = getResources().getConfiguration().locale.getLanguage();
-            intent.putExtra("language", message);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(getApplicationContext(), Searchable.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("direction", -1);
+                String message = getResources().getConfiguration().locale.getLanguage();
+                intent.putExtra("language", message);
+                startActivity(intent);
+                finish();
             }
         });
     }

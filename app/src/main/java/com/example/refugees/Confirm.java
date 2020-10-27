@@ -27,7 +27,7 @@ import android.widget.ScrollView;
 import java.util.Locale;
 import java.util.Objects;
 
-public class Searchable extends AppCompatActivity {
+public class Confirm extends AppCompatActivity {
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
@@ -47,7 +47,7 @@ public class Searchable extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         direction = getIntent().getIntExtra("direction", 1);
-        setContentView(R.layout.activity_searchable);
+        setContentView(R.layout.activity_confirm);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -87,7 +87,7 @@ public class Searchable extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context,  Confirm.class);;
+                Intent intent = intent = new Intent(context,  Searchable.class);;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
@@ -99,7 +99,7 @@ public class Searchable extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(getApplicationContext(), Signup.class);
+                Intent intent = new Intent(getApplicationContext(), Searchable.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("direction", -1);
                 String message = getResources().getConfiguration().locale.getLanguage();

@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context=".test">
-
-
-
+    tools:context=".Confirm">
 
     <ImageView
         android:id="@+id/top"
@@ -20,6 +17,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/bottom_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bottom_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/bottom_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/bottom_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/warning"
@@ -43,9 +59,10 @@
         <TextView
             android:id="@+id/dis"
             android:layout_width="328dp"
-            android:layout_height="194dp"
+            android:layout_height="180dp"
+            android:gravity="center"
             android:fontFamily="@font/montserrat"
-            android:text="@string/please_check_your_e_mail_address_ex_com_to_confirm_your_account_so_you_can_login_in"
+            android:text="Please check your e-mail address ex*************.com"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
@@ -54,36 +71,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/back"
             app:layout_constraintVertical_bias="0.575" />
-        <LinearLayout
-            android:id="@+id/options_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back">
-
-            <Button
-                android:id="@+id/enalbe"
-                android:layout_width="170dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/confirm"
-                android:textColor="@color/blue_dark"
-                android:textSize="18sp"
-                app:cornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/langage" />
-        </LinearLayout>
-
-
 
         <LinearLayout
             android:id="@+id/search"
@@ -102,8 +89,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/email_confirmation"
+                android:text="Confirmation"
                 android:textColor="#FFFFFF"
+                android:layout_marginEnd="10dp"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,33 +101,13 @@
             <ImageView
                 android:id="@+id/search_icon"
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
                 app:srcCompat="@drawable/mail_check" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <ImageView
-        android:id="@+id/bottom_light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/bottom_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <ImageView
-        android:id="@+id/bottom_dark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/bottom_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
