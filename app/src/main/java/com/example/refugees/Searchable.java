@@ -1,6 +1,7 @@
 package com.example.refugees;
 
 import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
@@ -24,10 +25,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Locale;
 import java.util.Objects;
 
 public class Searchable extends AppCompatActivity {
+    private String ADD_USER_TAG = "userRegister";
+    public static final String EXTRA_MESSAGE = "language";
     Context context = this;
     ImageView top;
     ImageView bottom_dark;
@@ -61,6 +69,7 @@ public class Searchable extends AppCompatActivity {
 
                 setup();
             }
+
         });
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
@@ -114,4 +123,25 @@ public class Searchable extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+
+
+    public void SelectSearchStatus(View view) {
+        int id = view.getId();
+        String userId = getIntent().getStringExtra("user_id");
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        boolean searchable;
+        if(id == R.id.enalbe) searchable = true;
+        else searchable = false;
+        userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Log.d(ADD_USER_TAG, "searchable => "+searchable);
+                    // TODO: make intent to go to verify msg here
+                }
+                else Log.d(ADD_USER_TAG, "searchable => something wrong");
+            }
+        });
+    }
+
 }
