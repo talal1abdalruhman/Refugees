@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context=".Searchable">
-
-
-
+    tools:context=".Animate">
 
     <ImageView
         android:id="@+id/top"
@@ -63,66 +60,17 @@
             android:id="@+id/dis"
             android:layout_width="328dp"
             android:layout_height="180dp"
+            android:gravity="center"
             android:fontFamily="@font/montserrat"
-            android:text="@string/message"
+            android:text="Please check your e-mail address ex*************.com"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:gravity="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/back"
             app:layout_constraintEnd_toEndOf="@+id/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/back"
             app:layout_constraintVertical_bias="0.575" />
-        <LinearLayout
-            android:id="@+id/options_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:gravity="center"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back">
-
-            <Button
-                android:id="@+id/disable"
-                android:layout_width="170dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="0dp"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/disable"
-                android:onClick="click"
-                android:textColor="@color/blue_dark"
-                android:textSize="18sp"
-                app:cornerRadius="30dp"
-                app:layout_constraintEnd_toStartOf="@+id/arabic"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/langage" />
-
-            <Button
-                android:id="@+id/enalbe"
-                android:layout_width="170dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/enable"
-                android:onClick="click"
-                android:textColor="@color/blue_dark"
-                android:textSize="18sp"
-                app:cornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/langage" />
-        </LinearLayout>
-
-
 
         <LinearLayout
             android:id="@+id/search"
@@ -141,8 +89,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@string/searchable"
+                android:text="Confirmation"
                 android:textColor="#FFFFFF"
+                android:layout_marginEnd="10dp"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,12 +101,13 @@
             <ImageView
                 android:id="@+id/search_icon"
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
-                app:srcCompat="@drawable/search" />
+                app:srcCompat="@drawable/mail_check" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

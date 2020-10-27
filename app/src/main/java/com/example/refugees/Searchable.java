@@ -1,45 +1,46 @@
 package com.example.refugees;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.os.ConfigurationCompat;
-import androidx.core.os.LocaleListCompat;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Locale;
-
 public class Searchable extends AppCompatActivity {
-    private String ADD_USER_TAG = "userRegister";
-    public static final String EXTRA_MESSAGE = "language";
+    private final String ADD_USER_TAG = "userRegister";
     Context context = this;
+    ImageView top;
     ImageView bottom_dark;
     ImageView bottom_light;
-    ConstraintLayout warning;
-    ImageView top;
-    ScrollView form_signup;
+    ConstraintLayout form;
+    Interpolator interpolator = new FastOutSlowInInterpolator() ;
+
+    int duration = 500;
+    float ScreenWidth;
+    float ScreenHeight;
+    int direction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        direction = getIntent().getIntExtra("direction", 1);
         setContentView(R.layout.activity_searchable);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
@@ -47,50 +48,61 @@ public class Searchable extends AppCompatActivity {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                ScreenWidth = displayMetrics.widthPixels;
+                ScreenHeight = displayMetrics.heightPixels;
+
                 setup();
             }
 
         });
-        bottom_dark = findViewById(R.id.bottom_dark);
+        top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
-        warning = findViewById(R.id.warning);
-        form_signup = findViewById(R.id.form_signup);
+        bottom_dark = findViewById(R.id.bottom_dark);
+        form = findViewById(R.id.warning);
     }
     public void setup() {
-        int duration = 0;
-        int mul = -3;
-        int delay = 0;
+        form.setX(ScreenWidth * direction);
         bottom_dark.setPivotY(bottom_dark.getHeight());
-        bottom_dark.animate().setDuration(duration).scaleY((float)0.1);
         bottom_light.setPivotY(bottom_light.getHeight());
-        bottom_light.animate().setDuration(duration).scaleY((float)0.13);
-
-        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul);
-
-        findViewById(R.id.inner).setVisibility(View.VISIBLE);
-
-
-    }
-    public void onBackPressed() {
-        int duration = 500;
-        float mul = 3;
-        int delay = 0;
-        top = findViewById(R.id.top);
         top.setPivotY(0);
-        top.animate().setDuration(duration).scaleY((float)0.2);
-        form_signup.animate().setDuration(duration).translationXBy(form_signup.getMeasuredWidth() * mul);
-        warning.animate().setDuration(duration).translationXBy(warning.getMeasuredWidth() * mul).setStartDelay(delay).setListener(new AnimatorListenerAdapter() {
+        bottom_dark.setScaleY(0.1f);
+        bottom_light.setScaleY(0.13f);
+        top.setScaleY(0.2f);
+        animate();
+    }
+    public ViewPropertyAnimator animate() {
+        return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction).setInterpolator(interpolator);
+    }
+    public ViewPropertyAnimator animate(int next) {
+        return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
+    }
+    public void click(View view) {
+        animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = new Intent(getApplicationContext(), Signup.class);
+                Intent intent = intent = new Intent(context,  Confirm.class);;
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                String message = getResources().getConfiguration().locale.getLanguage();
-                intent.putExtra(EXTRA_MESSAGE, message);
                 startActivity(intent);
                 finish();
             }
         });
-
+    }
+    @Override
+    public void onBackPressed() {
+        animate(direction).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = new Intent(getApplicationContext(), Signup.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("direction", -1);
+                String message = getResources().getConfiguration().locale.getLanguage();
+                intent.putExtra("language", message);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     @Override
     public void onPause() {
