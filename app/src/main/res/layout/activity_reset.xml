@@ -76,6 +76,7 @@
                 android:textSize="18dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reset_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +87,6 @@
                 app:startIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/reset_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -107,6 +107,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/login_btn_bg"
                 android:gravity="center"
+                android:onClick="SendResetEmail"
                 android:text="@string/send"
                 android:textAllCaps="false"
                 android:textColor="@color/blue_dark"
