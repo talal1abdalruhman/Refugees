@@ -160,8 +160,6 @@ public class Reset extends AppCompatActivity {
                 } else if (task.getException() instanceof FirebaseAuthInvalidUserException){
                     sendBtn.revertAnimation();
                     sendBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
-                    email.setError(getString(R.string.email_address_not_register));
-                    email.requestFocus();
                 }
             }
         });

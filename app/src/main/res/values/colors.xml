@@ -11,4 +11,5 @@
     <color name="blue_dark">#3762A2</color>
     <color name="blue_light">#80ACEF</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="green_done">#4caf50</color>
 </resources>

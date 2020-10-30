@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -48,6 +50,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Signup extends AppCompatActivity {
@@ -70,9 +73,10 @@ public class Signup extends AppCompatActivity {
     private static final int GALLERY_REQUEST_CODE = 1;
     private String ADD_USER_TAG = "userRegister";
     private TextInputEditText fName, eMail, phoneNo, password, gover, city;
-    TextInputLayout nameLayout, emailLayout, phoneLayout, passwordLayout, governatorLayout, cityLayout;
+    private TextInputLayout nameLayout, emailLayout, phoneLayout, passwordLayout, governatorLayout, cityLayout;
     private String textName, textEmail, textPhone, textPassword, textGovern, textCity;
     private CircleImageView profileImg;
+    private CircularProgressButton registerBtn;
     private Uri imageUri = null;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
@@ -211,6 +215,7 @@ public class Signup extends AppCompatActivity {
         phoneLayout = findViewById(R.id.register_layout_phone);
         governatorLayout = findViewById(R.id.register_layout_govrnator);
         cityLayout = findViewById(R.id.register_layout_city);
+        registerBtn = findViewById(R.id.register_btn);
     }
 
     public void RegisterUser(View view) {
@@ -232,6 +237,7 @@ public class Signup extends AppCompatActivity {
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
         emailLayout.setErrorEnabled(false);
+        registerBtn.startAnimation();
             Log.d(ADD_USER_TAG, "VerifyUserByEmail start");
             mAuth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -247,6 +253,8 @@ public class Signup extends AppCompatActivity {
                                     Log.d(ADD_USER_TAG, "verification email sent");
                                     UploadUserInfo();
                                 } else {
+                                    registerBtn.revertAnimation();
+                                    registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
                                     Log.d(ADD_USER_TAG, "verification email NOT sent");
                                 }
                             }
@@ -290,11 +298,15 @@ public class Signup extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(ADD_USER_TAG, "user info upload success");
+
+                                        registerBtn.doneLoadingAnimation(R.color.green_done, BitmapFactory.decodeResource(getResources(),R.drawable.ic_done));
                                         animation(userId);
                                     }
                                 });
 
                             } else {
+                                registerBtn.revertAnimation();
+                                registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
                                 Log.d(ADD_USER_TAG, "Error: " + task.getException().getMessage());
                             }
                         }
@@ -302,6 +314,8 @@ public class Signup extends AppCompatActivity {
                 }
             });
         } else {
+            registerBtn.revertAnimation();
+            registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
             Log.d(ADD_USER_TAG, "Error: NOT Valid");
         }
 
