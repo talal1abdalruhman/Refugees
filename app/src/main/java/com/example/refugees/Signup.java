@@ -1,11 +1,8 @@
 package com.example.refugees;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,9 +19,15 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
-import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +45,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
 import java.io.IOException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Signup extends AppCompatActivity {
@@ -51,12 +56,16 @@ public class Signup extends AppCompatActivity {
     ImageView bottom_dark;
     ImageView bottom_light;
     ScrollView form;
+    Dialog dialog;
+
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
-    int duration = 500;
+    int duration = 400;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
+    boolean pressedImage;
+    boolean pressed;
 
     private static final int GALLERY_REQUEST_CODE = 1;
     private String ADD_USER_TAG = "userRegister";
@@ -85,18 +94,23 @@ public class Signup extends AppCompatActivity {
                 getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 ScreenWidth = displayMetrics.widthPixels;
                 ScreenHeight = displayMetrics.heightPixels;
-
                 setup();
             }
         });
         InitializeFields();
+        pressed = false;
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
         form = findViewById(R.id.form_signup);
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.back_signup);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
     public void setup() {
         form.setX(ScreenWidth * direction);
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_light.setPivotY(bottom_light.getHeight());
         top.setPivotY(0);
@@ -113,7 +127,6 @@ public class Signup extends AppCompatActivity {
     }
 
     // Register a new user methods
-    public void showSearchable(String userId) {}
     public void animation(String userId) {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -128,6 +141,34 @@ public class Signup extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        if(pressed)
+            return;
+        if(fName.getText().toString().isEmpty()
+         && eMail.getText().toString().isEmpty()
+         && phoneNo.getText().toString().isEmpty()
+         && password.getText().toString().isEmpty()
+         && gover.getText().toString().isEmpty()
+         && city.getText().toString().isEmpty()
+                && !pressedImage) {
+            pressed = true;
+            animate(direction).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Intent intent = new Intent(getApplicationContext(), LogOptions.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    intent.putExtra("direction", -1);
+                    String message = getResources().getConfiguration().locale.getLanguage();
+                    intent.putExtra("language", message);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            return;
+        }
+        dialog.show();
+    }
+    public void back(View view) {
+        dialog.dismiss();
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -140,6 +181,9 @@ public class Signup extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void no(View view) {
+        dialog.dismiss();
     }
     @Override
     public void onPause() {
@@ -177,12 +221,13 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
-        Validation validator = new Validation(getResources());
-
-        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-        VerifyUserByEmail();
+//        Validation validator = new Validation(getResources());
+//
+//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
+//        VerifyUserByEmail();
+        animation("2");
     }
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
@@ -263,6 +308,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public void PickImage(View view) {
+        pressedImage = true;
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");

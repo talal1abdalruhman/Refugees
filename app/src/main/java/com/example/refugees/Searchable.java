@@ -32,10 +32,11 @@ public class Searchable extends AppCompatActivity {
     ConstraintLayout form;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
-    int duration = 500;
+    int duration = 400;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
+    boolean pressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class Searchable extends AppCompatActivity {
             }
 
         });
+        pressed = false;
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
@@ -64,6 +66,8 @@ public class Searchable extends AppCompatActivity {
     }
     public void setup() {
         form.setX(ScreenWidth * direction);
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_light.setPivotY(bottom_light.getHeight());
         top.setPivotY(0);
@@ -91,6 +95,9 @@ public class Searchable extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        if(pressed)
+            return;
+        pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

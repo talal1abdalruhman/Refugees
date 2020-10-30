@@ -2,6 +2,7 @@ package com.example.refugees;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +21,11 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 public class Language extends AppCompatActivity {
     Context context = this;
     ImageView logo;
+    ImageView top;
+    ImageView bottom_dark;
+    ImageView bottom_light;
     LinearLayout lang;
+    Dialog dialog;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
     int duration = 400;
@@ -48,11 +53,19 @@ public class Language extends AppCompatActivity {
                 setup();
             }
         });
+        top = findViewById(R.id.top);
         logo = findViewById(R.id.logo);
+        bottom_dark = findViewById(R.id.bottom_dark);
+        bottom_light = findViewById(R.id.bottom_light);
         lang = findViewById(R.id.lang);
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.exit);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
     public void setup() {
-        logo.setY(ScreenHeight * 0.143933347f);
+        logo.setY(ScreenHeight + ((ScreenHeight * 0.85f) * -1) + (top.getHeight()) + ((bottom_dark.getHeight())/4f * -1));
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         lang.setX(ScreenWidth * direction);
         animate();
     }
@@ -75,8 +88,20 @@ public class Language extends AppCompatActivity {
         });
     }
     @Override
+    public void onBackPressed() {
+        dialog.show();
+    }
+    public void yes(View view) {
+        dialog.dismiss();
+        finish();
+    }
+    public void no(View view) {
+        dialog.dismiss();
+    }
+    @Override
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
     }
 }
+

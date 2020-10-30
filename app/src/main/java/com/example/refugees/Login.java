@@ -1,10 +1,5 @@
 package com.example.refugees;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
@@ -18,7 +13,12 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,10 +47,11 @@ public class Login extends AppCompatActivity {
     LinearLayout reset;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
-    int duration = 500;
+    int duration = 400;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
+    boolean pressed;
 
     private TextInputEditText email, password;
     private FirebaseAuth mAuth;
@@ -78,6 +79,7 @@ public class Login extends AppCompatActivity {
                 setup();
             }
         });
+        pressed = false;
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
@@ -85,6 +87,7 @@ public class Login extends AppCompatActivity {
         logo = findViewById(R.id.logo);
         reset = findViewById(R.id.reset);
         top = findViewById(R.id.top);
+        form = findViewById(R.id.form);
 
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.login_email);
@@ -97,8 +100,9 @@ public class Login extends AppCompatActivity {
     public void setup() {
         form.setX(ScreenWidth * direction);
         top.setPivotY(0);
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         bottom_dark.setPivotY(bottom_dark.getHeight());
-        bottom_dark.animate().setDuration(duration).scaleY((float)1);
         bottom_light.setPivotY(bottom_light.getHeight());
         bottom_dark.setScaleY(0.1f);
         bottom_light.setScaleY(0.13f);
@@ -139,6 +143,9 @@ public class Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if(pressed)
+            return;
+        pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

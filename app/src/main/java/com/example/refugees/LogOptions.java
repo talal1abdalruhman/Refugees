@@ -35,6 +35,7 @@ public class LogOptions extends AppCompatActivity {
     float ScreenWidth;
     float ScreenHeight;
     int direction;
+    boolean pressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class LogOptions extends AppCompatActivity {
                 setup();
             }
         });
+        pressed = false;
         top = findViewById(R.id.top);
         bottom_light = findViewById(R.id.bottom_light);
         bottom_dark = findViewById(R.id.bottom_dark);
@@ -75,7 +77,9 @@ public class LogOptions extends AppCompatActivity {
             bottom_light.setScaleY(0.13f);
             top.setScaleY(0.2f);
         }
-        logo.setY(ScreenHeight * 0.143933347f);
+        logo.setY(ScreenHeight + ((ScreenHeight * 0.85f) * -1) + (top.getHeight()) + ((bottom_dark.getHeight())/4f * -1));
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         log.setX(ScreenWidth * direction);
         animate();
     }
@@ -118,7 +122,10 @@ public class LogOptions extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        animate().setListener(new AnimatorListenerAdapter() {
+        if(pressed)
+            return;
+        pressed = true;
+        animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Intent intent = intent = new Intent(context,  Language.class);

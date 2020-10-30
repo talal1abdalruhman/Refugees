@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
@@ -54,6 +53,8 @@ public class Splash extends AppCompatActivity {
     }
     public void setup() {
         logo.setY(ScreenHeight);
+        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
+        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
         bottom_dark.setY(ScreenHeight);
         bottom_light.setY(ScreenHeight);
         top.setY(top.getHeight() * -1);
@@ -63,11 +64,10 @@ public class Splash extends AppCompatActivity {
         logo();
     }
     public void logo() {
-        Log.d("test", " y is " + ScreenHeight);
         logo.animate().setDuration(duration * 2).translationYBy((ScreenHeight * 0.85f) * -1).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                top();
+            top();
             }
         });
     }
@@ -81,16 +81,21 @@ public class Splash extends AppCompatActivity {
         });
     }
     public void bottom() {
-        logo.animate().setDuration(duration).translationYBy((bottom_dark.getHeight())/4 * -1).setInterpolator(interpolator);
-        bottom_dark.animate().setDuration(duration).translationYBy((bottom_dark.getHeight()) * -1).setInterpolator(interpolator);
-        bottom_light.animate().setDuration(duration).translationYBy((bottom_light.getHeight()) * -1).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
+        logo.animate().setDuration(duration).translationYBy((bottom_dark.getHeight())/4f * -1).setInterpolator(interpolator);
+        bottom_dark.animate().setDuration(duration).translationYBy(bottom_dark.getHeight() * -1f).setInterpolator(interpolator);
+        bottom_light.animate().setDuration(duration).translationYBy(bottom_light.getHeight() * -1f).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Log.d("test", "logo " + logo.getY());
                 Intent intent = new Intent(context, Language.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+                finish();
             }
         });
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        overridePendingTransition(0, 0);
     }
 }

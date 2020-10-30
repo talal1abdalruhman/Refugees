@@ -37,4 +37,10 @@
     <string name="email_address_not_register">Email address not registered</string>
     <string name="incorrect_password">Incorrect password</string>
     <string name="email_already_used">Email already used</string>
+    <string name="quit">quit</string>
+    <string name="really_quit">really quit</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="quit2">Are you sure you want to quit?</string>
+    <string name="back">BACK</string>
 </resources>

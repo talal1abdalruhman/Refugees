@@ -289,26 +289,25 @@
 
                 </LinearLayout>
 
-                <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+
+                <Button
                     android:id="@+id/register_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/login_btn_bg"
+                    android:backgroundTint="@color/white"
                     android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
                     android:onClick="RegisterUser"
                     android:padding="10dp"
                     android:text="@string/register"
                     android:textColor="@color/blue_dark"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:spinning_bar_color="@color/blue_dark"
-                    app:spinning_bar_padding="5dp"
-                    app:spinning_bar_width="5dp" />
+                    app:cornerRadius="30dp"
+                    app:layout_constraintEnd_toStartOf="@+id/arabic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/langage" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
