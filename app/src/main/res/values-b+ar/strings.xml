@@ -6,12 +6,6 @@
     <string name="sign_up">تسجيل</string>
     <string name="log_in">دخول</string>
     <string name="skip">تخطي</string>
-    <string name="sign_up_ar">تسجيل</string>
-    <string name="log_in_ar">دخول</string>
-    <string name="skip_ar">تخطي</string>
-    <string name="log_in_en">LOG IN</string>
-    <string name="sign_up_en">SIGN UP</string>
-    <string name="skip_en">SKIP</string>
     <string name="message">بتفعيل هذا الخيار سيتمكن باقي المستخدمين من رؤيتك في نتائج وارسال طلبات لاستعراض معلوماتك الشخصية، يمكن ان يكون هؤلاء الاشخاص من افراد اسرتك او اصدقائك او اي مستخدمين آخرين</string>
     <string name="searchable">الظهور في نتائج البحث</string>
     <string name="disable">تعطيل</string>
@@ -37,4 +31,9 @@
     <string name="email_address_not_register">البريد الالكتروني غير مسجل</string>
     <string name="incorrect_password">كلمة المرور غير صحيحة</string>
     <string name="email_already_used">البريد الالكتروني مسجل من قبل</string>
+    <string name="quit">هل انتا متأكد من الخروج</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="back">رجوع</string>
+    <string name="confirm">الرجاء التحقق من بريدك الاكتروني</string>
 </resources>

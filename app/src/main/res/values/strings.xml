@@ -6,12 +6,6 @@
     <string name="sign_up">SIGN UP</string>
     <string name="log_in">LOG IN</string>
     <string name="skip">skip</string>
-    <string name="sign_up_ar">تسجيل</string>
-    <string name="log_in_ar">دخول</string>
-    <string name="skip_ar">تخطي</string>
-    <string name="log_in_en">LOG IN</string>
-    <string name="sign_up_en">SIGN UP</string>
-    <string name="skip_en">SKIP</string>
     <string name="message">Being searchable allows others to search for you and send you a request, those people might be your family, friends and clients.</string>
     <string name="searchable">Searchable</string>
     <string name="disable">disable</string>
@@ -37,10 +31,9 @@
     <string name="email_address_not_register">Email address not registered</string>
     <string name="incorrect_password">Incorrect password</string>
     <string name="email_already_used">Email already used</string>
-    <string name="quit">quit</string>
-    <string name="really_quit">really quit</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
-    <string name="quit2">Are you sure you want to quit?</string>
+    <string name="quit">Are you sure you want to quit?</string>
     <string name="back">BACK</string>
+    <string name="confirm">Please check your e-mail address</string>
 </resources>

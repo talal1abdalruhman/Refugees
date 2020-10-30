@@ -208,13 +208,12 @@ public class Login extends AppCompatActivity {
                                     Log.d(LOGIN_TAG, " token field");
                                 loginBtn.stopAnimation();
                             }
-
                         });
                         if (emailVerified) {
                             // TODO: uncomment this when create Dashboard activity
 //                            Intent intent = new Intent(Login.this, DashBoard.class);
 //                            startActivity(intent);
-                            loginBtn.stopAnimation();
+//                            loginBtn.stopAnimation();
                         } else {
                             Log.d(LOGIN_TAG, "NOT Verified");
                             loginBtn.stopAnimation();
@@ -231,8 +230,6 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 }
-
             });
     }
-
 }

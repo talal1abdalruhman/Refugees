@@ -63,7 +63,7 @@
             android:layout_height="180dp"
             android:gravity="center"
             android:fontFamily="@font/montserrat"
-            android:text="Please check your e-mail address ex*************.com"
+            android:text="@string/confirm"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
