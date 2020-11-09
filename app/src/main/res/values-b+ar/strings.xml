@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Refugees</string>
     <string name="english">انجليزي</string>
-    <string name="language">اللغه</string>
+    <string name="language">اللغة</string>
     <string name="arabic">عربي</string>
     <string name="sign_up">تسجيل</string>
     <string name="log_in">دخول</string>
@@ -36,4 +36,21 @@
     <string name="no">لا</string>
     <string name="back">رجوع</string>
     <string name="confirm">الرجاء التحقق من بريدك الاكتروني</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="settings">الإعدادات</string>
+    <string name="contact_us">تواصل معنا</string>
+    <string name="about_us">من نحن</string>
+    <string name="help">مساعدة</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="guest">زائر</string>
+    <string name="contact">معلومات الاتصال</string>
+    <string name="others">أخرى</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="update_my_profile_info">تحديث بياناتي الشخصية</string>
+    <string name="save_changes">حفظ التعديلات</string>
+    <string name="cancel">إلغاء الامر</string>
+    <string name="profile_updated">Profile Info Updated</string>
 </resources>

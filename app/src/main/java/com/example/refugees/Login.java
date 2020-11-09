@@ -166,16 +166,15 @@ public class Login extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    // TODO: uncomment this method when create Dashboard activity
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        if (user != null) {
-//            startActivity(new Intent(this, DashBoard.class));
-//            finish();
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            startActivity(new Intent(this, MainScreenActivity.class));
+            finish();
+        }
+    }
 
     public void SignIn(View view) {
 
@@ -210,10 +209,9 @@ public class Login extends AppCompatActivity {
                             }
                         });
                         if (emailVerified) {
-                            // TODO: uncomment this when create Dashboard activity
-//                            Intent intent = new Intent(Login.this, DashBoard.class);
-//                            startActivity(intent);
-//                            loginBtn.stopAnimation();
+                            Intent intent = new Intent(Login.this, MainScreenActivity.class);
+                            startActivity(intent);
+                            loginBtn.stopAnimation();
                         } else {
                             Log.d(LOGIN_TAG, "NOT Verified");
                             loginBtn.stopAnimation();

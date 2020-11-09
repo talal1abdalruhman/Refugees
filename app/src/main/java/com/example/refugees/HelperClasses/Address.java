@@ -3,6 +3,9 @@ package com.example.refugees.HelperClasses;
 public class Address {
     private String governorate, city;
 
+    public Address() {
+    }
+
     public Address(String governorate, String city) {
         this.governorate = governorate;
         this.city = city;
