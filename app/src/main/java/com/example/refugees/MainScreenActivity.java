@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,25 +62,25 @@ public class MainScreenActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_screen);
 
-//        setupNavDrawer();
+        setupNavDrawer();
 
-//        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                Log.d("item_select", item.getItemId() + "");
-//                if (item.getItemId() == R.id.logout) {
-//                    // TODO: handle it when complate using sharedPreference
-//                } else {
-//                    navController.popBackStack();
-//                    navController.navigate(item.getItemId());
-//                    item.setChecked(true);
-//                    drawerLayout.closeDrawers();
-//                }
-//                return true;
-//            }
-//        });
-//
-//        retrieveUserInfo();
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Log.d("item_select", item.getItemId() + "");
+                if (item.getItemId() == R.id.logout) {
+                    // TODO: handle it when complate using sharedPreference
+                } else {
+                    navController.popBackStack();
+                    navController.navigate(item.getItemId());
+                    item.setChecked(true);
+                    drawerLayout.closeDrawers();
+                }
+                return true;
+            }
+        });
+
+        retrieveUserInfo();
 
     }
 
@@ -116,7 +118,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-//        navController = Navigation.findNavController(this, R.id.navHostFragment);
+        navController = Navigation.findNavController(this, R.id.navHostFragment);
         navView.setCheckedItem(R.id.home);
     }
 
