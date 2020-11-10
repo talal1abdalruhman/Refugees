@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Refugees</string>
-    <string name="english">انجليزي</string>
+    <string name="english">الانجليزية</string>
     <string name="language">اللغة</string>
-    <string name="arabic">عربي</string>
+    <string name="arabic">العربية</string>
     <string name="sign_up">تسجيل</string>
     <string name="log_in">دخول</string>
     <string name="skip">تخطي</string>
@@ -63,4 +63,11 @@
     <string name="gc">قائمة الدوائر الحكومية في الأردن وأماكنها.</string>
     <string name="hospitals">المستشفيات</string>
     <string name="place_holder">وريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات . ديواس أيوتي أريري دولار إن ريبريهينديرأيت فوليوبتاتي فيلايت أيسسي كايلليوم دولار أيو فيجايت نيولا باراياتيور. أيكسسيبتيور ساينت أوككايكات كيوبايداتات نون بروايدينت ,سيونت ان كيولبا كيو أوفيسيا ديسيريونتموليت انيم أيدي ايست لابوريوم</string>
+    <string name="change_email_address">تغيير البريد الإلكتروني</string>
+    <string name="settings_reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="choose_language">اختر اللغة:</string>
+    <string name="update_email_msg">لتحديث بريدك الإلكتروني يجب إدخال كلمة المرور الخاصه بك.</string>
+    <string name="your_password">كلمة المرور</string>
+    <string name="new_email">البريد الإلكتروني الجديد</string>
+    <string name="update">تحديث</string>
 </resources>
