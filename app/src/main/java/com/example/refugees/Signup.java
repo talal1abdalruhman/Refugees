@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -194,7 +193,6 @@ public class Signup extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
-
     public void InitializeFields() {
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child("ProfileImages");

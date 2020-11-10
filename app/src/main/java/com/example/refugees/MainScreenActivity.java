@@ -1,5 +1,18 @@
 package com.example.refugees;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -9,21 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.ImageDecoder;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,8 +33,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
 import java.io.IOException;
 import java.util.Locale;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainScreenActivity extends AppCompatActivity {
@@ -56,29 +57,28 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_screen);
 
-        setupNavDrawer();
+//        setupNavDrawer();
 
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Log.d("item_select", item.getItemId() + "");
-                if (item.getItemId() == R.id.logout) {
-                    // TODO: handle it when complate using sharedPreference
-                } else {
-                    navController.popBackStack();
-                    navController.navigate(item.getItemId());
-                    item.setChecked(true);
-                    drawerLayout.closeDrawers();
-                }
-                return true;
-            }
-        });
-
-        retrieveUserInfo();
+//        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                Log.d("item_select", item.getItemId() + "");
+//                if (item.getItemId() == R.id.logout) {
+//                    // TODO: handle it when complate using sharedPreference
+//                } else {
+//                    navController.popBackStack();
+//                    navController.navigate(item.getItemId());
+//                    item.setChecked(true);
+//                    drawerLayout.closeDrawers();
+//                }
+//                return true;
+//            }
+//        });
+//
+//        retrieveUserInfo();
 
     }
 
@@ -101,6 +101,7 @@ public class MainScreenActivity extends AppCompatActivity {
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         drawerLayout.setDrawerElevation(0);
         // TODO: handle the following when finish the sharedPreference
+        // TODO: you already did ^^
         boolean isAr = Locale.getDefault().getLanguage().equals("ar");
         if (isAr) {
             navView.setItemBackground(getDrawable(R.drawable.item_select_state_ar));
@@ -115,7 +116,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navController = Navigation.findNavController(this, R.id.navHostFragment);
+//        navController = Navigation.findNavController(this, R.id.navHostFragment);
         navView.setCheckedItem(R.id.home);
     }
 

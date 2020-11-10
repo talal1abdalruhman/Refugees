@@ -1,41 +1,34 @@
-package com.example.refugees.MainScreenFragments;
+package com.example.refugees;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.fragment.app.Fragment;
-
-import com.example.refugees.R;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-
+@SuppressLint("ClickableViewAccessibility")
+public class test extends AppCompatActivity {
     private boolean animating = false;
     final private String TAG = "tag";
     private int touch;
     ArrayList<MotionLayout> motionLayouts;
     ScrollView scrollView;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
         motionLayouts = new ArrayList<MotionLayout>(4);
-        motionLayouts.add(view.findViewById(R.id.reunion));
-        motionLayouts.add(view.findViewById(R.id.instructions));
-        motionLayouts.add(view.findViewById(R.id.options1));
-        motionLayouts.add(view.findViewById(R.id.options2));
-        scrollView = view.findViewById(R.id.scrollView);
+        motionLayouts.add(findViewById(R.id.reunion));
+        motionLayouts.add(findViewById(R.id.instructions));
+        motionLayouts.add(findViewById(R.id.options1));
+        motionLayouts.add(findViewById(R.id.options2));
+        scrollView = findViewById(R.id.scrollView);
         touch = ViewConfiguration.get(scrollView.getContext()).getScaledTouchSlop();
         scrollView.setSmoothScrollingEnabled(true);
         for(int i = 0; i < 4; i++)
@@ -82,6 +75,5 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
-        return view;
     }
 }

@@ -53,4 +53,13 @@
     <string name="save_changes">Save Changes</string>
     <string name="cancel">Cancel</string>
     <string name="profile_updated">Profile Info Updated</string>
+    <string name="check">Check if anyone of your family, your friends or anyone you know has used this app and send them a request to meet.</string>
+    <string name="instructions">Instructions for all the paper works a refugee should do once he is in jordan so he can\'t miss a thing.</string>
+    <string name="schools">SCHOOLS</string>
+    <string name="school">List of schools that are for refugees and their locations.</string>
+    <string name="hospital">List of hospitals that are for refugees and their locations.</string>
+    <string name="jobs">JOBS</string>
+    <string name="job">List of jobs that are for refugees only to give better change in getting a job and their details.</string>
+    <string name="gc">List of the governmental circles in jordan and their locations.</string>
+    <string name="hospitals">HOSPITALS</string>
 </resources>
