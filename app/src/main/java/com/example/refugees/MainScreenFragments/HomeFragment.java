@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
                             x = currX;
                         double disX = java.lang.Math.abs(currX - x);
                         double disY = java.lang.Math.abs(currY - y);
-                        if(disY > disX && disY > touch * 4 && !animating) {
+                        if(disY > disX && disY > touch * 4.5 && !animating) {
                             scrollView.requestDisallowInterceptTouchEvent(false);
                         }
                     }
