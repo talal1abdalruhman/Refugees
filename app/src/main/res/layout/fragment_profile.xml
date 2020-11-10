@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_light"
+    android:background="@color/blue_light_drak"
     tools:context=".MainScreenFragments.ProfileFragment">
 
     <ScrollView
@@ -47,7 +47,8 @@
                     android:layout_marginEnd="35dp"
                     android:layout_marginRight="90dp"
                     android:layout_marginBottom="0dp"
-                    android:visibility="gone"
+                    android:scaleY="0"
+                    android:scaleX="0"
                     android:src="@drawable/ic_add_photo" />
 
             </RelativeLayout>
@@ -61,64 +62,72 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/profile_layout_name"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:enabled="false"
-                    android:textColorHint="@color/white"
-                    app:boxStrokeColor="@color/white"
-                    app:hintTextColor="@color/white"
-                    app:startIconDrawable="@drawable/ic_name"
-                    app:startIconTint="@color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/profile_full_name"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profile_layout_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:gravity="start"
-                        android:hint="@string/full_name"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:text="Talal Albalawneh"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginBottom="5dp"
+                        android:enabled="false"
+                        android:textColorHint="@color/white"
+                        app:boxStrokeColor="@color/white"
+                        app:hintTextColor="@color/white"
+                        app:startIconDrawable="@drawable/ic_name"
+                        app:startIconTint="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/profile_layout_email"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:enabled="false"
-                    android:textColorHint="@color/white"
-                    app:boxStrokeColor="@color/white"
-                    app:hintTextColor="@color/white"
-                    app:startIconDrawable="@drawable/ic_mail"
-                    app:startIconTint="@color/white">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/profile_full_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="start"
+                            android:hint="@string/full_name"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:text="Talal Albalawneh"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/profile_email"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profile_layout_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:gravity="start"
-                        android:hint="@string/e_mail_address"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:text="t.albalawneh11@gmail.com"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginBottom="5dp"
+                        android:enabled="false"
+                        android:textColorHint="@color/white"
+                        app:boxStrokeColor="@color/white"
+                        app:hintTextColor="@color/white"
+                        app:startIconDrawable="@drawable/ic_mail"
+                        app:startIconTint="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_layout_name">
 
-                <com.google.android.material.textfield.TextInputLayout
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/profile_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:gravity="start"
+                            android:hint="@string/e_mail_address"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:text="t.albalawneh11@gmail.com"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/profile_layout_phone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -130,7 +139,10 @@
                     app:hintTextColor="@color/white"
                     app:prefixTextColor="@color/white"
                     app:startIconDrawable="@drawable/ic_phone"
-                    app:startIconTint="@color/white">
+                    app:startIconTint="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_layout_email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/profile_phone"
@@ -146,8 +158,10 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -265,7 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:alpha="0">
 
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/profile_save_changes"

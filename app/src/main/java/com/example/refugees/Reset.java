@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -22,9 +21,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -45,7 +42,7 @@ public class Reset extends AppCompatActivity {
     LinearLayout innerLayout;
     CircularProgressButton sendBtn;
 
-    int duration = 400;
+    int duration = 550;
     float ScreenWidth;
     float ScreenHeight;
     int direction;

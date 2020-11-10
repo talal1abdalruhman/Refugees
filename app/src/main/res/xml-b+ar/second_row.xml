@@ -4,7 +4,7 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/Right"
+            android:id="@+id/Right2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent">
@@ -13,7 +13,7 @@
                 app:customFloatValue="1"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Right_upper"
+            android:id="@+id/Right_upper2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent">
@@ -22,7 +22,7 @@
                 app:customFloatValue="1"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Left"
+            android:id="@+id/Left2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintLeft_toLeftOf="parent">
@@ -31,7 +31,7 @@
                 app:customFloatValue="1.0"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Left_upper"
+            android:id="@+id/Left_upper2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintLeft_toLeftOf="parent">
@@ -43,24 +43,24 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/schools"
+            android:id="@+id/GCs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintVertical_bias="0.24"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintHorizontal_bias="0.19"/>
         <Constraint
-            android:id="@+id/school"
+            android:id="@+id/GC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/schools"
-            app:layout_constraintRight_toRightOf="@id/schools"
-            app:layout_constraintLeft_toLeftOf="@id/schools" />
+            app:layout_constraintTop_toBottomOf="@id/GCs"
+            app:layout_constraintRight_toRightOf="@id/GCs"
+            app:layout_constraintLeft_toLeftOf="@id/GCs" />
         <Constraint
-            android:id="@+id/Right"
+            android:id="@+id/Right2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintRight_toRightOf="parent">
@@ -69,7 +69,7 @@
                 app:customFloatValue="0.495"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Right_upper"
+            android:id="@+id/Right_upper2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintRight_toRightOf="parent" >
@@ -78,12 +78,12 @@
                 app:customFloatValue="0.47"/>
         </Constraint>
         <Constraint
-            android:id="@+id/dis_school"
+            android:id="@+id/dis_gc"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:alpha="1" />
         <Constraint
-            android:id="@+id/Left"
+            android:id="@+id/Left2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"
@@ -94,14 +94,14 @@
                 app:customFloatValue="1"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Left_upper"
+            android:id="@+id/Left_upper2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"
             android:translationZ="-1dp"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/hospitals"
+            android:id="@+id/jobs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -109,42 +109,41 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.3"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintHorizontal_bias="0.23"
             android:translationZ="-1dp"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/hospital"
+            android:id="@+id/job"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/hospitals"
-            app:layout_constraintRight_toRightOf="@id/hospitals"
-            app:layout_constraintLeft_toLeftOf="@id/hospitals"
+            app:layout_constraintTop_toBottomOf="@id/jobs"
+            app:layout_constraintRight_toRightOf="@id/jobs"
+            app:layout_constraintLeft_toLeftOf="@id/jobs"
             android:translationZ="-1dp"
             android:alpha="0"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end2">
         <Constraint
-            android:id="@+id/Right"
+            android:id="@+id/Right2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/Right_upper"
+            android:id="@+id/Right_upper2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintRight_toRightOf="parent"
             android:alpha="0"/>
-        <Constraint android:id="@+id/school"
+        <Constraint android:id="@+id/GC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/schools"
-            app:layout_constraintRight_toRightOf="@id/schools"
-            app:layout_constraintLeft_toLeftOf="@id/schools"
-            app:layout_constraintTop_toBottomOf="@id/schools"
+            app:layout_constraintRight_toRightOf="@id/GCs"
+            app:layout_constraintLeft_toLeftOf="@id/GCs"
+            app:layout_constraintTop_toBottomOf="@id/GCs"
             android:alpha="0"/>
-        <Constraint android:id="@+id/schools"
+        <Constraint android:id="@+id/GCs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -152,10 +151,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.3"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintHorizontal_bias="0.80"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/Left"
+            android:id="@+id/Left2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintLeft_toLeftOf="parent">
@@ -164,7 +163,7 @@
                 app:customFloatValue="0.495"/>
         </Constraint>
         <Constraint
-            android:id="@+id/Left_upper"
+            android:id="@+id/Left_upper2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintLeft_toLeftOf="parent">
@@ -172,7 +171,7 @@
                 app:attributeName="weightSum"
                 app:customFloatValue="0.47"/>
         </Constraint>
-        <Constraint android:id="@+id/hospitals"
+        <Constraint android:id="@+id/jobs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -182,7 +181,7 @@
             app:layout_constraintHorizontal_bias="0.80"
             app:layout_constraintVertical_bias="0.3"
             />
-        <Constraint android:id="@+id/dis_hospital"
+        <Constraint android:id="@+id/dis_job"
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:alpha="1"/>
@@ -190,18 +189,22 @@
     <Transition
         app:constraintSetStart="@+id/start"
         app:constraintSetEnd="@id/end"
-        app:duration="1000">
+        app:duration="500">
+<!--        <OnClick-->
+<!--            app:targetId="@id/GC"/>-->
         <OnSwipe
-            app:touchAnchorId="@id/school"
+            app:touchAnchorId="@id/GC"
             app:dragDirection="dragLeft"
             app:touchAnchorSide="left"/>
     </Transition>
     <Transition
         app:constraintSetStart="@+id/start"
         app:constraintSetEnd="@id/end2"
-        app:duration="1000">
+        app:duration="500">
+<!--        <OnClick-->
+<!--            app:targetId="@id/job"/>-->
         <OnSwipe
-            app:touchAnchorId="@id/hospital"
+            app:touchAnchorId="@id/job"
             app:dragDirection="dragRight"
             app:touchAnchorSide="right"/>
     </Transition>

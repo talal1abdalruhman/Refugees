@@ -31,7 +31,7 @@ public class LogOptions extends AppCompatActivity {
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
     String language;
-    int duration = 400;
+    int duration = 550;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
@@ -68,11 +68,11 @@ public class LogOptions extends AppCompatActivity {
         log = findViewById(R.id.log);
     }
     public void setup() {
+        top.setPivotY(0);
+        bottom_dark.setPivotY(bottom_dark.getHeight());
+        bottom_light.setPivotY(bottom_light.getHeight());
         if(direction == -1) {
             logo.setX(logo.getWidth() * -1);
-            bottom_dark.setPivotY(bottom_dark.getHeight());
-            bottom_light.setPivotY(bottom_light.getHeight());
-            top.setPivotY(0);
             bottom_dark.setScaleY(0.1f);
             bottom_light.setScaleY(0.13f);
             top.setScaleY(0.2f);
@@ -119,6 +119,22 @@ public class LogOptions extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void skip(View view) {
+        bottom_light.animate().setDuration(duration - 200).scaleY(0f);
+        bottom_dark.animate().setDuration(duration - 200).scaleY(0f);
+        top.animate().setDuration(duration - 200).scaleY(0f);
+        log.animate().setDuration(duration).translationXBy(log.getWidth() * -1).setInterpolator(interpolator);
+        logo.animate().setDuration(duration).translationXBy(logo.getWidth() * -1).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = intent = new Intent(context,  MainScreenActivity.class);;
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
     @Override
     public void onBackPressed() {

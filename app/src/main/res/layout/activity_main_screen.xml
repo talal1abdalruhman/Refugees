@@ -18,7 +18,7 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#5287D6"
+            android:background="@color/blue_light_drak"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:background="@drawable/img_up"
                 android:elevation="50dp"
                 android:minHeight="?attr/actionBarSize"
@@ -57,9 +57,10 @@
             android:id="@+id/navHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
             app:navGraph="@navigation/main_navigator" />
 
@@ -71,7 +72,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:layout_marginTop="?attr/actionBarSize"
         android:background="#5287D6"
         android:theme="@style/NavigationTheme"
         app:headerLayout="@layout/nav_header"
@@ -79,5 +79,4 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/nav_menu" />
-
 </androidx.drawerlayout.widget.DrawerLayout>

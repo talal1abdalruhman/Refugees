@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
     LinearLayout reset;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
-    int duration = 400;
+    int duration = 550;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
@@ -209,8 +209,31 @@ public class Login extends AppCompatActivity {
                             }
                         });
                         if (emailVerified) {
-                            Intent intent = new Intent(Login.this, MainScreenActivity.class);
-                            startActivity(intent);
+                            bottom_light.animate().setDuration(duration - 200).scaleY(0f);
+                            bottom_dark.animate().setDuration(duration - 200).scaleY(0f);
+                            top.animate().setDuration(duration - 200).scaleY(0f);
+                            form.animate().setDuration(duration).translationXBy(form.getWidth() * -1).setInterpolator(interpolator).setListener(new Animator.AnimatorListener() {
+                                @Override
+                                public void onAnimationStart(Animator animation) {
+                                }
+
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    Intent intent = new Intent(Login.this, MainScreenActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onAnimationCancel(Animator animation) {
+
+                                }
+
+                                @Override
+                                public void onAnimationRepeat(Animator animation) {
+
+                                }
+                            });
                             loginBtn.stopAnimation();
                         } else {
                             Log.d(LOGIN_TAG, "NOT Verified");

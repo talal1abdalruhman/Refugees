@@ -53,11 +53,6 @@ public class Splash extends AppCompatActivity {
     }
     public void setup() {
         logo.setY(ScreenHeight);
-        bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
-        bottom_light.setY(ScreenHeight - bottom_light.getHeight());
-        bottom_dark.setY(ScreenHeight);
-        bottom_light.setY(ScreenHeight);
-        top.setY(top.getHeight() * -1);
         animate();
     }
     public void animate() {

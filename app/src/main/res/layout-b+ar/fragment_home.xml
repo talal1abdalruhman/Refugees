@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="REUNION YOUR\n FAMILY"
+                        android:text="اجتمع مع\n عليتك"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,8 +69,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/family"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/title_ren"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/title_ren"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
                     <LinearLayout
@@ -82,7 +82,7 @@
                         android:alpha="0"
                         android:weightSum="1">
                         <TextView
-                            android:layout_weight="0.46"
+                            android:layout_weight="0.60"
                             android:layout_width="0dp"
                             android:layout_height="160dp"
                             android:text="@string/check"
@@ -91,6 +91,7 @@
                             android:textSize="16sp"
                             android:gravity="center"
                             android:fontFamily="@font/montserrat"
+                            android:layout_marginRight="5dp"
                             />
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
@@ -125,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="PAPER WORK\n INSTRUCTIONS"
+                        android:text="تعليمات \nالعمل الورقي"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -138,8 +139,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/scroll"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/title_ins"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/title_ins"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
                     <LinearLayout
@@ -151,7 +152,8 @@
                         android:alpha="0"
                         android:weightSum="1">
                         <TextView
-                            android:layout_weight="0.46"
+                            android:layout_weight="0.65"
+                            android:layout_marginRight="5dp"
                             android:layout_width="0dp"
                             android:layout_height="160dp"
                             android:text="@string/instructions"
@@ -209,7 +211,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_bias="0.87"
+                        app:layout_constraintHorizontal_bias="0.80"
                         app:layout_constraintVertical_bias="0.3"
                         />
                     <ImageView
@@ -234,7 +236,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:id="@+id/school_dis"
-                            android:layout_weight="0.45"
+                            android:layout_weight="0.60"
                             android:textSize="16sp"
                             android:text="@string/school"
                             android:textColor="@color/white"
@@ -267,7 +269,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.45"
-                            android:background="@drawable/blue_dark"/>
+                            android:background="@drawable/blue_dark_ar"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/hospitals"
@@ -306,7 +308,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:id="@+id/hospital_dis"
-                            android:layout_weight="0.45"
+                            android:layout_weight="0.50"
                             android:textSize="16sp"
                             android:text="@string/hospital"
                             android:textColor="@color/white"
@@ -352,7 +354,7 @@
                         android:id="@+id/GCs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="GOVERMENT\nCIRCLES"
+                        android:text="الدوائر \nالحكومية"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_bold"
@@ -361,8 +363,8 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_bias="0.96"
-                        app:layout_constraintVertical_bias="0.24"
+                        app:layout_constraintHorizontal_bias="0.80"
+                        app:layout_constraintVertical_bias="0.22"
                         />
                     <ImageView
                         android:id="@+id/GC"
@@ -386,7 +388,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:id="@+id/gc_dis"
-                            android:layout_weight="0.45"
+                            android:layout_weight="0.60"
                             android:textSize="16sp"
                             android:text="@string/gc"
                             android:textColor="@color/white"
@@ -419,7 +421,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.45"
-                            android:background="@drawable/blue_dark"/>
+                            android:background="@drawable/blue_dark_ar"/>
                     </LinearLayout>
                     <TextView
                         android:id="@+id/jobs"
@@ -458,7 +460,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:id="@+id/job_dis"
-                            android:layout_weight="0.45"
+                            android:layout_weight="0.60"
                             android:textSize="16sp"
                             android:text="@string/job"
                             android:textColor="@color/white"

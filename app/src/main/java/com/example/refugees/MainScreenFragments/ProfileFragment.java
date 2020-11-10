@@ -1,22 +1,17 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.ImageDecoder;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.QuickContactBadge;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +21,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.Validation;
-import com.example.refugees.MainScreenActivity;
 import com.example.refugees.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,8 +39,6 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.IOException;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -72,15 +64,17 @@ public class ProfileFragment extends Fragment {
     private SwitchCompat searchSwitch;
     private boolean _searchState;
     private CircularProgressButton updateBtn, saveBtn, cancelBtn;
-    private LinearLayout updateBtnLayout;
+    private LinearLayout updateBtnLayout, address;
     private FirebaseUser currentUser;
     private DatabaseReference userRef;
     private StorageReference mStorage;
     Validation validator;
 
+    int duration = 300;
+    boolean mid_animation = false;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         InitializeFields();
         context = view.getContext();
@@ -102,10 +96,7 @@ public class ProfileFragment extends Fragment {
                 addressC.setEnabled(true);
                 searchSwitch.setEnabled(true);
                 imgChangedListener = false;
-                updateImgBtn.setVisibility(View.VISIBLE);
-                email.setVisibility(View.GONE);
-                updateBtn.setVisibility(View.GONE);
-                updateBtnLayout.setVisibility(View.VISIBLE);
+                animate();
             }
         });
 
@@ -117,10 +108,7 @@ public class ProfileFragment extends Fragment {
                 addressG.setEnabled(false);
                 addressC.setEnabled(false);
                 searchSwitch.setEnabled(false);
-                updateImgBtn.setVisibility(View.GONE);
-                email.setVisibility(View.VISIBLE);
-                updateBtn.setVisibility(View.VISIBLE);
-                updateBtnLayout.setVisibility(View.GONE);
+                animate_back();
                 retrieveUserInfo();
             }
         });
@@ -182,6 +170,7 @@ public class ProfileFragment extends Fragment {
         userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
         mStorage = FirebaseStorage.getInstance().getReference("ProfileImages");
         validator = new Validation(getActivity().getResources());
+        address = view.findViewById(R.id.address);
     }
 
     private void retrieveUserInfo() {
@@ -324,5 +313,89 @@ public class ProfileFragment extends Fragment {
             return true;
         } else return false;
     }
+    public void animate() {
+        if(mid_animation)
+            return;
+        mid_animation = true;
+        email.setPivotY(email.getHeight());
+        email.animate().setDuration(duration).alpha(0f);
+        email.animate().setDuration(duration).scaleY(0f);
 
+        phone.animate().setDuration(duration).translationYBy(email.getHeight() * -1);
+
+        address.animate().setDuration(duration).translationYBy(email.getHeight() * -1);
+
+        updateBtnLayout.animate().setDuration(duration).translationYBy(email.getHeight() * -2);
+        updateBtnLayout.animate().setDuration(duration).alpha(1);
+
+        updateBtn.animate().setDuration(duration).translationYBy(email.getHeight() * -1);
+        updateBtn.animate().setDuration(duration).alpha(0).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                updateBtn.setVisibility(View.INVISIBLE);
+                mid_animation = false;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+
+        updateImgBtn.animate().setDuration(duration).scaleY(1f);
+        updateImgBtn.animate().setDuration(duration).scaleX(1f);
+    }
+    public void animate_back() {
+        if(mid_animation)
+            return;
+        mid_animation = true;
+        Log.d("tag", "" + email.getHeight());
+        email.setPivotY(email.getHeight());
+        email.animate().setDuration(duration).alpha(1f);
+        email.animate().setDuration(duration).scaleY(1f);
+
+        phone.animate().setDuration(duration).translationYBy(email.getHeight());
+        Log.d("tag", "" + email.getHeight());
+
+        address.animate().setDuration(duration).translationYBy(email.getHeight());
+        Log.d("tag", "" + email.getHeight());
+        updateBtnLayout.animate().setDuration(duration).translationYBy(email.getHeight() * 2);
+        updateBtnLayout.animate().setDuration(duration).alpha(0);
+
+        updateBtn.animate().setDuration(duration).translationYBy(email.getHeight());
+        updateBtn.animate().setDuration(duration).alpha(1).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                updateBtn.setVisibility(View.VISIBLE);
+                mid_animation = false;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+        updateImgBtn.animate().setDuration(duration).scaleY(0f);
+        updateImgBtn.animate().setDuration(duration).scaleX(0f);
+    }
 }

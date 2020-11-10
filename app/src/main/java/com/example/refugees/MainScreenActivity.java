@@ -3,15 +3,17 @@ package com.example.refugees;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -55,15 +57,42 @@ public class MainScreenActivity extends AppCompatActivity {
     public static Uri imageUri;
     public static boolean imgChangedListener = false;
 
+    float ScreenWidth;
+    float ScreenHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_screen);
-
         setupNavDrawer();
+        final DrawerLayout layout = findViewById(R.id.drawer_layout);
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                ScreenWidth = displayMetrics.widthPixels;
+                ScreenHeight = displayMetrics.heightPixels;
+                setTheNav();
+                setup();
 
+
+            }
+        });
+
+        itemSelect();
+        retrieveUserInfo();
+
+    }
+
+    public void setup() {
+        toolbar.setY(toolbar.getHeight() * -1);
+        toolbar.animate().setDuration(1000).translationY(0);
+    }
+
+    public void itemSelect() {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -80,10 +109,15 @@ public class MainScreenActivity extends AppCompatActivity {
             }
         });
 
-        retrieveUserInfo();
-
     }
 
+    public void setTheNav() {
+        Rect rectangle = new Rect();
+        Window window = getWindow();
+        window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
+        int statusBarHeight = rectangle.top;
+        navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
+    }
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -92,7 +126,6 @@ public class MainScreenActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setupNavDrawer() {
         drawerLayout = findViewById(R.id.drawer_layout);

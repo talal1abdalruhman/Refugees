@@ -1,21 +1,26 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.refugees.R;
 
 import java.util.ArrayList;
+
+@SuppressLint("ClickableViewAccessibility")
 
 public class HomeFragment extends Fragment {
     public HomeFragment() {
@@ -47,10 +52,23 @@ public class HomeFragment extends Fragment {
         scrollView = view.findViewById(R.id.scrollView);
         touch = ViewConfiguration.get(scrollView.getContext()).getScaledTouchSlop();
         scrollView.setSmoothScrollingEnabled(true);
-        for(int i = 0; i < 4; i++)
+        motionLayoutStuff();
+        final ConstraintLayout layout = (ConstraintLayout) view.findViewById(R.id.father);
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                setup();
+            }
+        });
+    }
+    public void motionLayoutStuff() {
+        for(int i = 0; i < motionLayouts.size(); i++)
             motionLayouts.get(i).setOnTouchListener(new View.OnTouchListener() {
                 double x = -1;
                 double y = -1;
+                @SuppressLint("ClickableViewAccessibility")
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     scrollView.requestDisallowInterceptTouchEvent(true);
@@ -63,7 +81,7 @@ public class HomeFragment extends Fragment {
                             x = currX;
                         double disX = java.lang.Math.abs(currX - x);
                         double disY = java.lang.Math.abs(currY - y);
-                        if(disY > disX && disY > touch * 7 && !animating) {
+                        if(disY > disX && disY > touch * 4 && !animating) {
                             scrollView.requestDisallowInterceptTouchEvent(false);
                         }
                     }
@@ -71,7 +89,7 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < motionLayouts.size(); i++) {
             motionLayouts.get(i).setTransitionListener(new MotionLayout.TransitionListener() {
                 @Override
                 public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
@@ -91,5 +109,15 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+    }
+    public void setup() {
+        for(int i = 0; i < motionLayouts.size(); i++)
+            if(i % 2 == 0)
+                motionLayouts.get(i).setX(motionLayouts.get(i).getWidth() * -1);
+            else
+                motionLayouts.get(i).setX(motionLayouts.get(i).getWidth());
+
+        for(int i = 0; i < motionLayouts.size(); i++)
+            motionLayouts.get(i).animate().setDuration(1000).translationX(0);
     }
 }

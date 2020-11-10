@@ -28,7 +28,7 @@ public class Language extends AppCompatActivity {
     Dialog dialog;
     Interpolator interpolator = new FastOutSlowInInterpolator() ;
 
-    int duration = 400;
+    int duration = 550;
     float ScreenWidth;
     float ScreenHeight;
     int direction;
