@@ -70,4 +70,8 @@
     <string name="your_password">كلمة المرور</string>
     <string name="new_email">البريد الإلكتروني الجديد</string>
     <string name="update">تحديث</string>
+    <string name="password_not_match">كلمة المرور غير مطابقة</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
 </resources>

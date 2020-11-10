@@ -23,7 +23,7 @@ public class SettingsFragment extends Fragment {
     }
 
     View view;
-    public static ConstraintLayout langLayout, chooseLangLayout, changeEmailLayout;
+    public static ConstraintLayout langLayout, chooseLangLayout, changeEmailLayout, resetPasswordLayout;
     RadioButton radioArabic, radioEnglish;
     ImageView emailArrow, passwordArrow;
     public static ImageView arrow;
@@ -51,6 +51,8 @@ public class SettingsFragment extends Fragment {
         emailArrow = view.findViewById(R.id.arrow_email);
         passwordArrow = view.findViewById(R.id.arrow_password);
         changeEmailLayout = view.findViewById(R.id.changeEmailLayout);
+        resetPasswordLayout = view.findViewById(R.id.resetPasswordLayout);
+
         String language = getResources().getConfiguration().locale.getLanguage();
 
         if(language.equals("en")){
@@ -83,6 +85,13 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
 
                 Navigation.findNavController(view).navigate(R.id.action_settings_to_updateEmailFragment);
+            }
+        });
+
+        resetPasswordLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_settings_to_updatePasswordFragment);
             }
         });
     }

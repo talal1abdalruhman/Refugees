@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_settings_to_updateEmailFragment"
             app:destination="@id/updateEmailFragment" />
+        <action
+            android:id="@+id/action_settings_to_updatePasswordFragment"
+            app:destination="@id/updatePasswordFragment" />
     </fragment>
 
     <fragment
@@ -53,6 +56,15 @@
         tools:layout="@layout/fragment_update_email" >
         <action
             android:id="@+id/action_updateEmailFragment_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/updatePasswordFragment"
+        android:name="com.example.refugees.MainScreenFragments.UpdatePasswordFragment"
+        android:label="fragment_update_password"
+        tools:layout="@layout/fragment_update_password" >
+        <action
+            android:id="@+id/action_updatePasswordFragment_to_settings"
             app:destination="@id/settings" />
     </fragment>
 </navigation>
