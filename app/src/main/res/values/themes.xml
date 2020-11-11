@@ -16,6 +16,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
     </style>
     <style name="TextViewStyle" parent="android:Widget.TextView">
         <item name="android:textSize">18sp</item>
@@ -25,6 +26,7 @@
         <item name="android:listDivider">@color/off_white</item>
         <item name="android:textColorSecondary">@color/off_white</item>
         <item name="android:layout_marginTop">03dp</item>
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
     </style>
     <style name="ToolbarColoredBackArrow" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColorSecondary">@color/white</item>

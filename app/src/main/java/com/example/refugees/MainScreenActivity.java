@@ -56,6 +56,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavController navController;
+    private View navHostFragment;
     public static CircleImageView navImg;
     public static TextView navName;
     private FirebaseAuth mAuth;
@@ -120,12 +121,15 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void setTheNav() {
+        navHostFragment = findViewById(R.id.navHostFragment);
         Rect rectangle = new Rect();
         Window window = getWindow();
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
         navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
-        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight);
+        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 10);
+        navHostFragment.setTranslationY(toolbar.getHeight() + statusBarHeight);
+        navHostFragment.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight);
     }
     @Override
     public void onBackPressed() {

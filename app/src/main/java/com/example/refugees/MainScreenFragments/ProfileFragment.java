@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.transition.Slide;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.Validation;
@@ -78,13 +82,24 @@ public class ProfileFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         InitializeFields();
         context = view.getContext();
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(view).navigate(R.id.action_profile_to_home);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         retrieveUserInfo();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +165,6 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE);
             }
         });
-
     }
 
     private void InitializeFields() {
@@ -365,10 +379,8 @@ public class ProfileFragment extends Fragment {
         email.animate().setDuration(duration).scaleY(1f);
 
         phone.animate().setDuration(duration).translationYBy(email.getHeight());
-        Log.d("tag", "" + email.getHeight());
 
         address.animate().setDuration(duration).translationYBy(email.getHeight());
-        Log.d("tag", "" + email.getHeight());
         updateBtnLayout.animate().setDuration(duration).translationYBy(email.getHeight() * 2);
         updateBtnLayout.animate().setDuration(duration).alpha(0);
 
