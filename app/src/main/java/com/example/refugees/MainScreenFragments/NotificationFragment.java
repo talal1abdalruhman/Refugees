@@ -167,7 +167,7 @@ public class NotificationFragment extends Fragment {
 
                                                                                                         String senderName = snapshot.getValue(String.class);
                                                                                                         Log.d("notification_tracker", "got name " + senderName);
-                                                                                                        sendNotifications(user_token, "REFUGEES", senderName + " " + getString(R.string.notification_accept));
+                                                                                                        sendNotifications(user_token, senderName,  "AR");
                                                                                                     }
 
                                                                                                     @Override

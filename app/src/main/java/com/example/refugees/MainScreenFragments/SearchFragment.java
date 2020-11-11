@@ -220,7 +220,7 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                                 String senderName = snapshot.getValue(String.class);
-                                                                sendNotifications(usertoken, "REFUGEES", getString(R.string.request_notification_msg)+" "+senderName);
+                                                                sendNotifications(usertoken, senderName, "SR");
                                                             }
 
                                                             @Override

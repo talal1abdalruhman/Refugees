@@ -78,10 +78,9 @@
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
     <string name="notification_request_msg">request to show your information.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="request_for_info">Request For Info</string>
     <string name="cancel_info_request">Cancel Info Request</string>
-    <string name="request_notification_msg">You have details request from</string>
     <string name="search_for_friends">Search For Friends..</string>
+    <string name="info_req">Information Request</string>
+    <string name="accepted_request">Accepted Request</string>
 </resources>
