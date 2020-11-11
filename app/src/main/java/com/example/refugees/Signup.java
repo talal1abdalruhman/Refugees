@@ -29,6 +29,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
+import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -224,12 +225,12 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
-//        Validation validator = new Validation(getResources());
-//
-//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-//        VerifyUserByEmail();
+        Validation validator = new Validation(getResources());
+
+        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
+        VerifyUserByEmail();
         animation("2");
     }
     private void VerifyUserByEmail() {

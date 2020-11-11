@@ -78,4 +78,8 @@
     <string name="reject">رفض</string>
     <string name="accept">قبول</string>
     <string name="notification_request_msg">يطلب استعراض بياناتك الشخصية.</string>
+    <string name="request_for_info">إرسال طلب بيانات</string>
+    <string name="cancel_info_request">إلغاء الطلب</string>
+    <string name="request_notification_msg">لديك طلب بيانات من</string>
+    <string name="search_for_friends">ابحث عن صديق..</string>
 </resources>

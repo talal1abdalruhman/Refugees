@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue_light_dark"
+    tools:context=".MainScreenFragments.SearchFragment">
+
+    <LinearLayout
+        android:id="@+id/search_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/tv_input"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_field_bg"
+                android:hint="@string/search_for_friends"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue_light"
+                android:textSize="20dp"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:layout_weight="8"
+                android:layout_gravity="center_horizontal|center_vertical"
+                />
+
+            <ImageButton
+                android:id="@+id/search_btn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:scaleType="fitCenter"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/search_target_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/card_search_target"
+            android:elevation="8dp"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/search_target_img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/placeholder"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:id="@+id/search_target_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textColor="@color/white"
+                android:textSize="26dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:id="@+id/search_all_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/search_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="albalawnehtalal@gmail.com"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/search_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="0797676312"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/search_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_location_wt"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/white"
+                    android:gravity="center_vertical"
+                    android:text="Amman / Swaileh / Abdalruhman Ben Samra / 41a"
+                    android:textSize="16dp"/>
+
+            </LinearLayout>
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/search_request_info_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/login_btn_bg"
+                android:textColor="@color/blue"
+                android:text="@string/request_for_info"
+                android:textSize="18dp"
+                android:textAllCaps="false"
+                app:spinning_bar_color="@color/blue_dark"
+                app:spinning_bar_padding="5dp"
+                app:spinning_bar_width="5dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

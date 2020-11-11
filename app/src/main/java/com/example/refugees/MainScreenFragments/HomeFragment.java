@@ -9,12 +9,14 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.refugees.R;
 
@@ -33,6 +35,7 @@ public class HomeFragment extends Fragment {
     private int touch;
     ArrayList<MotionLayout> motionLayouts;
     ScrollView scrollView;
+    TextView reunionTxt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -44,6 +47,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        reunionTxt = view.findViewById(R.id.title_ren);
         motionLayouts = new ArrayList<MotionLayout>(4);
         motionLayouts.add(view.findViewById(R.id.reunion));
         motionLayouts.add(view.findViewById(R.id.instructions));
@@ -62,6 +66,15 @@ public class HomeFragment extends Fragment {
                 setup();
             }
         });
+
+        // TODO: handle all layout content (title, img, desc) to navigate to search
+        reunionTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
+            }
+        });
+
     }
     public void motionLayoutStuff() {
         for(int i = 0; i < motionLayouts.size(); i++)
