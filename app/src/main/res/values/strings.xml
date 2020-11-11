@@ -74,4 +74,8 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="new_password">New Password</string>
     <string name="current_password">Current Password</string>
+    <string name="notification_accept">accept your details request.</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="notification_request_msg">request to show your information.</string>
 </resources>

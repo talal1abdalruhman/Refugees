@@ -74,4 +74,8 @@
     <string name="confirm_password">تأكيد كلمة المرور</string>
     <string name="current_password">كلمة المرور الحالية</string>
     <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="notification_accept">قام بقبول طلبك لإستعراض بياناتة الشخصية.</string>
+    <string name="reject">رفض</string>
+    <string name="accept">قبول</string>
+    <string name="notification_request_msg">يطلب استعراض بياناتك الشخصية.</string>
 </resources>
