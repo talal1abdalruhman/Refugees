@@ -1,6 +1,8 @@
 package com.example.refugees;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.graphics.Rect;
@@ -38,10 +40,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.refugees.MainScreenFragments.SettingsFragment.arrow;
+import static com.example.refugees.MainScreenFragments.SettingsFragment.chooseLangLayout;
+import static com.example.refugees.MainScreenFragments.SettingsFragment.selectedLang;
 
 public class MainScreenActivity extends AppCompatActivity {
     private NavigationView navView;
@@ -138,10 +146,13 @@ public class MainScreenActivity extends AppCompatActivity {
         drawerLayout.setDrawerElevation(0);
         // TODO: handle the following when finish the sharedPreference
         // TODO: you already did ^^
-        boolean isAr = Locale.getDefault().getLanguage().equals("ar");
+        boolean isAr = getResources().getConfiguration().locale.getLanguage().equals("ar");
         if (isAr) {
             navView.setItemBackground(getDrawable(R.drawable.item_select_state_ar));
             toolbar.setBackground(getDrawable(R.drawable.img_up2));
+        } else {
+            navView.setItemBackground(getDrawable(R.drawable.item_select_state_en));
+            toolbar.setBackground(getDrawable(R.drawable.img_up));
         }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -218,6 +229,45 @@ public class MainScreenActivity extends AppCompatActivity {
                 imgChangedListener = true;
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void ChangeLang(@NotNull View view){
+        // TODO: re-handle change language to restart the app
+        switch (view.getId()){
+            case R.id.radioButton_english:{
+                setApplocale("en");
+                chooseLangLayout.setVisibility(View.GONE);
+                arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
+                selectedLang.setText(getString(R.string.english));
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                break;
+            }
+            case R.id.radioButton_arabic:{
+                setApplocale("ar");
+                chooseLangLayout.setVisibility(View.GONE);
+                arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
+                selectedLang.setText(getString(R.string.arabic));
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                break;
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void setApplocale(String language) {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        configuration.locale = new Locale(language);
+        configuration.setLayoutDirection(new Locale(language));
+        resources.updateConfiguration(configuration, displayMetrics);
     }
 
 }

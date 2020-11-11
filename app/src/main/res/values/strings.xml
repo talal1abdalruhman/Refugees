@@ -63,4 +63,15 @@
     <string name="gc">List of the governmental circles in jordan and their locations.</string>
     <string name="hospitals">HOSPITALS</string>
     <string name="place_holder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="change_email_address">Change Email Address</string>
+    <string name="settings_reset_password">Reset Password</string>
+    <string name="choose_language">Choose Language:</string>
+    <string name="update_email_msg">To change your email address, you need to enter your password.</string>
+    <string name="your_password">Your Password</string>
+    <string name="new_email">New Email</string>
+    <string name="update">Update</string>
+    <string name="password_not_match">Password not match</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="current_password">Current Password</string>
 </resources>
