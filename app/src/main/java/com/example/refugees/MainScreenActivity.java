@@ -117,6 +117,7 @@ public class MainScreenActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
         navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
+        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight);
     }
     @Override
     public void onBackPressed() {
