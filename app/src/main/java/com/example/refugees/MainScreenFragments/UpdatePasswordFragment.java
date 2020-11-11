@@ -1,16 +1,17 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+import androidx.transition.Slide;
 
 import com.example.refugees.HelperClasses.Validation;
 import com.example.refugees.R;
@@ -41,6 +42,11 @@ public class UpdatePasswordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         return inflater.inflate(R.layout.fragment_update_password, container, false);
     }
 

@@ -73,6 +73,7 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
         setupNavDrawer();
         final DrawerLayout layout = findViewById(R.id.drawer_layout);
         ViewTreeObserver vto = layout.getViewTreeObserver();

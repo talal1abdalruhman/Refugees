@@ -122,21 +122,22 @@ public class SettingsFragment extends Fragment {
         });
     }
     public void setup() {
-        changeEmailLayout.setTranslationY(chooseLangLayout.getHeight() * -1);
-        resetPasswordLayout.setTranslationY(chooseLangLayout.getHeight() * -1);
+        resetPasswordLayout.setY(changeEmailLayout.getY());
+        changeEmailLayout.setY(chooseLangLayout.getY() - 3);
         chooseLangLayout.setPivotY(0);
         chooseLangLayout.setAlpha(0);
     }
     public void animate() {
-        changeEmailLayout.animate().setDuration(300).translationYBy(chooseLangLayout.getHeight());
-        resetPasswordLayout.animate().setDuration(300).translationYBy(chooseLangLayout.getHeight());
+        changeEmailLayout.animate().setDuration(300).translationY(0);
+        resetPasswordLayout.animate().setDuration(300).translationY(0);
         chooseLangLayout.animate().setDuration(300).scaleY(1f).alpha(1f);
         arrow.animate().setDuration(300).rotation(180);
 
     }
     public void animate_back() {
-        changeEmailLayout.animate().setDuration(300).translationYBy(chooseLangLayout.getHeight() * -1);
-        resetPasswordLayout.animate().setDuration(300).translationYBy(chooseLangLayout.getHeight() * -1);
+
+        resetPasswordLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
+        changeEmailLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1 + 3);
         chooseLangLayout.animate().setDuration(300).scaleY(0f).alpha(0f);
         arrow.animate().setDuration(300).rotation(0);
     }
