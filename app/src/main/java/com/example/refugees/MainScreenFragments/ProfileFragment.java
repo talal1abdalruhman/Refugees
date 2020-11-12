@@ -52,6 +52,7 @@ import static com.example.refugees.MainScreenActivity.imageUri;
 import static com.example.refugees.MainScreenActivity.imgChangedListener;
 import static com.example.refugees.MainScreenActivity.navImg;
 import static com.example.refugees.MainScreenActivity.navName;
+import static com.example.refugees.MainScreenActivity.navView;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {
@@ -97,6 +98,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(view).navigate(R.id.action_profile_to_home);
+                navView.setCheckedItem(R.id.home);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);

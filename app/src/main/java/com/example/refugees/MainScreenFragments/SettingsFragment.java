@@ -22,6 +22,8 @@ import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
+import static com.example.refugees.MainScreenActivity.navView;
+
 public class SettingsFragment extends Fragment {
 
     public SettingsFragment() {
@@ -56,6 +58,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
+                navView.setCheckedItem(R.id.home);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);

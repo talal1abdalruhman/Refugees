@@ -49,6 +49,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.refugees.MainScreenActivity.navView;
+
 public class NotificationFragment extends Fragment {
 
     public NotificationFragment() {
@@ -99,6 +101,7 @@ public class NotificationFragment extends Fragment {
                 @Override
                 public void handleOnBackPressed() {
                     Navigation.findNavController(view).navigate(R.id.action_notification_to_home);
+                    navView.setCheckedItem(R.id.home);
                 }
             };
             requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);

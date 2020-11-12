@@ -15,6 +15,8 @@ import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
+import static com.example.refugees.MainScreenActivity.navView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ContactUsFragment#newInstance} factory method to
@@ -78,6 +80,7 @@ public class ContactUsFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(view).navigate(R.id.action_contact_us_to_home);
+                navView.setCheckedItem(R.id.home);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);

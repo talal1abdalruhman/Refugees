@@ -52,7 +52,7 @@ import static com.example.refugees.MainScreenFragments.SettingsFragment.chooseLa
 import static com.example.refugees.MainScreenFragments.SettingsFragment.selectedLang;
 
 public class MainScreenActivity extends AppCompatActivity {
-    private NavigationView navView;
+    public static NavigationView navView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavController navController;
