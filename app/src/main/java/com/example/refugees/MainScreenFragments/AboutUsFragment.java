@@ -43,7 +43,7 @@ public class AboutUsFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(view).navigate(R.id.action_contact_us_to_home);
+                Navigation.findNavController(view).navigate(R.id.action_about_us_to_home);
                 navView.setCheckedItem(R.id.home);
             }
         };
