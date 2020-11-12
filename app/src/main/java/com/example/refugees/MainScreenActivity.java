@@ -260,10 +260,14 @@ public class MainScreenActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void ChangeLang(@NotNull View view) {
-        // TODO: re-handle change language to restart the app
+
+        SharedPreferences langPreference = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = langPreference.edit();
+
         switch (view.getId()) {
             case R.id.radioButton_english: {
                 setApplocale("en");
+                editor.putString("lang", "en").commit();
                 chooseLangLayout.setVisibility(View.GONE);
                 arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
                 selectedLang.setText(getString(R.string.english));
@@ -275,6 +279,7 @@ public class MainScreenActivity extends AppCompatActivity {
             }
             case R.id.radioButton_arabic: {
                 setApplocale("ar");
+                editor.putString("lang", "ar").commit();
                 chooseLangLayout.setVisibility(View.GONE);
                 arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
                 selectedLang.setText(getString(R.string.arabic));

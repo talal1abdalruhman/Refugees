@@ -156,6 +156,7 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
     private void searchForSomeone(String text) {
         final String currentUId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+
         // TODO: handle the patterns to know the language before search
         text.matches("^[\u0621-\u064A\u0660-\u0669 ]+$"); // Arabic regex
         text.matches("^[a-zA-Z0-9$@$!%*?&#^-_. +]+$"); // English regex
@@ -169,13 +170,7 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
 
                         if (userSnapshot.child("searchable").getValue().toString().equals("true")) {
                             // Handling for "if user does NOT upload photo"
-                            String imgUrl;
-                            if (userSnapshot.child("image_url").exists()) {
-                                imgUrl = userSnapshot.child("image_url").getValue().toString();
-                            } else {
-                                // TODO: When you write it again, Do NOT forget upload the placeHolder to FireBase Storage
-                                imgUrl = "https://firebasestorage.googleapis.com/v0/b/findfrindfeature-573d6.appspot.com/o/ProfileImages%2FplaceHolder.png?alt=media&token=17d9fdd3-4f6d-485f-bb61-a3e9f82a39c9";
-                            }
+                            String imgUrl = userSnapshot.child("image_url").getValue().toString();
 
                             Person person = new Person(imgUrl, userSnapshot.child("full_name").getValue().toString());
                             person.setUser_id(userSnapshot.child("user_id").getValue().toString());
@@ -277,7 +272,6 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
                                             if (task.isSuccessful()) {
                                                 Log.d("request", "canceled");
                                                 infoReq.setText(R.string.request_for_info);
-                                                // TODO: when user enter to notification fragment, delete his node in notification
                                             }
                                         }
                                     });
@@ -313,7 +307,6 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
                     recycler.setVisibility(View.GONE);
                     targetCard.setVisibility(View.VISIBLE);
 
-                    // TODO: if request Accepted, show all info
                     FirebaseAuth mAuth = FirebaseAuth.getInstance();
                     DatabaseReference currRef = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
                     currRef.child("DetailsRequestsSent").addListenerForSingleValueEvent(new ValueEventListener() {
