@@ -83,4 +83,6 @@
     <string name="search_for_friends">Search For Friends..</string>
     <string name="info_req">Information Request</string>
     <string name="accepted_request">Accepted Request</string>
+    <string name="send_verification_link">Send Verification Link</string>
+    <string name="verify_dialog_msg">Seems your account isn\'t verify yet!</string>
 </resources>

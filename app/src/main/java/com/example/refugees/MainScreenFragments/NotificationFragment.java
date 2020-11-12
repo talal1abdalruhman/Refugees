@@ -57,7 +57,6 @@ public class NotificationFragment extends Fragment {
         // Required empty public constructor
     }
 
-    Timer timer = new Timer();
     private View view;
     FirebaseDatabase database;
     DatabaseReference usersRef, requestsRef;
@@ -89,22 +88,16 @@ public class NotificationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initializeFields();
+        checkNotifications();
 
-        timer.scheduleAtFixedRate(new TimerTask() {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
-            public void run() {
-                checkNotifications();
+            public void handleOnBackPressed() {
+                Navigation.findNavController(view).navigate(R.id.action_notification_to_home);
+                navView.setCheckedItem(R.id.home);
             }
-        }, 0, 5000);
-
-            OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-                @Override
-                public void handleOnBackPressed() {
-                    Navigation.findNavController(view).navigate(R.id.action_notification_to_home);
-                    navView.setCheckedItem(R.id.home);
-                }
-            };
-            requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
     }
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
@@ -189,7 +182,7 @@ public class NotificationFragment extends Fragment {
 
                                                                                                         String senderName = snapshot.getValue(String.class);
                                                                                                         Log.d("notification_tracker", "got name " + senderName);
-                                                                                                        sendNotifications(user_token, senderName,  "AR");
+                                                                                                        sendNotifications(user_token, senderName, "AR");
                                                                                                     }
 
                                                                                                     @Override
@@ -241,7 +234,7 @@ public class NotificationFragment extends Fragment {
         recycler = view.findViewById(R.id.notification_recycler);
         noRequest = view.findViewById(R.id.notifi_no_request);
         recycler.setHasFixedSize(true);
-        recycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recycler);
 

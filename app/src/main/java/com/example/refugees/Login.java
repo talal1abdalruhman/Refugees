@@ -2,6 +2,7 @@ package com.example.refugees;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -58,7 +60,7 @@ public class Login extends AppCompatActivity {
     private DatabaseReference mRef;
     private CircularProgressButton loginBtn;
     private TextInputLayout emailLayout, passwordLayout;
-
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,9 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         emailLayout =  findViewById(R.id.login_email_layout);
         passwordLayout = findViewById(R.id.login_password_layout);
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.login_verify_email_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     public void setup() {
@@ -143,7 +148,9 @@ public class Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(pressed)
+        if(dialog.isShowing()){
+            dialog.dismiss();
+        }else if(pressed)
             return;
         pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {
@@ -238,6 +245,9 @@ public class Login extends AppCompatActivity {
                         } else {
                             Log.d(LOGIN_TAG, "NOT Verified");
                             loginBtn.stopAnimation();
+                            loginBtn.revertAnimation();
+                            loginBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
+                            dialog.show();
                         }
 
                     } else {
@@ -253,4 +263,18 @@ public class Login extends AppCompatActivity {
                 }
             });
     }
+
+    public void SendVerification(View view){
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    dialog.dismiss();
+                    Log.d(LOGIN_TAG, "verification email sent");
+                }
+            });
+        }
+    }
+
 }
