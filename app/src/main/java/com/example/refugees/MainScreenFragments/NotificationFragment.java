@@ -3,6 +3,7 @@ package com.example.refugees.MainScreenFragments;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.Navigation;
+import androidx.transition.Slide;
 
 import com.example.refugees.HelperClasses.NotificationAdapter;
 import com.example.refugees.HelperClasses.Person;
@@ -65,11 +69,18 @@ public class NotificationFragment extends Fragment {
     private APIService apiService;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_notification, container, false);
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
+
         return view;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -83,6 +94,14 @@ public class NotificationFragment extends Fragment {
                 checkNotifications();
             }
         }, 0, 5000);
+
+            OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+                @Override
+                public void handleOnBackPressed() {
+                    Navigation.findNavController(view).navigate(R.id.action_notification_to_home);
+                }
+            };
+            requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
     }
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(

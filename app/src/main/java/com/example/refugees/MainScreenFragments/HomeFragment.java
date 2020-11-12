@@ -2,6 +2,7 @@ package com.example.refugees.MainScreenFragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,12 +12,14 @@ import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
@@ -40,6 +43,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         return view;
     }
 
@@ -48,6 +54,14 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         reunionTxt = view.findViewById(R.id.title_ren);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+//                TODO: ask the user if he want to exit the application or get him back to l~ogOtions
+//                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         motionLayouts = new ArrayList<MotionLayout>(4);
         motionLayouts.add(view.findViewById(R.id.reunion));
         motionLayouts.add(view.findViewById(R.id.instructions));
@@ -94,7 +108,7 @@ public class HomeFragment extends Fragment {
                             x = currX;
                         double disX = java.lang.Math.abs(currX - x);
                         double disY = java.lang.Math.abs(currY - y);
-                        if(disY > disX && disY > touch * 5.5 && !animating) {
+                        if(disY > disX && (disY > touch * 6f) && !animating) {
                             scrollView.requestDisallowInterceptTouchEvent(false);
                         }
                     }

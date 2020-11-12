@@ -1,18 +1,24 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
@@ -31,17 +37,38 @@ public class SettingsFragment extends Fragment {
     boolean isOpen = false;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_settings, container, false);
         // Inflate the layout for this fragment
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         return view;
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
+        final FrameLayout layout = (FrameLayout) view.findViewById(R.id.father);
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                setup();
+            }
+        });
         langLayout = view.findViewById(R.id.settings_lang_layout);
         chooseLangLayout = view.findViewById(R.id.settings_choose_lang_layout);
         arrow = view.findViewById(R.id.settings_lang_down_arrow);
@@ -66,15 +93,14 @@ public class SettingsFragment extends Fragment {
         }
 
         langLayout.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onClick(View v) {
                 if(!isOpen) {
-                    chooseLangLayout.setVisibility(View.VISIBLE);
-                    arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_up));
+                    animate();
                     isOpen = true;
                 } else {
-                    chooseLangLayout.setVisibility(View.GONE);
-                    arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
+                    animate_back();
                     isOpen = false;
                 }
             }
@@ -95,5 +121,24 @@ public class SettingsFragment extends Fragment {
             }
         });
     }
+    public void setup() {
+        resetPasswordLayout.setY(changeEmailLayout.getY());
+        changeEmailLayout.setY(chooseLangLayout.getY() - 3);
+        chooseLangLayout.setPivotY(0);
+        chooseLangLayout.setAlpha(0);
+    }
+    public void animate() {
+        changeEmailLayout.animate().setDuration(300).translationY(0);
+        resetPasswordLayout.animate().setDuration(300).translationY(0);
+        chooseLangLayout.animate().setDuration(300).scaleY(1f).alpha(1f);
+        arrow.animate().setDuration(300).rotation(180);
 
+    }
+    public void animate_back() {
+
+        resetPasswordLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
+        changeEmailLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1 + 3);
+        chooseLangLayout.animate().setDuration(300).scaleY(0f).alpha(0f);
+        arrow.animate().setDuration(300).rotation(0);
+    }
 }
