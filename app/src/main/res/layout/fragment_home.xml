@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="REUNION YOUR\n FAMILY"
+                        android:text="@string/reunion_your_n_family"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"

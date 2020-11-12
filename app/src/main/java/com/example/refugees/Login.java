@@ -265,6 +265,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void SendVerification(View view){
+        mAuth.useAppLanguage();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user != null){
             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -244,6 +244,7 @@ public class Signup extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d(ADD_USER_TAG, "Auth success");
 
+                        mAuth.useAppLanguage();
                         FirebaseUser user = mAuth.getCurrentUser();
                         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

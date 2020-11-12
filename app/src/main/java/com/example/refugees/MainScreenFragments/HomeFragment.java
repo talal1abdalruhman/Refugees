@@ -1,6 +1,10 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,6 +13,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -21,7 +28,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.transition.Slide;
 
+import com.example.refugees.LogOptions;
+import com.example.refugees.MainScreenActivity;
 import com.example.refugees.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -32,13 +43,16 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    FirebaseUser user;
     private boolean animating = false;
     final private String TAG = "tag";
     private int touch;
     ArrayList<MotionLayout> motionLayouts;
     ScrollView scrollView;
     TextView reunionTxt;
+    ImageView family;
+    Dialog dialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -54,14 +68,25 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         reunionTxt = view.findViewById(R.id.title_ren);
+        family = view.findViewById(R.id.family);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.reunion_whithout_account_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                } else {
 //                TODO: ask the user if he want to exit the application or get him back to l~ogOtions
 //                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
+                }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+
         motionLayouts = new ArrayList<MotionLayout>(4);
         motionLayouts.add(view.findViewById(R.id.reunion));
         motionLayouts.add(view.findViewById(R.id.instructions));
@@ -73,7 +98,7 @@ public class HomeFragment extends Fragment {
         motionLayoutStuff();
         final ConstraintLayout layout = (ConstraintLayout) view.findViewById(R.id.father);
         ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -81,25 +106,41 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // TODO: handle all layout content (title, img, desc) to navigate to search
         reunionTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
+                if (user != null) {
+                    Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
+                } else {
+                    dialog.show();
+                }
+            }
+        });
+
+        family.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user != null) {
+                    Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
+                } else {
+                    dialog.show();
+                }
             }
         });
 
     }
+
     public void motionLayoutStuff() {
-        for(int i = 0; i < motionLayouts.size(); i++)
+        for (int i = 0; i < motionLayouts.size(); i++)
             motionLayouts.get(i).setOnTouchListener(new View.OnTouchListener() {
                 double x = -1;
                 double y = -1;
+
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     scrollView.requestDisallowInterceptTouchEvent(true);
-                    if(event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
                         double currX = event.getX();
                         double currY = event.getY();
                         if (y == -1)
@@ -108,7 +149,7 @@ public class HomeFragment extends Fragment {
                             x = currX;
                         double disX = java.lang.Math.abs(currX - x);
                         double disY = java.lang.Math.abs(currY - y);
-                        if(disY > disX && (disY > touch * 6f) && !animating) {
+                        if (disY > disX && (disY > touch * 6f) && !animating) {
                             scrollView.requestDisallowInterceptTouchEvent(false);
                         }
                     }
@@ -116,19 +157,22 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-        for(int i = 0; i < motionLayouts.size(); i++) {
+        for (int i = 0; i < motionLayouts.size(); i++) {
             motionLayouts.get(i).setTransitionListener(new MotionLayout.TransitionListener() {
                 @Override
                 public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
                     animating = true;
                     scrollView.requestDisallowInterceptTouchEvent(true);
                 }
+
                 @Override
                 public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
                 }
+
                 @Override
                 public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
                 }
+
                 @Override
                 public void onTransitionCompleted(MotionLayout motionLayout, int i) {
                     animating = false;
@@ -137,14 +181,16 @@ public class HomeFragment extends Fragment {
             });
         }
     }
+
     public void setup() {
-        for(int i = 0; i < motionLayouts.size(); i++)
-            if(i % 2 == 0)
+        for (int i = 0; i < motionLayouts.size(); i++)
+            if (i % 2 == 0)
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth() * -1);
             else
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth());
 
-        for(int i = 0; i < motionLayouts.size(); i++)
+        for (int i = 0; i < motionLayouts.size(); i++)
             motionLayouts.get(i).animate().setDuration(1000).translationX(0);
     }
+
 }

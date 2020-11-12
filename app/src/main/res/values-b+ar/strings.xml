@@ -5,7 +5,7 @@
     <string name="arabic">العربية</string>
     <string name="sign_up">تسجيل</string>
     <string name="log_in">دخول</string>
-    <string name="skip">تخطي</string>
+    <string name="skip">الدخول كزائر</string>
     <string name="message">بتفعيل هذا الخيار سيتمكن باقي المستخدمين من رؤيتك في نتائج وارسال طلبات لاستعراض معلوماتك الشخصية، يمكن ان يكون هؤلاء الاشخاص من افراد اسرتك او اصدقائك او اي مستخدمين آخرين</string>
     <string name="searchable">الظهور في نتائج البحث</string>
     <string name="disable">تعطيل</string>
@@ -31,7 +31,7 @@
     <string name="email_address_not_register">البريد الالكتروني غير مسجل</string>
     <string name="incorrect_password">كلمة المرور غير صحيحة</string>
     <string name="email_already_used">البريد الالكتروني مسجل من قبل</string>
-    <string name="quit">هل انتا متأكد من الخروج</string>
+    <string name="quit">هل انت متأكد من الخروج</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="back">رجوع</string>
@@ -52,8 +52,8 @@
     <string name="update_my_profile_info">تحديث بياناتي الشخصية</string>
     <string name="save_changes">حفظ التعديلات</string>
     <string name="cancel">إلغاء الامر</string>
-    <string name="profile_updated">Profile Info Updated</string>
-    <string name="check">تحقق مما إذا كان أي شخص من عائلتك أو أصدقائك أو أي شخص تعرفه قد استخدم هذا التطبيق وأرسل إليهم طلبًا للقاء.</string>
+    <string name="profile_updated">تم تحديث بياناتك</string>
+    <string name="check">تحقق إذا ما كان أي شخص من عائلتك أو أصدقائك أو أي شخص تعرفه قد استخدم هذا التطبيق وأرسل إليهم طلبًا للقاء.</string>
     <string name="instructions">التعليمات لجميع الأعمال الورقية التي يجب على اللاجئ القيام بها بمجرد وصوله إلى الأردن حتى لا يفوته أي شيء.</string>
     <string name="schools">مدارس</string>
     <string name="school">قائمة المدارس الخاصة باللاجئين ومواقعهم.</string>
@@ -85,4 +85,8 @@
     <string name="accepted_request">قبول طلب</string>
     <string name="send_verification_link">ارسال رابط التوثيق</string>
     <string name="verify_dialog_msg">يبدو ان حسابك غير موثق حتى الان!</string>
+    <string name="login">الدخول</string>
+    <string name="reunion_warning_msg">لاستخدام هذه الخاصية يجب عليك إنشاء حساب او تسجيل الدخول لحسابك.</string>
+    <string name="login_register">الدخول / التسجيل</string>
+    <string name="reunion_your_n_family">إجتمع مع<br/>عائلتك</string>
 </resources>
