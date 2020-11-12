@@ -30,7 +30,7 @@
     <string name="password_is_too_weak">كلمة المرور ضعيفة</string>
     <string name="email_address_not_register">البريد الالكتروني غير مسجل</string>
     <string name="incorrect_password">كلمة المرور غير صحيحة</string>
-    <string name="email_already_used">البريد الالكتروني مسجل من قبل</string>
+    <string name="email_already_used">البريد الالكتروني مسجل مسبقاً</string>
     <string name="quit">هل انت متأكد من الخروج</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>

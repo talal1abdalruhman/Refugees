@@ -53,7 +53,7 @@ public class LogOptions extends AppCompatActivity {
         String lng = lang.getString("lang",null);
         if(!lng.equals(null)) {
             setApplocale(lng);
-            if(user != null){
+            if(user != null && user.isEmailVerified()){
                 Intent intent = new Intent(this, MainScreenActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);

@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
@@ -231,7 +232,7 @@ public class Signup extends AppCompatActivity {
                 !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
                 !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
         VerifyUserByEmail();
-        animation("2");
+        //animation("2");
     }
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
@@ -244,7 +245,11 @@ public class Signup extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d(ADD_USER_TAG, "Auth success");
 
-                        mAuth.useAppLanguage();
+                        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                        String lng = lang.getString("lang", "null");
+                        if(!lng.equals("null")) {
+                            mAuth.setLanguageCode(lng);
+                        }
                         FirebaseUser user = mAuth.getCurrentUser();
                         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -267,6 +272,8 @@ public class Signup extends AppCompatActivity {
                     if(e instanceof FirebaseAuthUserCollisionException){
                         emailLayout.setError(getString(R.string.email_already_used));
                         emailLayout.requestFocus();
+                        registerBtn.revertAnimation();
+                        registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
                     }
                 }
             });

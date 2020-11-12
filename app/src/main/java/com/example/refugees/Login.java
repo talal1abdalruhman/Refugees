@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -194,12 +195,11 @@ public class Login extends AppCompatActivity {
         emailLayout.setErrorEnabled(false);
 
         if (!validator.validateLoginEmail(emailLayout) | !validator.validateLoginPassword(passwordLayout)) return;
-
+        loginBtn.startAnimation();
             mAuth.signInWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        loginBtn.startAnimation();
                         Log.d(LOGIN_TAG, "success");
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         boolean emailVerified = user.isEmailVerified();
@@ -265,6 +265,11 @@ public class Login extends AppCompatActivity {
     }
 
     public void SendVerification(View view){
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang", "null");
+        if(!lng.equals("null")) {
+            mAuth.setLanguageCode(lng);
+        }
         mAuth.useAppLanguage();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user != null){

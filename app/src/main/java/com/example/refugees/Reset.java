@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -144,6 +145,11 @@ public class Reset extends AppCompatActivity {
         Validation validator =  new Validation(getResources());
         String emailAddress = email.getEditText().getText().toString();
         if(!validator.validateLoginEmail(email)) return;
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang", "null");
+        if(!lng.equals("null")) {
+            mAuth.setLanguageCode(lng);
+        }
         sendBtn.startAnimation();
         mAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
