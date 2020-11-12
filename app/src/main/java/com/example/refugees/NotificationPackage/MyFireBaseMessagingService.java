@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
@@ -32,17 +33,19 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         title=remoteMessage.getData().get("Title");
         message=remoteMessage.getData().get("Message");
 
-        // TODO: handle notification language when create sharedPreference
-        boolean isAR = getBaseContext().getResources().getConfiguration().locale.getLanguage().equals("ar");
-        String lang = getBaseContext().getResources().getConfiguration().locale.getLanguage();
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang", "null");
+        Log.d("sharedPreferences lang", lng);
+        boolean isAR = lng.equals("ar");
+
         if(message.equals("SR")){
             if(!isAR) {
-                Log.d("lang_tracker", "here "+ isAR + " "+ lang);
+                Log.d("lang_tracker", "here "+ isAR + " "+ lng);
                 message = title + " request to show your information.";
                 title = "Information Request";
             } else {
                 Log.d("lang_tracker", "here "+ isAR);
-                message =" يطلب استعراض بياناتك الشخصية." + title;
+                message =title + " يطلب استعراض بياناتك الشخصية.";
                 title = "طلب بيانات";
             }
         } else {
