@@ -30,7 +30,7 @@ public class Searchable extends AppCompatActivity {
     ImageView bottom_dark;
     ImageView bottom_light;
     ConstraintLayout form;
-    Interpolator interpolator = new FastOutSlowInInterpolator() ;
+    Interpolator interpolator = new FastOutSlowInInterpolator();
 
     int duration = 550;
     float ScreenWidth;
@@ -45,7 +45,7 @@ public class Searchable extends AppCompatActivity {
         setContentView(R.layout.activity_searchable);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -64,6 +64,7 @@ public class Searchable extends AppCompatActivity {
         bottom_dark = findViewById(R.id.bottom_dark);
         form = findViewById(R.id.warning);
     }
+
     public void setup() {
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
@@ -76,26 +77,19 @@ public class Searchable extends AppCompatActivity {
         top.setScaleY(0.2f);
         animate();
     }
+
     public ViewPropertyAnimator animate() {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction).setInterpolator(interpolator);
     }
+
     public ViewPropertyAnimator animate(int next) {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
     }
-    public void click(View view) {
-        animate(direction).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context,  Confirm.class);;
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
+
+
     @Override
     public void onBackPressed() {
-        if(pressed)
+        if (pressed)
             return;
         pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {
@@ -111,6 +105,7 @@ public class Searchable extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -123,16 +118,24 @@ public class Searchable extends AppCompatActivity {
         String userId = getIntent().getStringExtra("user_id");
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
         boolean searchable;
-        if(id == R.id.enalbe) searchable = true;
+        if (id == R.id.enalbe) searchable = true;
         else searchable = false;
         userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Log.d(ADD_USER_TAG, "searchable => "+searchable);
-                    // TODO: make intent to go to verify msg here
-                }
-                else Log.d(ADD_USER_TAG, "searchable => something wrong");
+                if (task.isSuccessful()) {
+                    Log.d(ADD_USER_TAG, "searchable => " + searchable);
+                    animate(direction).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            Intent intent = intent = new Intent(context, Confirm.class);
+                            ;
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                } else Log.d(ADD_USER_TAG, "searchable => something wrong");
             }
         });
     }

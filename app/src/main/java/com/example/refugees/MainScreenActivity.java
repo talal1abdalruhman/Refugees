@@ -52,7 +52,7 @@ import static com.example.refugees.MainScreenFragments.SettingsFragment.chooseLa
 import static com.example.refugees.MainScreenFragments.SettingsFragment.selectedLang;
 
 public class MainScreenActivity extends AppCompatActivity {
-    private NavigationView navView;
+    public static NavigationView navView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavController navController;
@@ -77,7 +77,7 @@ public class MainScreenActivity extends AppCompatActivity {
         setupNavDrawer();
         final DrawerLayout layout = findViewById(R.id.drawer_layout);
         ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -93,7 +93,17 @@ public class MainScreenActivity extends AppCompatActivity {
         });
 
         itemSelect();
-        retrieveUserInfo();
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        if (user != null) {
+            navView.getMenu().findItem(R.id.login).setVisible(false);
+            retrieveUserInfo();
+        } else {
+            navView.getMenu().findItem(R.id.profile).setVisible(false);
+            navView.getMenu().findItem(R.id.notification).setVisible(false);
+            navView.getMenu().findItem(R.id.logout).setVisible(false);
+        }
 
     }
 
@@ -108,7 +118,18 @@ public class MainScreenActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Log.d("item_select", item.getItemId() + "");
                 if (item.getItemId() == R.id.logout) {
-                    // TODO: handle it when complate using sharedPreference
+                    mAuth.signOut();
+                    SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                    String lng = lang.getString("lang", "null");
+                    Intent intent = new Intent(MainScreenActivity.this, LogOptions.class);
+                    intent.putExtra("language", lng);
+                    startActivity(intent);
+                } else if (item.getItemId() == R.id.login) {
+                    SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                    String lng = lang.getString("lang", "null");
+                    Intent intent = new Intent(MainScreenActivity.this, LogOptions.class);
+                    intent.putExtra("language", lng);
+                    startActivity(intent);
                 } else {
                     navController.popBackStack();
                     navController.navigate(item.getItemId());
@@ -128,10 +149,14 @@ public class MainScreenActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
         navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
+        navView.setPadding(0, 0, 0, toolbar.getHeight() + statusBarHeight + 10);
+        navHostFragment.setTranslationY(toolbar.getHeight() + statusBarHeight);
+        navHostFragment.setPadding(0, 0, 0, toolbar.getHeight() + statusBarHeight);
         navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 30);
         navHostFragment.setTranslationY(toolbar.getHeight());
         navHostFragment.setPadding(0,0,0,toolbar.getHeight());
     }
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -140,6 +165,7 @@ public class MainScreenActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setupNavDrawer() {
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -149,8 +175,7 @@ public class MainScreenActivity extends AppCompatActivity {
 
         drawerLayout.setScrimColor(getResources().getColor(android.R.color.transparent));
         drawerLayout.setDrawerElevation(0);
-        // TODO: handle the following when finish the sharedPreference
-        // TODO: you already did ^^
+
         boolean isAr = getResources().getConfiguration().locale.getLanguage().equals("ar");
         if (isAr) {
             navView.setItemBackground(getDrawable(R.drawable.item_select_state_ar));
@@ -173,8 +198,6 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void retrieveUserInfo() {
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
         View navHeader = navView.getHeaderView(0);
         navImg = (CircleImageView) navHeader.findViewById(R.id.nav_header_img);
         navName = (TextView) navHeader.findViewById(R.id.nav_header_name);
@@ -219,7 +242,7 @@ public class MainScreenActivity extends AppCompatActivity {
                     if (Build.VERSION.SDK_INT < 28) {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(
                                 this.getContentResolver(),
-                        imageUri);
+                                imageUri);
                         profileImg.setImageBitmap(bitmap);
                     } else {
                         ImageDecoder.Source src = ImageDecoder.createSource(
@@ -237,11 +260,15 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void ChangeLang(@NotNull View view){
-        // TODO: re-handle change language to restart the app
-        switch (view.getId()){
-            case R.id.radioButton_english:{
+    public void ChangeLang(@NotNull View view) {
+
+        SharedPreferences langPreference = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = langPreference.edit();
+
+        switch (view.getId()) {
+            case R.id.radioButton_english: {
                 setApplocale("en");
+                editor.putString("lang", "en").commit();
                 chooseLangLayout.setVisibility(View.GONE);
                 arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
                 selectedLang.setText(getString(R.string.english));
@@ -251,8 +278,9 @@ public class MainScreenActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 break;
             }
-            case R.id.radioButton_arabic:{
+            case R.id.radioButton_arabic: {
                 setApplocale("ar");
+                editor.putString("lang", "ar").commit();
                 chooseLangLayout.setVisibility(View.GONE);
                 arrow.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_down));
                 selectedLang.setText(getString(R.string.arabic));
@@ -273,6 +301,14 @@ public class MainScreenActivity extends AppCompatActivity {
         configuration.locale = new Locale(language);
         configuration.setLayoutDirection(new Locale(language));
         resources.updateConfiguration(configuration, displayMetrics);
+    }
+
+    public void GotoLogOps(View view){
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang", "null");
+        Intent intent = new Intent(MainScreenActivity.this, LogOptions.class);
+        intent.putExtra("language", lng);
+        startActivity(intent);
     }
 
 }

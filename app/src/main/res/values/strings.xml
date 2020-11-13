@@ -5,7 +5,7 @@
     <string name="arabic">ARABIC</string>
     <string name="sign_up">SIGN UP</string>
     <string name="log_in">LOG IN</string>
-    <string name="skip">skip</string>
+    <string name="skip">Continue As Guest</string>
     <string name="message">Being searchable allows others to search for you and send you a request, those people might be your family, friends and clients.</string>
     <string name="searchable">Searchable</string>
     <string name="disable">disable</string>
@@ -74,4 +74,19 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="new_password">New Password</string>
     <string name="current_password">Current Password</string>
+    <string name="notification_accept">accept your details request.</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="notification_request_msg">request to show your information.</string>
+    <string name="request_for_info">Request For Info</string>
+    <string name="cancel_info_request">Cancel Info Request</string>
+    <string name="search_for_friends">Search For Friends..</string>
+    <string name="info_req">Information Request</string>
+    <string name="accepted_request">Accepted Request</string>
+    <string name="send_verification_link">Send Verification Link</string>
+    <string name="verify_dialog_msg">Seems your account isn\'t verify yet!</string>
+    <string name="login">Login</string>
+    <string name="reunion_warning_msg">To use this feature you need to create an account or login to your account.</string>
+    <string name="login_register">Login / Register</string>
+    <string name="reunion_your_n_family">REUNION YOUR\nFAMILY</string>
 </resources>

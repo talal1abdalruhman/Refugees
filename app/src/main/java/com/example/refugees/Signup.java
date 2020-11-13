@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
@@ -29,6 +30,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
+import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -224,13 +226,13 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
-//        Validation validator = new Validation(getResources());
-//
-//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-//        VerifyUserByEmail();
-        animation("2");
+        Validation validator = new Validation(getResources());
+
+        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
+        VerifyUserByEmail();
+        //animation("2");
     }
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
@@ -243,6 +245,11 @@ public class Signup extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d(ADD_USER_TAG, "Auth success");
 
+                        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                        String lng = lang.getString("lang", "null");
+                        if(!lng.equals("null")) {
+                            mAuth.setLanguageCode(lng);
+                        }
                         FirebaseUser user = mAuth.getCurrentUser();
                         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -265,6 +272,8 @@ public class Signup extends AppCompatActivity {
                     if(e instanceof FirebaseAuthUserCollisionException){
                         emailLayout.setError(getString(R.string.email_already_used));
                         emailLayout.requestFocus();
+                        registerBtn.revertAnimation();
+                        registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
                     }
                 }
             });

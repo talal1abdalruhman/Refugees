@@ -106,7 +106,7 @@
 
         <Button
             android:id="@+id/skip"
-            android:layout_width="104dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:backgroundTint="#3762A2"
             android:fontFamily="@font/roboto"

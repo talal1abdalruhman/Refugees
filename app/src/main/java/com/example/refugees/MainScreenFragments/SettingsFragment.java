@@ -21,6 +21,10 @@ import androidx.navigation.Navigation;
 import androidx.transition.Slide;
 
 import com.example.refugees.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import static com.example.refugees.MainScreenActivity.navView;
 
 public class SettingsFragment extends Fragment {
 
@@ -35,6 +39,7 @@ public class SettingsFragment extends Fragment {
     public static ImageView arrow;
     public static TextView selectedLang;
     boolean isOpen = false;
+    FirebaseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
+                navView.setCheckedItem(R.id.home);
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
@@ -78,6 +84,12 @@ public class SettingsFragment extends Fragment {
         passwordArrow = view.findViewById(R.id.arrow_password);
         changeEmailLayout = view.findViewById(R.id.changeEmailLayout);
         resetPasswordLayout = view.findViewById(R.id.resetPasswordLayout);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user == null){
+            changeEmailLayout.setVisibility(View.GONE);
+            resetPasswordLayout.setVisibility(View.GONE);
+        }
 
         String language = getResources().getConfiguration().locale.getLanguage();
 

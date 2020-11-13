@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -37,13 +41,28 @@ public class LogOptions extends AppCompatActivity {
     int direction;
     boolean pressed;
 
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         direction = getIntent().getIntExtra("direction", 1);
-        language =  getIntent().getStringExtra("language");
 
-        setApplocale(language);
+
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang",null);
+        if(!lng.equals(null)) {
+            setApplocale(lng);
+            if(user != null && user.isEmailVerified()){
+                Intent intent = new Intent(this, MainScreenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        } else {
+            language =  getIntent().getStringExtra("language");
+            setApplocale(language);
+        }
 
         setContentView(R.layout.activity_log_options);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);

@@ -5,8 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
@@ -80,6 +83,12 @@ public class Language extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Intent intent = new Intent(context, LogOptions.class);
+
+                SharedPreferences langPreference = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = langPreference.edit();
+                editor.putString("lang", view.getId() == R.id.english ? "en" : "ar").commit();
+                editor.apply();
+
                 intent.putExtra("language", view.getId() == R.id.english ? "en" : "ar");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);

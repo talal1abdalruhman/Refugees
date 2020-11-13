@@ -6,10 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.transition.Slide;
 
 import com.example.refugees.R;
+
+import static com.example.refugees.MainScreenActivity.navView;
 
 
 public class AboutUsFragment extends Fragment {
@@ -30,5 +36,17 @@ public class AboutUsFragment extends Fragment {
         slide.setSlideEdge(Gravity.LEFT);
         setExitTransition(slide);
         return inflater.inflate(R.layout.fragment_about_us, container, false);
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Navigation.findNavController(view).navigate(R.id.action_about_us_to_home);
+                navView.setCheckedItem(R.id.home);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
     }
 }
