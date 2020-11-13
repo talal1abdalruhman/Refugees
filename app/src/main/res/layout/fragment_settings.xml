@@ -7,11 +7,19 @@
     android:id="@+id/father"
     android:background="@color/blue_light_dark"
     tools:context=".MainScreenFragments.SettingsFragment">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anime"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_fileName="settings.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
         <!--        choose language         -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
@@ -22,7 +30,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/anime">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/settings_lang_layout"
@@ -99,7 +107,6 @@
                 android:id="@+id/settings_choose_lang_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleY="0"
                 app:layout_constraintTop_toBottomOf="@+id/settings_lang_layout">
 
                 <TextView
@@ -122,7 +129,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                     <RadioGroup
-
+                        android:id="@+id/radioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -158,50 +165,53 @@
         <!--        Change email address        -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/changeEmailLayout"
+            android:paddingTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="3dp"
-            android:background="@color/blue"
+            android:background="@color/blue_light_dark"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:background="@color/blue"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/settings_ic_email_reset"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_reset_mail"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/settings_ic_email_reset"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/ic_reset_mail"
-                android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/change_email_address"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/settings_ic_email_reset"
+                    app:layout_constraintStart_toEndOf="@id/settings_ic_email_reset"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/change_email_address"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/settings_ic_email_reset"
-                app:layout_constraintStart_toEndOf="@id/settings_ic_email_reset"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/arrow_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_arrow_right"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                <ImageView
+                    android:id="@+id/arrow_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--        reset password        -->

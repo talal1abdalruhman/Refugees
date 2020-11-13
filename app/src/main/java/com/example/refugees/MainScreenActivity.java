@@ -128,9 +128,9 @@ public class MainScreenActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
         navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
-        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 10);
-        navHostFragment.setTranslationY(toolbar.getHeight() + statusBarHeight);
-        navHostFragment.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight);
+        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 30);
+        navHostFragment.setTranslationY(toolbar.getHeight());
+        navHostFragment.setPadding(0,0,0,toolbar.getHeight());
     }
     @Override
     public void onBackPressed() {

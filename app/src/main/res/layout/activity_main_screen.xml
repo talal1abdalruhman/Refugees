@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/img_up"
                 android:elevation="50dp"
-                android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/ic_menu"
                 app:theme="@style/ToolbarColoredBackArrow"

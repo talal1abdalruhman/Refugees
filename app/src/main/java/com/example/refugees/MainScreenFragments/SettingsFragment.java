@@ -66,7 +66,6 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                setup();
             }
         });
         langLayout = view.findViewById(R.id.settings_lang_layout);
@@ -109,7 +108,6 @@ public class SettingsFragment extends Fragment {
         changeEmailLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Navigation.findNavController(view).navigate(R.id.action_settings_to_updateEmailFragment);
             }
         });
@@ -122,8 +120,8 @@ public class SettingsFragment extends Fragment {
         });
     }
     public void setup() {
-        resetPasswordLayout.setY(changeEmailLayout.getY());
-        changeEmailLayout.setY(chooseLangLayout.getY() - 3);
+        resetPasswordLayout.animate().setDuration(0).translationY(chooseLangLayout.getY() * -1);
+        changeEmailLayout.animate().setDuration(0).translationY(chooseLangLayout.getY() * -1);
         chooseLangLayout.setPivotY(0);
         chooseLangLayout.setAlpha(0);
     }
@@ -132,12 +130,10 @@ public class SettingsFragment extends Fragment {
         resetPasswordLayout.animate().setDuration(300).translationY(0);
         chooseLangLayout.animate().setDuration(300).scaleY(1f).alpha(1f);
         arrow.animate().setDuration(300).rotation(180);
-
     }
     public void animate_back() {
-
         resetPasswordLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
-        changeEmailLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1 + 3);
+        changeEmailLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
         chooseLangLayout.animate().setDuration(300).scaleY(0f).alpha(0f);
         arrow.animate().setDuration(300).rotation(0);
     }
