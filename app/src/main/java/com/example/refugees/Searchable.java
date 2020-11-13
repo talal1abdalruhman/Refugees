@@ -6,22 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Searchable extends AppCompatActivity {
     private final String ADD_USER_TAG = "userRegister";
@@ -37,6 +30,7 @@ public class Searchable extends AppCompatActivity {
     float ScreenHeight;
     int direction;
     boolean pressed;
+    int delay = 250;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +60,7 @@ public class Searchable extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());
@@ -91,6 +86,7 @@ public class Searchable extends AppCompatActivity {
     public void onBackPressed() {
         if (pressed)
             return;
+        findViewById(R.id.anime_mid).animate().setDuration(delay).alpha(1);
         pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -114,30 +110,41 @@ public class Searchable extends AppCompatActivity {
 
 
     public void SelectSearchStatus(View view) {
-        int id = view.getId();
-        String userId = getIntent().getStringExtra("user_id");
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
-        boolean searchable;
-        if (id == R.id.enalbe) searchable = true;
-        else searchable = false;
-        userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
+        findViewById(R.id.anime_mid).animate().setDuration(delay).alpha(1);
+        animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Log.d(ADD_USER_TAG, "searchable => " + searchable);
-                    animate(direction).setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            Intent intent = intent = new Intent(context, Confirm.class);
-                            ;
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                } else Log.d(ADD_USER_TAG, "searchable => something wrong");
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = intent = new Intent(context, Confirm.class);
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
             }
         });
+//        int id = view.getId();
+//        String userId = getIntent().getStringExtra("user_id");
+//        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+//        boolean searchable;
+//        if (id == R.id.enalbe) searchable = true;
+//        else searchable = false;
+//        userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    Log.d(ADD_USER_TAG, "searchable => " + searchable);
+//                    animate(direction).setListener(new AnimatorListenerAdapter() {
+//                        @Override
+//                        public void onAnimationEnd(Animator animation) {
+//                            Intent intent = intent = new Intent(context, Confirm.class);
+//
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                } else Log.d(ADD_USER_TAG, "searchable => something wrong");
+//            }
+//        });
     }
 
 }

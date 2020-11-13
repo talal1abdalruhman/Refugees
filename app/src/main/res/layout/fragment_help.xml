@@ -3,9 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/blue"
     tools:context=".MainScreenFragments.HelpFragment">
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anime"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_fileName="headsets.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

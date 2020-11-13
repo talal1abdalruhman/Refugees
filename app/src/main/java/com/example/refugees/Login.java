@@ -16,7 +16,6 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -104,6 +103,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
         form.setX(ScreenWidth * direction);
         top.setPivotY(0);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
@@ -122,6 +122,7 @@ public class Login extends AppCompatActivity {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
     }
     public void click(View view) {
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -136,6 +137,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void reset(View view) {
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -154,6 +156,7 @@ public class Login extends AppCompatActivity {
         }else if(pressed)
             return;
         pressed = true;
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

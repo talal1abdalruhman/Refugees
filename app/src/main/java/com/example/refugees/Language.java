@@ -7,9 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
@@ -52,7 +50,6 @@ public class Language extends AppCompatActivity {
                 getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 ScreenWidth = displayMetrics.widthPixels;
                 ScreenHeight = displayMetrics.heightPixels;
-
                 setup();
             }
         });
@@ -66,6 +63,7 @@ public class Language extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
     public void setup() {
+        findViewById(R.id.anime).animate().setDuration(100).alpha(0);
         logo.setY(ScreenHeight + ((ScreenHeight * 0.85f) * -1) + (top.getHeight()) + ((bottom_dark.getHeight())/4f * -1));
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());
@@ -82,6 +80,7 @@ public class Language extends AppCompatActivity {
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                findViewById(R.id.anime).animate().setDuration(100).alpha(1);
                 Intent intent = new Intent(context, LogOptions.class);
 
                 SharedPreferences langPreference = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);

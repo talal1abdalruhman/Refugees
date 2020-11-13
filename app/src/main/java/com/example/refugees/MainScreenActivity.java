@@ -1,6 +1,8 @@
 package com.example.refugees;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -108,10 +110,10 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime_mid).animate().setDuration(200).alpha(0);
         toolbar.setY(toolbar.getHeight() * -1);
         toolbar.animate().setDuration(1000).translationY(0);
     }
-
     public void itemSelect() {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

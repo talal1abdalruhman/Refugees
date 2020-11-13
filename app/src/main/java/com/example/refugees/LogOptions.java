@@ -54,6 +54,7 @@ public class LogOptions extends AppCompatActivity {
         if(!lng.equals(null)) {
             setApplocale(lng);
             if(user != null && user.isEmailVerified()){
+//            if(false) {
                 Intent intent = new Intent(this, MainScreenActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
@@ -87,6 +88,14 @@ public class LogOptions extends AppCompatActivity {
         log = findViewById(R.id.log);
     }
     public void setup() {
+        if(direction == -1) {
+            findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
+            findViewById(R.id.anime).setAlpha(0);
+        }
+        else {
+            findViewById(R.id.anime).animate().setDuration(100).alpha(0);
+            findViewById(R.id.anime_mid).setAlpha(0);
+        }
         top.setPivotY(0);
         bottom_dark.setPivotY(bottom_dark.getHeight());
         bottom_light.setPivotY(bottom_light.getHeight());
@@ -124,6 +133,7 @@ public class LogOptions extends AppCompatActivity {
         return logo.animate().setDuration(duration).translationXBy(logo.getWidth() * -1).setInterpolator(interpolator);
     }
     public void click(View view) {
+        findViewById(R.id.anime_mid).animate().setDuration(200).alpha(1);
         animate_out();
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -140,6 +150,7 @@ public class LogOptions extends AppCompatActivity {
         });
     }
     public void skip(View view) {
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
         bottom_light.animate().setDuration(duration - 200).scaleY(0f);
         bottom_dark.animate().setDuration(duration - 200).scaleY(0f);
         top.animate().setDuration(duration - 200).scaleY(0f);
@@ -148,7 +159,6 @@ public class LogOptions extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 Intent intent = intent = new Intent(context,  MainScreenActivity.class);;
-
                 startActivity(intent);
                 finish();
             }

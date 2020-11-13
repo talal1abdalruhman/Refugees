@@ -30,7 +30,6 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
-import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -113,6 +112,7 @@ public class Signup extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
     public void setup() {
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(0);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());
@@ -148,6 +148,7 @@ public class Signup extends AppCompatActivity {
     public void onBackPressed() {
         if(pressed)
             return;
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
         if(fName.getText().toString().isEmpty()
          && eMail.getText().toString().isEmpty()
          && phoneNo.getText().toString().isEmpty()
@@ -226,13 +227,14 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 
-        Validation validator = new Validation(getResources());
-
-        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-        VerifyUserByEmail();
-        //animation("2");
+//        Validation validator = new Validation(getResources());
+//
+//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
+//        VerifyUserByEmail();
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
+        animation("2");
     }
     private void VerifyUserByEmail() {
         emailLayout.setError(null);

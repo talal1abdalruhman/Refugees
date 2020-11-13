@@ -57,6 +57,7 @@ public class Splash extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime_mid).setAlpha(0);
         logo.setY(ScreenHeight);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());
@@ -99,24 +100,55 @@ public class Splash extends AppCompatActivity {
         bottom_light.animate().setDuration(duration).translationYBy(bottom_light.getHeight() * -1f).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-
                 SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
                 String lng = lang.getString("lang", "null");
                 if (lng.equals("null")) {
+                    findViewById(R.id.anime).animate().setDuration(100).alpha(1);
                     Intent intent = new Intent(context, Language.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     finish();
                 } else {
-                    Intent intent = new Intent(context, LogOptions.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(intent);
-                    finish();
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if(user != null && user.isEmailVerified()) {
+//                if(true) {
+                        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
+                        animate_main();
+                    }
+                    else {
+                        findViewById(R.id.anime).animate().setDuration(100).alpha(1);
+                        Intent intent = new Intent(context, LogOptions.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
         });
     }
-
+    public void animate_main() {
+        bottom_light.animate().setListener(null);
+        bottom_dark.animate().setListener(null);
+        logo.animate().setListener(null);
+        top.animate().setListener(null);
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
+        bottom_light.setPivotY(bottom_light.getHeight());
+        bottom_dark.setPivotY(bottom_light.getHeight());
+        top.setPivotY(0);
+        bottom_light.animate().setDuration(duration - 200).scaleY(0f);
+        bottom_dark.animate().setDuration(duration - 200).scaleY(0f);
+        top.animate().setDuration(duration - 200).scaleY(0f);
+        logo.animate().setDuration(duration + 100).translationXBy(logo.getWidth() * -1).setInterpolator(interpolator).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = new Intent(context, MainScreenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
     @Override
     public void onPause() {
         super.onPause();

@@ -82,6 +82,7 @@ public class Reset extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());
@@ -103,10 +104,11 @@ public class Reset extends AppCompatActivity {
     }
 
     public void click(View view) {
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context, Signup.class);
+                Intent intent = new Intent(context, Signup.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
@@ -119,6 +121,7 @@ public class Reset extends AppCompatActivity {
         if (pressed)
             return;
         pressed = true;
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

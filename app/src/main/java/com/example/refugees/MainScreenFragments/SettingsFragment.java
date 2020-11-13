@@ -72,6 +72,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                setup();
             }
         });
         langLayout = view.findViewById(R.id.settings_lang_layout);
@@ -135,18 +136,18 @@ public class SettingsFragment extends Fragment {
         resetPasswordLayout.animate().setDuration(0).translationY(chooseLangLayout.getY() * -1);
         changeEmailLayout.animate().setDuration(0).translationY(chooseLangLayout.getY() * -1);
         chooseLangLayout.setPivotY(0);
-        chooseLangLayout.setAlpha(0);
+        chooseLangLayout.setScaleY(0);
     }
     public void animate() {
         changeEmailLayout.animate().setDuration(300).translationY(0);
         resetPasswordLayout.animate().setDuration(300).translationY(0);
-        chooseLangLayout.animate().setDuration(300).scaleY(1f).alpha(1f);
+        chooseLangLayout.animate().setDuration(300).scaleY(1f);
         arrow.animate().setDuration(300).rotation(180);
     }
     public void animate_back() {
         resetPasswordLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
         changeEmailLayout.animate().setDuration(300).translationY(chooseLangLayout.getY() * -1);
-        chooseLangLayout.animate().setDuration(300).scaleY(0f).alpha(0f);
+        chooseLangLayout.animate().setDuration(300).scaleY(0f);
         arrow.animate().setDuration(300).rotation(0);
     }
 }
