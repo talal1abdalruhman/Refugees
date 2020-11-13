@@ -100,6 +100,7 @@ public class HomeFragment extends Fragment {
                 setup();
             }
         });
+        // TODO: I found two solutions for this one is to handle the touch thingy and the other is to ... I forgot I will check later
 //        view.findViewById(R.id.dis_ren).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

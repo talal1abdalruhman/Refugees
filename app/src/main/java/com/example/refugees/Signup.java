@@ -226,6 +226,7 @@ public class Signup extends AppCompatActivity {
         textPassword = password.getText().toString();
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
+//      TODO: uncommit this
 
 //        Validation validator = new Validation(getResources());
 //

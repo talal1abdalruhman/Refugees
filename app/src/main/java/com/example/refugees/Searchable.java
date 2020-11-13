@@ -121,6 +121,7 @@ public class Searchable extends AppCompatActivity {
                 finish();
             }
         });
+        // TODO: uncommit this
 //        int id = view.getId();
 //        String userId = getIntent().getStringExtra("user_id");
 //        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
