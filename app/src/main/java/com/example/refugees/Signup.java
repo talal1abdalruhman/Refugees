@@ -62,7 +62,7 @@ public class Signup extends AppCompatActivity {
     ScrollView form;
     Dialog dialog;
 
-    Interpolator interpolator = new FastOutSlowInInterpolator() ;
+    Interpolator interpolator = new FastOutSlowInInterpolator();
 
     int duration = 550;
     float ScreenWidth;
@@ -91,7 +91,7 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.background);
         ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -112,6 +112,7 @@ public class Signup extends AppCompatActivity {
         dialog.setContentView(R.layout.back_signup);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
+
     public void setup() {
         findViewById(R.id.anime_mid).animate().setDuration(150).alpha(0);
         form.setX(ScreenWidth * direction);
@@ -125,9 +126,11 @@ public class Signup extends AppCompatActivity {
         top.setScaleY(0.2f);
         animate();
     }
+
     public ViewPropertyAnimator animate() {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction).setInterpolator(interpolator);
     }
+
     public ViewPropertyAnimator animate(int next) {
         return form.animate().setDuration(duration).translationXBy(form.getWidth() * -1 * direction * next).setInterpolator(interpolator);
     }
@@ -145,17 +148,18 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
-        if(pressed)
+        if (pressed)
             return;
         findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
-        if(fName.getText().toString().isEmpty()
-         && eMail.getText().toString().isEmpty()
-         && phoneNo.getText().toString().isEmpty()
-         && password.getText().toString().isEmpty()
-         && gover.getText().toString().isEmpty()
-         && city.getText().toString().isEmpty()
+        if (fName.getText().toString().isEmpty()
+                && eMail.getText().toString().isEmpty()
+                && phoneNo.getText().toString().isEmpty()
+                && password.getText().toString().isEmpty()
+                && gover.getText().toString().isEmpty()
+                && city.getText().toString().isEmpty()
                 && !pressedImage) {
             pressed = true;
             animate(direction).setListener(new AnimatorListenerAdapter() {
@@ -174,6 +178,7 @@ public class Signup extends AppCompatActivity {
         }
         dialog.show();
     }
+
     public void back(View view) {
         dialog.dismiss();
         animate(direction).setListener(new AnimatorListenerAdapter() {
@@ -189,14 +194,17 @@ public class Signup extends AppCompatActivity {
             }
         });
     }
+
     public void no(View view) {
         dialog.dismiss();
     }
+
     @Override
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+
     public void InitializeFields() {
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child("ProfileImages");
@@ -228,68 +236,71 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 //      TODO: uncommit this
-//
-//        Validation validator = new Validation(getResources());
-//
-//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-//        if(imageUri == null){
-//            //Todo: do something
-//            return;
-//        }
-//        VerifyUserByEmail();
-        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
-        animation("2");
+        Validation validator = new Validation(getResources());
+
+        if (!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout))
+            return;
+        if (imageUri == null) {
+            //Todo: do something
+            return;
+        }
+        VerifyUserByEmail();
+        VerifyUserByEmail();
+        // animation("2");
     }
+
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
         emailLayout.setErrorEnabled(false);
         registerBtn.startAnimation();
-            Log.d(ADD_USER_TAG, "VerifyUserByEmail start");
-            mAuth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        Log.d(ADD_USER_TAG, "Auth success");
+        Log.d(ADD_USER_TAG, "VerifyUserByEmail start");
+        mAuth.createUserWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d(ADD_USER_TAG, "Auth success");
 
-                        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
-                        String lng = lang.getString("lang", "null");
-                        if(!lng.equals("null")) {
-                            mAuth.setLanguageCode(lng);
-                        }
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(ADD_USER_TAG, "verification email sent");
-                                    UploadUserInfo();
-                                } else {
-                                    registerBtn.revertAnimation();
-                                    registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
-                                    Log.d(ADD_USER_TAG, "verification email NOT sent");
-                                }
+                    SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+                    String lng = lang.getString("lang", "null");
+                    if (!lng.equals("null")) {
+                        mAuth.setLanguageCode(lng);
+                    }
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                    findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
+                                Log.d(ADD_USER_TAG, "verification email sent");
+                                UploadUserInfo();
+                            } else {
+                                registerBtn.revertAnimation();
+                                registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
+                                Log.d(ADD_USER_TAG, "verification email NOT sent");
                             }
-                        });
-                    }
+                        }
+                    });
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    if(e instanceof FirebaseAuthUserCollisionException){
-                        emailLayout.setError(getString(R.string.email_already_used));
-                        emailLayout.requestFocus();
-                        registerBtn.revertAnimation();
-                        registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
-                    }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof FirebaseAuthUserCollisionException) {
+                    emailLayout.setError(getString(R.string.email_already_used));
+                    emailLayout.requestFocus();
+                    registerBtn.revertAnimation();
+                    registerBtn.setBackground(getDrawable(R.drawable.login_btn_bg));
                 }
-            });
+            }
+        });
 
     }
 
 
     private void UploadUserInfo() {
+        // TODO : add guides for this so the user know he should do this cause really facing troubles in this
         if (imageUri != null) {
             final String userId = mAuth.getCurrentUser().getUid();
             StorageReference imgRef = mStorageRef.child(userId + ".jpg");
@@ -314,7 +325,7 @@ public class Signup extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         Log.d(ADD_USER_TAG, "user info upload success");
 
-                                        registerBtn.doneLoadingAnimation(R.color.green_done, BitmapFactory.decodeResource(getResources(),R.drawable.ic_done));
+                                        registerBtn.doneLoadingAnimation(R.color.green_done, BitmapFactory.decodeResource(getResources(), R.drawable.ic_done));
                                         animation(userId);
                                     }
                                 });

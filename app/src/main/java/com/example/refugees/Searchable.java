@@ -6,15 +6,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Searchable extends AppCompatActivity {
     private final String ADD_USER_TAG = "userRegister";
@@ -122,30 +129,30 @@ public class Searchable extends AppCompatActivity {
             }
         });
         // TODO: uncommit this
-//        int id = view.getId();
-//        String userId = getIntent().getStringExtra("user_id");
-//        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
-//        boolean searchable;
-//        if (id == R.id.enalbe) searchable = true;
-//        else searchable = false;
-//        userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if (task.isSuccessful()) {
-//                    Log.d(ADD_USER_TAG, "searchable => " + searchable);
-//                    animate(direction).setListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-//                            Intent intent = intent = new Intent(context, Confirm.class);
-//
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                            startActivity(intent);
-//                            finish();
-//                        }
-//                    });
-//                } else Log.d(ADD_USER_TAG, "searchable => something wrong");
-//            }
-//        });
+        int id = view.getId();
+        String userId = getIntent().getStringExtra("user_id");
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        boolean searchable;
+        if (id == R.id.enalbe) searchable = true;
+        else searchable = false;
+        userRef.child("searchable").setValue(searchable).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(ADD_USER_TAG, "searchable => " + searchable);
+                    animate(direction).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            Intent intent = intent = new Intent(context, Confirm.class);
+
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                } else Log.d(ADD_USER_TAG, "searchable => something wrong");
+            }
+        });
     }
 
 }
