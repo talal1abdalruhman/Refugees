@@ -30,6 +30,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.refugees.HelperClasses.Address;
 import com.example.refugees.HelperClasses.User;
+import com.example.refugees.HelperClasses.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -227,15 +228,15 @@ public class Signup extends AppCompatActivity {
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
 //      TODO: uncommit this
+        Validation validator = new Validation(getResources());
 
-//        Validation validator = new Validation(getResources());
-//
-//        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-//                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
-//                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
-//        VerifyUserByEmail();
-        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
-        animation("2");
+        if(!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
+                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout)) return;
+        VerifyUserByEmail();
+
+//        animation("2");
+
     }
     private void VerifyUserByEmail() {
         emailLayout.setError(null);
@@ -258,6 +259,7 @@ public class Signup extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
                                     Log.d(ADD_USER_TAG, "verification email sent");
                                     UploadUserInfo();
                                 } else {
@@ -285,11 +287,11 @@ public class Signup extends AppCompatActivity {
 
 
     private void UploadUserInfo() {
+        // TODO : add guides for this so the user know he should do this cause really facing troubles in this
         if (imageUri != null) {
             final String userId = mAuth.getCurrentUser().getUid();
             StorageReference imgRef = mStorageRef.child(userId + ".jpg");
             imgRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -308,7 +310,6 @@ public class Signup extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(ADD_USER_TAG, "user info upload success");
-
                                         registerBtn.doneLoadingAnimation(R.color.green_done, BitmapFactory.decodeResource(getResources(),R.drawable.ic_done));
                                         animation(userId);
                                     }

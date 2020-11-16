@@ -56,6 +56,8 @@ public class Confirm extends AppCompatActivity {
         form = findViewById(R.id.warning);
     }
     public void setup() {
+        findViewById(R.id.anime).setAlpha(0f);
+        findViewById(R.id.anime).animate().setDuration(1500).alpha(1f);
         findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
@@ -89,6 +91,7 @@ public class Confirm extends AppCompatActivity {
     public void onBackPressed() {
         if(pressed)
             return;
+        findViewById(R.id.anime).animate().setDuration(500).alpha(0f);
         findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         pressed = true;
         animate(direction).setListener(new AnimatorListenerAdapter() {

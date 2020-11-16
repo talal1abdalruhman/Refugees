@@ -8,11 +8,22 @@
     android:background="@color/blue"
     tools:context=".Confirm">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anime"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="main_sent.json"
+        app:lottie_loop="true" />
     <ImageView
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:adjustViewBounds="true"
         android:src="@drawable/top"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,11 +53,11 @@
         android:id="@+id/warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/top"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/anime">
 
         <ImageView
             android:id="@+id/back"
@@ -57,12 +68,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search"
             app:srcCompat="@drawable/back" />
+
         <TextView
             android:id="@+id/dis"
             android:layout_width="328dp"
             android:layout_height="180dp"
-            android:gravity="center"
             android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:text="@string/confirm"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -73,44 +85,30 @@
             app:layout_constraintTop_toTopOf="@+id/back"
             app:layout_constraintVertical_bias="0.575" />
 
-        <LinearLayout
-            android:id="@+id/search"
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+            android:id="@+id/register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/login_btn_bg"
+            android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:padding="10dp"
+            android:text="@string/login"
+            android:textColor="@color/blue_dark"
+            android:textSize="18sp"
+            app:cornerRadius="30dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/search_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Confirmation"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="10dp"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.512" />
-
-            <ImageView
-                android:id="@+id/search_icon"
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                app:srcCompat="@drawable/mail_check" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:spinning_bar_color="@color/blue_dark"
+            app:spinning_bar_padding="5dp"
+            app:spinning_bar_width="5dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anime_mid"
         android:layout_width="match_parent"

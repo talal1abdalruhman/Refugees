@@ -82,6 +82,7 @@ public class Reset extends AppCompatActivity {
     }
 
     public void setup() {
+        findViewById(R.id.anime).animate().setDuration(1000).alpha(1f);
         findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
@@ -121,6 +122,7 @@ public class Reset extends AppCompatActivity {
         if (pressed)
             return;
         pressed = true;
+        findViewById(R.id.anime).animate().setDuration(700).alpha(0f);
         findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
