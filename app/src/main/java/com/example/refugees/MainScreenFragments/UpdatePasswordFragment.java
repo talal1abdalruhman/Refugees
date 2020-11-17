@@ -1,10 +1,13 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,7 +40,7 @@ public class UpdatePasswordFragment extends Fragment {
     TextInputLayout currentPass, newPass, confirmPass;
     CircularProgressButton updateBtn, cancelBtn;
     FirebaseUser currentUser;
-
+    View views;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,10 +52,20 @@ public class UpdatePasswordFragment extends Fragment {
         setExitTransition(slide);
         return inflater.inflate(R.layout.fragment_update_password, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        views = view;
+        final FrameLayout layout = view.findViewById(R.id.father);
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                setup();
+            }
+        });
 
         currentPass = view.findViewById(R.id.updatePassword_layout_current_password);
         newPass = view.findViewById(R.id.updatePassword_layout_new_password);
@@ -128,5 +141,8 @@ public class UpdatePasswordFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_updatePasswordFragment_to_settings);
             }
         });
+    }
+    public void setup() {
+        views.findViewById(R.id.anime).animate().setDuration(1000).alpha(1f);
     }
 }

@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    TODO: fix this fucking shit when you can cause the color should be better than this and the background drawable is shitty
     <TextView
         android:id="@+id/nav_header_name"
         android:layout_width="wrap_content"

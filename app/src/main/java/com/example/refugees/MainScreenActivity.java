@@ -151,10 +151,9 @@ public class MainScreenActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
         navView.setTranslationY(toolbar.getHeight() + statusBarHeight);
-        navView.setPadding(0, 0, 0, toolbar.getHeight() + statusBarHeight + 10);
+        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 30);
         navHostFragment.setTranslationY(toolbar.getHeight() + statusBarHeight);
         navHostFragment.setPadding(0, 0, 0, toolbar.getHeight() + statusBarHeight);
-        navView.setPadding(0,0,0,toolbar.getHeight() + statusBarHeight + 30);
         navHostFragment.setTranslationY(toolbar.getHeight());
         navHostFragment.setPadding(0,0,0,toolbar.getHeight());
     }
@@ -164,6 +163,7 @@ public class MainScreenActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.close();
         } else {
+            toolbar.animate().setDuration(1000).translationY(toolbar.getHeight() * -1);
             super.onBackPressed();
         }
     }
@@ -306,11 +306,14 @@ public class MainScreenActivity extends AppCompatActivity {
     }
 
     public void GotoLogOps(View view){
+        if(user != null)
+            mAuth.signOut();
         SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
         String lng = lang.getString("lang", "null");
         Intent intent = new Intent(MainScreenActivity.this, LogOptions.class);
         intent.putExtra("language", lng);
         startActivity(intent);
+        finish();
     }
 
 }

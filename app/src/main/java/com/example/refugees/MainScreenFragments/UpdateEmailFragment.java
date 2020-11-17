@@ -28,7 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
-public class UpdateEmailFragment extends Fragment {
+public class
+UpdateEmailFragment extends Fragment {
 
     public UpdateEmailFragment() {
         // Required empty public constructor

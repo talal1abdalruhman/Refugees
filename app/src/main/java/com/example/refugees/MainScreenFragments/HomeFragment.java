@@ -1,5 +1,6 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
     }
 
     FirebaseUser user;
+    private FirebaseAuth mAuth;
     private boolean animating = false;
     final private String TAG = "tag";
     private int touch;
@@ -66,7 +69,7 @@ public class HomeFragment extends Fragment {
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.reunion_whithout_account_dialog);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
+        mAuth = FirebaseAuth.getInstance();
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
@@ -75,8 +78,27 @@ public class HomeFragment extends Fragment {
                 } else {
 //                TODO: ask the user if he want to exit the application or get him back to l~ogOtions
 //                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
-                    Intent intent = new Intent(getContext(), LogOptions.class);
-                    startActivity(intent);
+                    out_animation().setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            if(user != null)
+                                mAuth.signOut();
+                            Intent intent = new Intent(getContext(), LogOptions.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+                        }
+                    });
                 }
             }
         };
@@ -154,7 +176,7 @@ public class HomeFragment extends Fragment {
                             x = currX;
                         double disX = java.lang.Math.abs(currX - x);
                         double disY = java.lang.Math.abs(currY - y);
-                        if(disY > disX && (disY > touch * 6.5f) && !animating) {
+                        if (disY > disX && (disY > touch * 6.5f) && !animating) {
                             scrollView.requestDisallowInterceptTouchEvent(false);
                         }
                     }
@@ -198,4 +220,16 @@ public class HomeFragment extends Fragment {
             motionLayouts.get(i).animate().setDuration(1000).translationX(0);
     }
 
+    public ViewPropertyAnimator out_animation() {
+        for (int i = 0; i < motionLayouts.size(); i++)
+            if (i % 2 == 0 && i == motionLayouts.size() - 1)
+                return motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth() * -1);
+            else if (i == motionLayouts.size() - 1)
+                return motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
+            else if (i % 2 == 0)
+                motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth() * -1);
+            else
+                motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
+        return motionLayouts.get(0).animate();
+    }
 }
