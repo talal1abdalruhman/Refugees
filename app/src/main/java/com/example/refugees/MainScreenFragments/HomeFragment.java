@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.transition.Slide;
 
 import com.example.refugees.LogOptions;
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
     private int touch;
     ArrayList<MotionLayout> motionLayouts;
     ScrollView scrollView;
-    TextView reunionTxt;
+    TextView reunionTxt, instTxt;
     ImageView family;
     Dialog dialog;
 
@@ -61,6 +62,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reunionTxt = view.findViewById(R.id.title_ren);
+        instTxt = view.findViewById(R.id.title_ins);
         family = view.findViewById(R.id.family);
         user = FirebaseAuth.getInstance().getCurrentUser();
         dialog = new Dialog(getContext());
@@ -132,6 +134,13 @@ public class HomeFragment extends Fragment {
 //                }
 //            }
 //        });
+
+        instTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_home_to_paperWorksFragment);
+            }
+        });
 
     }
 
