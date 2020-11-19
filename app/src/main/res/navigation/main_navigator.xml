@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_home_to_paperWorksFragment"
+            app:destination="@id/paperWorksFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -100,6 +103,15 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/paperWorksFragment"
+        android:name="com.example.refugees.MainScreenFragments.PaperWorksFragment"
+        android:label="fragment_paper_works"
+        tools:layout="@layout/fragment_paper_works" >
+        <action
+            android:id="@+id/action_paperWorksFragment_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>

@@ -74,6 +74,9 @@ public class MainScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences lang = getSharedPreferences("LANGUAGE_PREFERENCE", Context.MODE_PRIVATE);
+        String lng = lang.getString("lang", "null");
+        setApplocale(lng);
         setContentView(R.layout.activity_main_screen);
 
         setupNavDrawer();
