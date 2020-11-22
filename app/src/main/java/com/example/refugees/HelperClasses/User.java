@@ -6,11 +6,12 @@ public class User {
     private String user_id, image_url, full_name, email, phone_no, password;
     private Address address;
     private Token device_token;
+    private boolean searchable;
 
     public User() {
     }
 
-    public User(String userId, String image_url, String full_name, String email, String phone_no, String password, Address address) {
+    public User(String userId, String image_url, String full_name, String email, String phone_no, String password, Address address, boolean searchable) {
         this.user_id = userId;
         this.image_url = image_url;
         this.full_name = full_name;
@@ -18,6 +19,7 @@ public class User {
         this.phone_no = phone_no;
         this.password = password;
         this.address = address;
+        this.searchable = searchable;
     }
 
     public User(String user_id, String image_url, String full_name, String email, String phone_no, String password, Address address, Token device_token) {
@@ -93,5 +95,13 @@ public class User {
 
     public void setDevice_token(Token device_token) {
         this.device_token = device_token;
+    }
+
+    public boolean isSearchable() {
+        return searchable;
+    }
+
+    public void setSearchable(boolean searchable) {
+        this.searchable = searchable;
     }
 }
