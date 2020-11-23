@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light_dark"
+    android:id="@+id/father"
     tools:context=".MainScreenFragments.PaperWorksFragment">
 
     <!--        Parent Layout        -->
@@ -75,23 +76,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_one_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_one_arrow"
                     android:layout_toLeftOf="@id/step_one_arrow"
-                    android:text="Completed"
-                    android:textColor="@color/green"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_one_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_one_header">
 
                 <TextView
@@ -233,21 +228,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_two_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_two_arrow"
                     android:layout_toLeftOf="@id/step_two_arrow"
-                    android:text="incompleted"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_two_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -256,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_two_header">
 
                 <TextView
@@ -390,21 +381,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_three_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_three_arrow"
                     android:layout_toLeftOf="@id/step_three_arrow"
-                    android:text="incompleted"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_three_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -413,7 +400,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_three_header">
 
                 <TextView
@@ -547,21 +534,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_four_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_four_arrow"
                     android:layout_toLeftOf="@id/step_four_arrow"
-                    android:text="incompleted"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_four_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -570,7 +553,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_four_header">
 
                 <TextView
@@ -704,21 +687,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_five_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_five_arrow"
                     android:layout_toLeftOf="@id/step_five_arrow"
-                    android:text="incompleted"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_five_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -727,7 +706,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_five_header">
 
                 <TextView
@@ -861,21 +840,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/step_six_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_toStartOf="@id/step_six_arrow"
                     android:layout_toLeftOf="@id/step_six_arrow"
-                    android:text="incompleted"
-                    android:textColor="@color/red"
-                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/step_six_arrow"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_progress="0.6"
+                    app:lottie_fileName="check.json" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -884,7 +859,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:visibility="gone"
+                 
                 app:layout_constraintTop_toBottomOf="@+id/step_six_header">
 
                 <TextView
