@@ -91,5 +91,7 @@
     <string name="reunion_your_n_family">REUNION YOUR\nFAMILY</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_imag">Profile Image</string>
+    <string name="pofile_image_error_msg">You have to choose profile image.</string>
     <string name="freinds">Freinds</string>
 </resources>

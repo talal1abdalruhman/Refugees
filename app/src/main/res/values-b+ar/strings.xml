@@ -89,4 +89,6 @@
     <string name="reunion_warning_msg">لاستخدام هذه الخاصية يجب عليك إنشاء حساب او تسجيل الدخول لحسابك.</string>
     <string name="login_register">الدخول / التسجيل</string>
     <string name="reunion_your_n_family">إجتمع مع<br/>عائلتك</string>
+    <string name="profile_imag">الصورة الشخصية</string>
+    <string name="pofile_image_error_msg">يجب عليك اختيار صورة شخصية.</string>
 </resources>
