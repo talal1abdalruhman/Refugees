@@ -15,7 +15,7 @@ import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
-
     FirebaseUser user;
     private FirebaseAuth mAuth;
     private boolean animating = false;
@@ -47,25 +46,22 @@ public class HomeFragment extends Fragment {
     private int touch;
     ArrayList<MotionLayout> motionLayouts;
     ScrollView scrollView;
-    TextView reunionTxt, instTxt;
     ImageView family;
     Dialog dialog;
-
+    View views;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        views = view;
         Slide slide = new Slide();
         slide.setSlideEdge(Gravity.LEFT);
         setExitTransition(slide);
         return view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        reunionTxt = view.findViewById(R.id.title_ren);
-        instTxt = view.findViewById(R.id.title_ins);
         family = view.findViewById(R.id.family);
         user = FirebaseAuth.getInstance().getCurrentUser();
         dialog = new Dialog(getContext());
@@ -105,12 +101,11 @@ public class HomeFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
-
         motionLayouts = new ArrayList<MotionLayout>(4);
         motionLayouts.add(view.findViewById(R.id.reunion));
         motionLayouts.add(view.findViewById(R.id.instructions));
-        motionLayouts.add(view.findViewById(R.id.options1));
         motionLayouts.add(view.findViewById(R.id.options2));
+        motionLayouts.add(view.findViewById(R.id.options1));
         scrollView = view.findViewById(R.id.scrollView);
         touch = ViewConfiguration.get(scrollView.getContext()).getScaledTouchSlop();
         scrollView.setSmoothScrollingEnabled(true);
@@ -124,75 +119,158 @@ public class HomeFragment extends Fragment {
                 setup();
             }
         });
-        // TODO: I found two solutions for this one is to handle the touch thingy and the other is to ... I forgot I will check later
-//        view.findViewById(R.id.dis_ren).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (user != null) {
-//                    Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
-//                } else {
-//                    dialog.show();
-//                }
-//            }
-//        });
-//        reunionTxt.setOnClickListener(new View.OnCli
-//        kListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (user != null) {
-//                    Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
-//                } else {
-//                    dialog.show();
-//                }
-//            }
-//        });
-//        family.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (user != null) {
-//                    Navigation.findNavController(view).navigate(R.id.action_home_to_searchFragment);
-//                } else {
-//                    dialog.show();
-//                }
-//            }
-//        });
-
-        instTxt.setOnClickListener(new View.OnClickListener() {
+    }
+    public void motionLayoutTouch() {
+        motionLayouts.get(0).setOnTouchListener(new View.OnTouchListener() {
+            double x = -1;
+            double y = -1;
+            @SuppressLint("ClickableViewAccessibility")
             @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_home_to_paperWorksFragment);
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                    double currX = event.getX();
+                    double currY = event.getY();
+                    if (y == -1)
+                        y = currY;
+                    if (x == -1)
+                        x = currX;
+                    double disX = java.lang.Math.abs(currX - x);
+                    double disY = java.lang.Math.abs(currY - y);
+                    if (disY > disX && (disY > touch * 6.5f) && !animating) {
+                        scrollView.requestDisallowInterceptTouchEvent(false);
+                    }
+                }
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    y = event.getY();
+                    x = event.getX();
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                    if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
+                        if (user != null) {
+                            Navigation.findNavController(views).navigate(R.id.action_home_to_searchFragment);
+                        } else {
+                            dialog.show();
+                        }
+                        //TODO: this one is for the REUNION YOUR FAMILY FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                        Toast.makeText(getActivity(), "Reunion your family", Toast.LENGTH_SHORT / 10).show();
+                    }
+                return false;
             }
         });
-
-    }
-
-    public void motionLayoutStuff() {
-        for (int i = 0; i < motionLayouts.size(); i++)
-            motionLayouts.get(i).setOnTouchListener(new View.OnTouchListener() {
-                double x = -1;
-                double y = -1;
-
-                @SuppressLint("ClickableViewAccessibility")
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    scrollView.requestDisallowInterceptTouchEvent(true);
-                    if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                        double currX = event.getX();
-                        double currY = event.getY();
-                        if (y == -1)
-                            y = currY;
-                        if (x == -1)
-                            x = currX;
-                        double disX = java.lang.Math.abs(currX - x);
-                        double disY = java.lang.Math.abs(currY - y);
-                        if (disY > disX && (disY > touch * 6.5f) && !animating) {
-                            scrollView.requestDisallowInterceptTouchEvent(false);
+        motionLayouts.get(1).setOnTouchListener(new View.OnTouchListener() {
+            double x = -1;
+            double y = -1;
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                    double currX = event.getX();
+                    double currY = event.getY();
+                    if (y == -1)
+                        y = currY;
+                    if (x == -1)
+                        x = currX;
+                    double disX = java.lang.Math.abs(currX - x);
+                    double disY = java.lang.Math.abs(currY - y);
+                    if (disY > disX && (disY > touch * 6.5f) && !animating) {
+                        scrollView.requestDisallowInterceptTouchEvent(false);
+                    }
+                }
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    y = event.getY();
+                    x = event.getX();
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                    if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
+                        //TODO: this one is for the PAPER WORK INSTRUCTIONS FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                        Toast.makeText(getActivity(), "PAPER WORK INSTRUCTIONS", Toast.LENGTH_SHORT / 10).show();
+                        Navigation.findNavController(views).navigate(R.id.action_home_to_paperWorksFragment);
+                    }
+                return false;
+            }
+        });
+        motionLayouts.get(2).setOnTouchListener(new View.OnTouchListener() {
+            int half = motionLayouts.get(2).getWidth()/2 - 1;
+            double x = -1;
+            double y = -1;
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                    double currX = event.getX();
+                    double currY = event.getY();
+                    if (y == -1)
+                        y = currY;
+                    if (x == -1)
+                        x = currX;
+                    double disX = java.lang.Math.abs(currX - x);
+                    double disY = java.lang.Math.abs(currY - y);
+                    if (disY > disX && (disY > touch * 6.5f) && !animating) {
+                        scrollView.requestDisallowInterceptTouchEvent(false);
+                    }
+                }
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    y = event.getY();
+                    x = event.getX();
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                    if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
+                        if(x <= half) {
+                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 10).show();
+                        }
+                        else {
+                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 10).show();
                         }
                     }
-                    return false;
+                return false;
+            }
+        });
+        motionLayouts.get(3).setOnTouchListener(new View.OnTouchListener() {
+            int half = motionLayouts.get(3).getWidth()/2 - 1;
+            double x = -1;
+            double y = -1;
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                    double currX = event.getX();
+                    double currY = event.getY();
+                    if (y == -1)
+                        y = currY;
+                    if (x == -1)
+                        x = currX;
+                    double disX = java.lang.Math.abs(currX - x);
+                    double disY = java.lang.Math.abs(currY - y);
+                    if (disY > disX && (disY > touch * 6.5f) && !animating) {
+                        scrollView.requestDisallowInterceptTouchEvent(false);
+                    }
                 }
-            });
-
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    y = event.getY();
+                    x = event.getX();
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                    if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
+                        if(x <= half) {
+                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 10).show();
+                        }
+                        else {
+                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 10).show();
+                        }
+                    }
+                return false;
+            }
+        });
+    }
+    public void motionLayoutStuff() {
         for (int i = 0; i < motionLayouts.size(); i++) {
             motionLayouts.get(i).setTransitionListener(new MotionLayout.TransitionListener() {
                 @Override
@@ -219,6 +297,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void setup() {
+        motionLayoutTouch();
         for (int i = 0; i < motionLayouts.size(); i++)
             if (i % 2 == 0)
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth() * -1);

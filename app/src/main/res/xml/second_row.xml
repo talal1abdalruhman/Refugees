@@ -101,7 +101,7 @@
             android:translationZ="-1dp"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/jobs"
+            android:id="@+id/UNs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -113,12 +113,12 @@
             android:translationZ="-1dp"
             android:alpha="0"/>
         <Constraint
-            android:id="@+id/job"
+            android:id="@+id/UN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/jobs"
-            app:layout_constraintRight_toRightOf="@id/jobs"
-            app:layout_constraintLeft_toLeftOf="@id/jobs"
+            app:layout_constraintTop_toBottomOf="@id/UNs"
+            app:layout_constraintRight_toRightOf="@id/UNs"
+            app:layout_constraintLeft_toLeftOf="@id/UNs"
             android:translationZ="-1dp"
             android:alpha="0"/>
     </ConstraintSet>
@@ -171,7 +171,7 @@
                 app:attributeName="weightSum"
                 app:customFloatValue="0.47"/>
         </Constraint>
-        <Constraint android:id="@+id/jobs"
+        <Constraint android:id="@+id/UNs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
@@ -181,7 +181,7 @@
             app:layout_constraintHorizontal_bias="0.80"
             app:layout_constraintVertical_bias="0.3"
             />
-        <Constraint android:id="@+id/dis_job"
+        <Constraint android:id="@+id/dis_UN"
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:alpha="1"/>
@@ -202,9 +202,9 @@
         app:constraintSetEnd="@id/end2"
         app:duration="500">
 <!--        <OnClick-->
-<!--            app:targetId="@id/job"/>-->
+<!--            app:targetId="@id/UN"/>-->
         <OnSwipe
-            app:touchAnchorId="@id/job"
+            app:touchAnchorId="@id/UN"
             app:dragDirection="dragRight"
             app:touchAnchorSide="right"/>
     </Transition>

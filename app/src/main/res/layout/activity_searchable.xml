@@ -8,6 +8,7 @@
     android:background="@color/blue"
     tools:context=".Searchable">
     <com.airbnb.lottie.LottieAnimationView
+        android:alpha="0"
         android:id="@+id/anime"
         android:layout_width="match_parent"
         android:layout_height="300dp"
