@@ -1,5 +1,7 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -37,6 +39,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.refugees.MainScreenActivity.navView;
@@ -56,8 +59,9 @@ public class FriendsFragment extends Fragment implements UsersSearchAdapter.OnPe
     CircleImageView friendImg;
     TextView friendName, friendEmail, friendPhone, friendAddress;
     ConstraintLayout rootLayout, targetCard;
-    String targetId;
+    String targetId, phoneNo, mailAddress;
     boolean isTargetCardOpen = false;
+    CircularProgressButton callBtn, sendMailBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,26 @@ public class FriendsFragment extends Fragment implements UsersSearchAdapter.OnPe
         super.onViewCreated(view, savedInstanceState);
 
         LoadFriends();
+
+        callBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+phoneNo));
+                startActivity(intent);
+            }
+        });
+
+        sendMailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",mailAddress, null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Write your message");
+                startActivity(Intent.createChooser(emailIntent, "Send email"));
+            }
+        });
 
         rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +149,8 @@ public class FriendsFragment extends Fragment implements UsersSearchAdapter.OnPe
         friendAddress = rootView.findViewById(R.id.friends_address);
         targetCard = rootView.findViewById(R.id.friends_target_card);
         rootLayout = rootView.findViewById(R.id.root_layout);
+        callBtn = rootView.findViewById(R.id.friends_call);
+        sendMailBtn = rootView.findViewById(R.id.friends_send_email);
     }
 
     private void LoadFriends() {
@@ -179,8 +205,8 @@ public class FriendsFragment extends Fragment implements UsersSearchAdapter.OnPe
                 if (snapshot.exists()) {
                     Picasso.get().load(snapshot.child("image_url").getValue().toString()).into(friendImg);
                     friendName.setText(snapshot.child("full_name").getValue().toString());
-                    friendEmail.setText(snapshot.child("email").getValue().toString());
-                    friendPhone.setText(snapshot.child("phone_no").getValue().toString());
+                    friendEmail.setText(mailAddress = snapshot.child("email").getValue().toString());
+                    friendPhone.setText(phoneNo = snapshot.child("phone_no").getValue().toString());
                     Address address = snapshot.child("address").getValue(Address.class);
                     friendAddress.setText(address.toString());
                     targetCard.setVisibility(View.VISIBLE);

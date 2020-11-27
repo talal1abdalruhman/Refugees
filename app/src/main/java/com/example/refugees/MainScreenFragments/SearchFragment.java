@@ -161,6 +161,10 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
         text.matches("^[\u0621-\u064A\u0660-\u0669 ]+$"); // Arabic regex
         text.matches("^[a-zA-Z0-9$@$!%*?&#^-_. +]+$"); // English regex
         // TODO: store all name whith small letters, so you can get gd result by search
+        if(text.isEmpty()){
+            //TODO: do something
+            return;
+        }
         ref.orderByChild("full_name").startAt(text).endAt(text.toLowerCase()+"\uf8ff").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
