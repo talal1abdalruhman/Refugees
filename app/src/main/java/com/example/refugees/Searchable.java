@@ -118,17 +118,6 @@ public class Searchable extends AppCompatActivity {
 
 
     public void SelectSearchStatus(View view) {
-        findViewById(R.id.anime_mid).animate().setDuration(delay).alpha(1);
-        animate(direction).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                Intent intent = intent = new Intent(context, Confirm.class);
-
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-                finish();
-            }
-        });
         // TODO: uncommit this
         int id = view.getId();
         String userId = getIntent().getStringExtra("user_id");
@@ -141,11 +130,11 @@ public class Searchable extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Log.d(ADD_USER_TAG, "searchable => " + searchable);
+                    findViewById(R.id.anime_mid).animate().setDuration(delay).alpha(0);
                     animate(direction).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            Intent intent = intent = new Intent(context, Confirm.class);
-
+                            Intent intent = new Intent(context, Confirm.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             startActivity(intent);
                             finish();

@@ -140,6 +140,7 @@ public class Signup extends AppCompatActivity {
 
     // Register a new user methods
     public void animation(String userId) {
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -184,6 +185,7 @@ public class Signup extends AppCompatActivity {
 
     public void back(View view) {
         dialog.dismiss();
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
         animate(direction).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -292,7 +294,6 @@ public class Signup extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                    findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
                                 Log.d(ADD_USER_TAG, "verification email sent");
                                 UploadUserInfo();
                             } else {
@@ -344,7 +345,6 @@ public class Signup extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(ADD_USER_TAG, "user info upload success");
-
                                         registerBtn.doneLoadingAnimation(R.color.green_done, BitmapFactory.decodeResource(getResources(), R.drawable.ic_done));
                                         animation(userId);
                                     }
