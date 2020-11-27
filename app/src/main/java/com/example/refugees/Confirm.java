@@ -112,4 +112,8 @@ public class Confirm extends AppCompatActivity {
         super.onPause();
         overridePendingTransition(0, 0);
     }
+    public void onClick(View view) {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
 }

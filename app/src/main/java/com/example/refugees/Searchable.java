@@ -68,6 +68,7 @@ public class Searchable extends AppCompatActivity {
 
     public void setup() {
         findViewById(R.id.anime_mid).animate().setDuration(100).alpha(0);
+        findViewById(R.id.anime).animate().setDuration(250).alpha(1);
         form.setX(ScreenWidth * direction);
         bottom_dark.setY(ScreenHeight - bottom_dark.getHeight());
         bottom_light.setY(ScreenHeight - bottom_light.getHeight());

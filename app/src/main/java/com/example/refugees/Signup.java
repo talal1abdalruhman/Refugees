@@ -156,7 +156,6 @@ public class Signup extends AppCompatActivity {
     public void onBackPressed() {
         if (pressed)
             return;
-        findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
         if (fName.getText().toString().isEmpty()
                 && eMail.getText().toString().isEmpty()
                 && phoneNo.getText().toString().isEmpty()
@@ -165,6 +164,7 @@ public class Signup extends AppCompatActivity {
                 && city.getText().toString().isEmpty()
                 && !pressedImage) {
             pressed = true;
+            findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
             animate(direction).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -262,12 +262,11 @@ public class Signup extends AppCompatActivity {
                     );
             return;
         }
-
-        if (!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) |
-                !validator.validatePassword(passwordLayout) | !validator.validatePhoneNo(phoneLayout) |
+        // TODO: bring back the password validation
+        // !validator.validatePassword(passwordLayout)
+        if (!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) | !validator.validatePhoneNo(phoneLayout) |
                 !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout))
             return;
-
         VerifyUserByEmail();
         // animation("2");
     }
