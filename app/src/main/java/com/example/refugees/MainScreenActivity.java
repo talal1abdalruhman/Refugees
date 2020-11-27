@@ -166,7 +166,7 @@ public class MainScreenActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.close();
         } else {
-            toolbar.animate().setDuration(1000).translationY(toolbar.getHeight() * -1);
+            //toolbar.animate().setDuration(1000).translationY(toolbar.getHeight() * -1);
             super.onBackPressed();
         }
     }

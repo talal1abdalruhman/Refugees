@@ -141,6 +141,13 @@ public class NotificationFragment extends Fragment {
                 }
 
                 case ItemTouchHelper.LEFT: {
+                    sender.child("HasAccessToTheirInfo").child(currUser).setValue(currUser)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Log.d(TAG_FRS, "Added to sender friends");
+                                }
+                            });
                     receiver.child("HasAccessToMyInfo").child(senderUser).setValue("friend")
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
