@@ -49,6 +49,8 @@ public class HomeFragment extends Fragment {
     ImageView family;
     Dialog dialog;
     View views;
+    boolean gov_open = false, UN_open = false, schools_open = false, hospitals_open = false;
+    private final int START = 2131296799, END1 = 2131296481, END2 = 2131296482;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -153,7 +155,7 @@ public class HomeFragment extends Fragment {
                             dialog.show();
                         }
                         //TODO: this one is for the REUNION YOUR FAMILY FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                        Toast.makeText(getActivity(), "Reunion your family", Toast.LENGTH_SHORT / 10).show();
+                        Toast.makeText(getActivity(), "Reunion your family", Toast.LENGTH_SHORT / 20).show();
                     }
                 return false;
             }
@@ -185,7 +187,7 @@ public class HomeFragment extends Fragment {
                 if(event.getAction() == MotionEvent.ACTION_UP)
                     if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
                         //TODO: this one is for the PAPER WORK INSTRUCTIONS FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                        Toast.makeText(getActivity(), "PAPER WORK INSTRUCTIONS", Toast.LENGTH_SHORT / 10).show();
+                        Toast.makeText(getActivity(), "PAPER WORK INSTRUCTIONS", Toast.LENGTH_SHORT / 20).show();
                         Navigation.findNavController(views).navigate(R.id.action_home_to_paperWorksFragment);
                     }
                 return false;
@@ -218,13 +220,21 @@ public class HomeFragment extends Fragment {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP)
                     if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        if(x <= half) {
+                        if(gov_open) {
+                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
+                        }
+                        else if(UN_open) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 10).show();
+                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
+                        }
+                        else if(x <= half) {
+                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
                         }
                         else {
                             //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 10).show();
+                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
                         }
                     }
                 return false;
@@ -257,13 +267,21 @@ public class HomeFragment extends Fragment {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP)
                     if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        if(x <= half) {
+                        if(schools_open) {
+                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                                Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
+                        }
+                        else if(hospitals_open) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 10).show();
+                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
+                        }
+                        else if(x <= half) {
+                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
                         }
                         else {
                             //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 10).show();
+                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
                         }
                     }
                 return false;
@@ -272,6 +290,7 @@ public class HomeFragment extends Fragment {
     }
     public void motionLayoutStuff() {
         for (int i = 0; i < motionLayouts.size(); i++) {
+            int index = i;
             motionLayouts.get(i).setTransitionListener(new MotionLayout.TransitionListener() {
                 @Override
                 public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
@@ -288,8 +307,9 @@ public class HomeFragment extends Fragment {
                 }
 
                 @Override
-                public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+                public void onTransitionCompleted(MotionLayout motionLayout, int state) {
                     animating = false;
+                    check(index, state);
                     scrollView.requestDisallowInterceptTouchEvent(false);
                 }
             });
@@ -319,5 +339,31 @@ public class HomeFragment extends Fragment {
             else
                 motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
         return motionLayouts.get(0).animate();
+    }
+    public void check(int index, int state) {
+        if(index == 2) {
+            if(state == START)
+                gov_open = UN_open = false;
+            else if (state == END1) {
+                gov_open = true;
+                UN_open = false;
+            }
+            else if(state == END2) {
+                gov_open = false;
+                UN_open = true;
+            }
+        }
+        if(index == 3) {
+            if(state == START)
+                schools_open = hospitals_open = false;
+            else if (state == END1) {
+                schools_open = true;
+                hospitals_open = false;
+            }
+            else {
+                schools_open = false;
+                hospitals_open = true;
+            }
+        }
     }
 }
