@@ -58,7 +58,7 @@
     <string name="schools">مدارس</string>
     <string name="school">قائمة المدارس الخاصة باللاجئين ومواقعهم.</string>
     <string name="hospital">قائمة المستشفيات الخاصة باللاجئين ومواقعها.</string>
-    <string name="UNs">المفوضية</string>
+    <string name="UNs">المفوضية \nوفروعها</string>
     <string name="UN">قائمة الوظائف المخصصة للاجئين فقط لإحداث تغيير أفضل في الحصول على وظيفة وتفاصيلها.</string>
     <string name="gc">قائمة الدوائر الحكومية في الأردن وأماكنها.</string>
     <string name="hospitals">المستشفيات</string>

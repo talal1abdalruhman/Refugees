@@ -161,16 +161,14 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
     private void searchForSomeone(String text) {
         final String currentUId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+        text = text.trim();
 
-        // TODO: handle the patterns to know the language before search
-        text.matches("^[\u0621-\u064A\u0660-\u0669 ]+$"); // Arabic regex
-        text.matches("^[a-zA-Z0-9$@$!%*?&#^-_. +]+$"); // English regex
-        // TODO: store all name whith small letters, so you can get gd result by search
         if(text.isEmpty()){
             //TODO: do something
             return;
         }
-        ref.orderByChild("full_name").startAt(text).endAt(text.toLowerCase()+"\uf8ff").addListenerForSingleValueEvent(new ValueEventListener() {
+        String finalText = text.substring(0,1).toUpperCase() + text.substring(1).toLowerCase();
+        ref.orderByChild("full_name").startAt(finalText).endAt(finalText.toLowerCase()+"\uf8ff").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -185,7 +183,8 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
                             person.setUser_id(userSnapshot.child("user_id").getValue().toString());
 
                             // Handling for "User find himself in result"
-                            if (!currentUId.equals(person.getUser_id())) {
+                            if (!currentUId.equals(person.getUser_id())
+                                    && person.getFull_name().toLowerCase().contains(finalText.toLowerCase())) {
                                 personArrayList.add(person);
                             }
                         }
