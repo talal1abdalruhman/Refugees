@@ -4,7 +4,10 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -22,12 +25,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.transition.Slide;
 
 import com.example.refugees.LogOptions;
 import com.example.refugees.R;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -39,6 +52,9 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
+    private LocationSettingsRequest.Builder builder;
+    private final int REQUEST_CHECK_CODE = 123;
     FirebaseUser user;
     private FirebaseAuth mAuth;
     private boolean animating = false;
@@ -121,6 +137,8 @@ public class HomeFragment extends Fragment {
                 setup();
             }
         });
+
+        AskForLocationPermission();
     }
     public void motionLayoutTouch() {
         motionLayouts.get(0).setOnTouchListener(new View.OnTouchListener() {
@@ -227,10 +245,12 @@ public class HomeFragment extends Fragment {
                         else if(UN_open) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
                             Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
+                            Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
                         }
                         else if(x <= half) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
                             Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
+                            Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
                         }
                         else {
                             //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
@@ -366,4 +386,33 @@ public class HomeFragment extends Fragment {
             }
         }
     }
+
+    public void AskForLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(getContext(),
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_LOCATION);
+            Log.d("permission", "AskForLocationPermission: asked ");
+        } else {
+            Log.e("permission", "PERMISSION GRANTED");
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        Log.d("permission", "onRequestPermissionsResult: returned" + requestCode);
+        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("permission", "onRequestPermissionsResult: accepted");
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
 }

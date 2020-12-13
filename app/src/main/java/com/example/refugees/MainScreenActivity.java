@@ -2,7 +2,9 @@ package com.example.refugees;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,11 +28,21 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,6 +66,8 @@ import static com.example.refugees.MainScreenFragments.SettingsFragment.chooseLa
 import static com.example.refugees.MainScreenFragments.SettingsFragment.selectedLang;
 
 public class MainScreenActivity extends AppCompatActivity {
+    private LocationSettingsRequest.Builder builder;
+    private final int REQUEST_CHECK_CODE = 123;
     public static NavigationView navView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -319,4 +333,50 @@ public class MainScreenActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.d("permission", "onRequestPermissionsResult: mainScreen" + requestCode);
+        AskToEnableGPS();
+    }
+
+    public void AskToEnableGPS() {
+        LocationRequest request = new LocationRequest()
+                .setFastestInterval(1500)
+                .setInterval(3000)
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(request);
+
+        Task<LocationSettingsResponse> result =
+                LocationServices.getSettingsClient(this)
+                        .checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+            @Override
+            public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
+                try {
+                    task.getResult(ApiException.class);
+                } catch (ApiException e) {
+                    switch (e.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            try {
+                                ResolvableApiException resolvableApiException = (ResolvableApiException) e;
+                                resolvableApiException.startResolutionForResult(MainScreenActivity.this, REQUEST_CHECK_CODE);
+                            } catch (IntentSender.SendIntentException ex) {
+                                ex.printStackTrace();
+                            } catch (ClassCastException ex) {
+                                ex.printStackTrace();
+                            }
+                            break;
+
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE: {
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    }
 }

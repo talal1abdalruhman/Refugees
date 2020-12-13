@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_home_to_paperWorksFragment"
             app:destination="@id/paperWorksFragment" />
+        <action
+            android:id="@+id/action_home_to_unhcrFragment"
+            app:destination="@id/unhcrFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -121,6 +124,15 @@
         tools:layout="@layout/fragment_friends" >
         <action
             android:id="@+id/action_friends_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/unhcrFragment"
+        android:name="com.example.refugees.MainScreenFragments.UnhcrFragment"
+        android:label="fragment_unhcr"
+        tools:layout="@layout/fragment_unhcr" >
+        <action
+            android:id="@+id/action_unhcrFragment_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>
