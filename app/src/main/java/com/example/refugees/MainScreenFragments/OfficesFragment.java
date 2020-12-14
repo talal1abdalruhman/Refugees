@@ -54,7 +54,7 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
     private final int REQUEST_CHECK_CODE = 123;
     private FusedLocationProviderClient fusedLocationClient;
     LatLng userLocation;
-    MaterialButton callBtn1, mailBtn1, mapBtn1;
+    MaterialButton callBtn1, mailBtn1, mapBtn1, callBtn2, mailBtn2, mapBtn2, callBtn3, mapBtn3, mapBtn4, mapBtn5;
 
     public ArrayList<ConstraintLayout> layouts, descs, places, headers;
     public ArrayList<ImageView> arrows;
@@ -238,12 +238,10 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.branch1_call_btn: {
                 Call("0096265302000");
-                Toast.makeText(getContext(), "call clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.branch1_mail_btn: {
-                SendMail("t.albalawneh11@gmail.com");
-                Toast.makeText(getContext(), "mail clicked", Toast.LENGTH_SHORT).show();
+                SendMail("joram@unhcr.org");
                 break;
             }
             case R.id.branch1_map_btn: {
@@ -255,20 +253,81 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
                 } else {
                     ShowInMap(latLng);
                 }
+                break;
+            }
 
-                Toast.makeText(getContext(), "map clicked", Toast.LENGTH_SHORT).show();
+            case R.id.branch2_call_btn: {
+                Call("0096227201900");
+                break;
+            }
+            case R.id.branch2_mail_btn: {
+                SendMail("jorir@unhcr.org");
+                break;
+            }
+            case R.id.branch2_map_btn: {
+                LatLng latLng = new LatLng(32.53933848086828, 35.833021789187136);
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    AskForLocationPermission();
+                } else {
+                    ShowInMap(latLng);
+                }
+                break;
+            }
+
+            case R.id.branch3_call_btn: {
+                Call("0096226296000");
+                break;
+            }
+            case R.id.branch4_map_btn:
+            case R.id.branch3_map_btn: {
+                LatLng latLng = new LatLng(32.33586072795338, 36.220505457009764);
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    AskForLocationPermission();
+                } else {
+                    ShowInMap(latLng);
+                }
+                break;
+            }
+
+            case R.id.branch5_map_btn: {
+                LatLng latLng = new LatLng(31.908096289938502, 36.577466492571965);
+
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    AskForLocationPermission();
+                } else {
+                    ShowInMap(latLng);
+                }
                 break;
             }
         }
     }
 
-    public void ButtonInitialize(){
+    public void ButtonInitialize() {
         callBtn1 = view.findViewById(R.id.branch1_call_btn);
         callBtn1.setOnClickListener(this);
         mailBtn1 = view.findViewById(R.id.branch1_mail_btn);
         mailBtn1.setOnClickListener(this);
         mapBtn1 = view.findViewById(R.id.branch1_map_btn);
         mapBtn1.setOnClickListener(this);
+        callBtn2 = view.findViewById(R.id.branch2_call_btn);
+        callBtn2.setOnClickListener(this);
+        mailBtn2 = view.findViewById(R.id.branch2_mail_btn);
+        mailBtn2.setOnClickListener(this);
+        mapBtn2 = view.findViewById(R.id.branch2_map_btn);
+        mapBtn2.setOnClickListener(this);
+        callBtn3 = view.findViewById(R.id.branch3_call_btn);
+        callBtn3.setOnClickListener(this);
+        mapBtn3 = view.findViewById(R.id.branch3_map_btn);
+        mapBtn3.setOnClickListener(this);
+        mapBtn4 = view.findViewById(R.id.branch4_map_btn);
+        mapBtn4.setOnClickListener(this);
+        mapBtn5 = view.findViewById(R.id.branch5_map_btn);
+        mapBtn5.setOnClickListener(this);
     }
 
     public void Call(String phone) {
