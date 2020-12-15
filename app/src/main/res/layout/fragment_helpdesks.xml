@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light"
+    android:id="@+id/father"
     tools:context=".MainScreenFragments.HelpdesksFragment">
 
     <ScrollView
+        android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,13 +22,13 @@
                 android:id="@+id/helpdesk1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/helpdesk1_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -59,9 +61,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/helpdesk1_desc"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk1_header">
@@ -141,7 +144,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/helpdesk1_layout">
@@ -182,7 +184,8 @@
                     android:id="@+id/helpdesk2_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk2_header">
@@ -224,6 +227,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/helpdesk2_btns_layout"
+                        android:background="@color/blue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -303,7 +307,7 @@
                     android:id="@+id/helpdesk3_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk3_header">
@@ -424,7 +428,7 @@
                     android:id="@+id/helpdesk4_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk4_header">
@@ -545,7 +549,7 @@
                     android:id="@+id/helpdesk5_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk5_header">
@@ -666,7 +670,7 @@
                     android:id="@+id/helpdesk6_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk6_header">
@@ -787,7 +791,7 @@
                     android:id="@+id/helpdesk7_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk7_header">
@@ -908,7 +912,7 @@
                     android:id="@+id/helpdesk8_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk8_header">
@@ -1029,7 +1033,7 @@
                     android:id="@+id/helpdesk9_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk9_header">
@@ -1150,7 +1154,7 @@
                     android:id="@+id/helpdesk10_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk10_header">
@@ -1271,7 +1275,7 @@
                     android:id="@+id/helpdesk11_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk11_header">
@@ -1392,7 +1396,7 @@
                     android:id="@+id/helpdesk12_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk12_header">
@@ -1513,7 +1517,7 @@
                     android:id="@+id/helpdesk13_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/helpdesk13_header">

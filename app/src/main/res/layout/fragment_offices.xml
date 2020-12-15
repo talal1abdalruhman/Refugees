@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/blue_light"
+    android:id="@+id/father"
     tools:context=".MainScreenFragments.OfficesFragment">
 
-
     <ScrollView
+        android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -21,13 +21,13 @@
                 android:id="@+id/branch1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch1_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +60,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch1_desc"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -185,13 +186,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/branch1_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch2_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -224,9 +225,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch2_desc"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/branch2_header">
@@ -350,13 +352,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/branch2_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch3_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -389,9 +391,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch3_desc"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/branch3_header">
@@ -493,13 +495,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/branch3_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch4_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -532,9 +534,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch4_desc"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/branch4_header">
@@ -614,7 +616,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/branch4_layout">
@@ -622,6 +623,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/branch5_header"
                     android:layout_width="match_parent"
+                    android:background="@color/blue"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -655,7 +657,7 @@
                     android:id="@+id/branch5_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/branch5_header">
