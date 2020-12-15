@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_home_to_unhcrFragment"
             app:destination="@id/unhcrFragment" />
+        <action
+            android:id="@+id/action_home_to_healthServicesFragment"
+            app:destination="@id/healthServicesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -133,6 +136,14 @@
         tools:layout="@layout/fragment_unhcr" >
         <action
             android:id="@+id/action_unhcrFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthServicesFragment"
+        android:name="com.example.refugees.MainScreenFragments.HealthServicesFragment"
+        android:label="HealthServicesFragment" >
+        <action
+            android:id="@+id/action_healthServicesFragment_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>
