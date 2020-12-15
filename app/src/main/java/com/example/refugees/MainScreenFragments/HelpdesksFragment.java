@@ -69,7 +69,7 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
         // Required empty public constructor
     }
 
-    View view;
+
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
     private LocationSettingsRequest.Builder builder;
     private final int REQUEST_CHECK_CODE = 123;

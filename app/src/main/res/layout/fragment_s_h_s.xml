@@ -35,10 +35,10 @@
 
                     <TextView
                         android:id="@+id/community1_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_amman"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/for_syrians_only"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -94,7 +94,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_humanitarian_aid_centre_amman_downtown_next_to_the_italian_hospital_contact_tel_064799901_fax_064799902_mobile_0776326079_or_0775464668_services_primary_secondary_tertiary_and_reproductive_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +176,7 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_hashimi"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -218,7 +218,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/for_non_syrian_refugees_and_dental_clinics_for_all_refugees"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -232,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_hashimi_al_shamali_next_to_naqawa_roundabout_building_number_131_contact_tel_064918601_and_064918122_fax_064618602_mobile_0770466940_or_0775464661_services_primary_secondary_and_tertiary_health_services_for_non_syrian_refugees_dental_clinics_for_all_refugees_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -314,7 +314,7 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_mafraq"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -351,18 +351,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/community3_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/community3_text2"
@@ -370,11 +358,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_al_karama_street_near_al_dallah_markets_building_number_9_contact_tel_026230209_fax_026230116_mobile_0778491089_services_primary_secondary_tertiary_and_reproductive_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community3_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -452,7 +440,7 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_irbid"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -490,29 +478,16 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/community4_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
                             android:id="@+id/community4_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_king_abdullah_bin_al_hussein_street_known_as_alhoson_street_beside_the_roman_catholic_school_contact_tel_027011146_mobile_0770488060_services_primary_secondary_and_tertiary_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community4_text1" />
+                            app:layout_constraintTop_toTopOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -587,10 +562,10 @@
 
                     <TextView
                         android:id="@+id/community5_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_helpdesk_jerash"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -628,29 +603,16 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/community5_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
                             android:id="@+id/community5_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_nasir_street_church_street_extension_of_al_muntazah_roundabout_contact_hotline_0770439738_services_primary_secondary_and_tertiary_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community5_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -728,7 +690,7 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_zarqaa"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -765,18 +727,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/community6_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/community6_text2"
@@ -784,11 +734,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_prince_hassan_street_near_the_north_dair_latin_school_contact_tel_053936066_and_053936135_mobile_0778486911_or_0775444524_services_primary_secondary_and_tertiary_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community6_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -866,7 +816,7 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/caritas_karak"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -903,18 +853,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/community7_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/community7_text2"
@@ -922,11 +860,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_al_umari_mosque_street_entrance_of_dair_latin_contact_tel_032356444_hotline_0776736487_services_primary_secondary_and_tertiary_health_services_opening_hours_monday_to_thursday_saturday_8am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community7_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1001,10 +939,10 @@
 
                     <TextView
                         android:id="@+id/community8_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_amman"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1042,29 +980,16 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/community8_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
                             android:id="@+id/community8_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_jabal_amman_primary_health_centre_contact_mobile_0791535688_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_9am_to_4pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community8_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1139,10 +1064,10 @@
 
                     <TextView
                         android:id="@+id/community9_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_as_salt"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1179,18 +1104,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/community9_text1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/community9_text2"
@@ -1198,11 +1111,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
+                            android:text="@string/address_as_salt_al_baqaa_comprehensive_health_centre_contact_mobile_0791535688_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community9_text1" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1277,10 +1190,10 @@
 
                     <TextView
                         android:id="@+id/community10_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_zarqaa"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1322,25 +1235,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_zarqaa_prince_hamzeh_primary_health_centre_contact_mobile_0799495313_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
                             android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community10_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community10_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1415,10 +1315,10 @@
 
                     <TextView
                         android:id="@+id/community11_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_mafraq"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1460,25 +1360,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_mafraq_al_mafraq_primary_health_centre_contact_mobile_0790305389_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
                             android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community11_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community11_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1553,10 +1440,10 @@
 
                     <TextView
                         android:id="@+id/community12_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_irbid"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1598,25 +1485,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_irbid_al_sareh_comprehensive_health_centre_contact_mobile_0795004792_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/community12_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community12_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1691,10 +1565,10 @@
 
                     <TextView
                         android:id="@+id/community13_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/international_medical_corps_irbid_2"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1736,25 +1610,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_irbid_hakma_comprehensive_health_centre_contact_mobile_0790037124_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community13_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_sahab_hay_al_gharbi"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community13_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1832,7 +1692,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/madaba"
+                        android:text="@string/international_medical_corps_ramtha"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1873,25 +1733,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_ramtha_al_ramtha_comprehensive_health_centre_contact_mobile_0795004792_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community14_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_and_host_community_naddress_madaba_across_from_the_family_protection_department"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community14_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1969,7 +1815,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/karak"
+                        android:text="@string/international_medical_corps_ajloun"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2010,25 +1856,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_ajloun_ishtafina_primary_health_centre_contact_mobile_0795004792_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community15_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_and_host_community_naddress_karak_behind_al_thaher_baibars_park"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community15_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2106,7 +1938,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/ma_an"
+                        android:text="@string/international_medical_corps_jerash"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2147,25 +1979,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/ma_an_orphans_association"
+                            android:text="@string/address_jerash_jerash_comprehensive_health_centre_contact_mobile_0790046965_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community16_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_and_host_community_naddress_al_sateh_near_the_organizations_association"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community16_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2243,7 +2061,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/tafilah"
+                        android:text="@string/international_medical_corps_karak"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2284,25 +2102,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/queen_alia_centre"
+                            android:text="@string/address_karak_al_mazar_al_janobi_comprehensive_health_centre_contact_mobile_0791600987_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community17_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_and_host_community_naddress_tafilah_al_mansoura_street_next_to_al_tamween_grand_stores"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community17_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2380,7 +2184,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/ajloun"
+                        android:text="@string/international_medical_corps_tafilah"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2421,25 +2225,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/jordan_red_crescent"
+                            android:text="@string/address_tafilah_tafilah_comprehensive_health_centre_contact_mobile_0791545772_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community18_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_wahadneh_feras_al_ajlouni_street"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community18_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2517,7 +2307,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/jerash"
+                        android:text="@string/international_medical_corps_ma_an"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2558,25 +2348,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/princess_basma_centre"
+                            android:text="@string/address_ma_an_west_ma_an_primary_health_centre_contact_mobile_0791545772_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community19_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_al_kettah_al_razi_medical_centre_street"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community19_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2654,7 +2432,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/aqaba"
+                        android:text="@string/international_medical_corps_aqaba"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2695,25 +2473,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/jordan_red_crescent"
+                            android:text="@string/address_aqaba_the_old_city_centre_primary_health_centre_contact_mobile_0791545772_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_8am_to_3pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/community20_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_and_host_community_naddress_old_downtown_al_hillawi_street"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community20_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2791,7 +2556,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/azraq_south"
+                        android:text="@string/international_medical_corps_nzaatari_camp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2832,25 +2597,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/southern_azraq_women_s_society"
+                            android:text="@string/address_zaatari_camp_contact_mobile_0796027807_or_0798559517_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_9am_to_4pm"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community21_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_southern_azraq"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community21_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2928,7 +2679,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/azraq_north"
+                        android:text="@string/international_medical_corps_nazraq_camp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -2969,25 +2720,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="@string/al_erfan_association"
+                            android:text="@string/address_azraq_camp_contact_mobile_0791047087_services_mental_health_and_case_management_services_opening_hours_sunday_to_thursday_9am_to_4pm"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/community22_text2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="1dp"
-                            android:text="@string/target_population_syrian_naddress_northern_azraq"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/community22_text1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

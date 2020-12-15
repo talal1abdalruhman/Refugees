@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/blue_light"
     tools:context=".MainScreenFragments.HSFragment">
 
     <ScrollView
@@ -15,20 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/maintext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
-
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <!--    Community 1    -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/community1_layout"
@@ -36,7 +22,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/maintext">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/community1_header"
@@ -49,10 +35,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community1_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/primary_healthcare_services"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,9 +72,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service1_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -102,6 +88,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community2_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community1_layout">
@@ -117,10 +104,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community2_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/pregnancy_and_delivery_services"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,9 +141,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service2_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -170,6 +157,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community3_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community2_layout">
@@ -185,10 +173,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community3_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/emergency_healthcare"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -222,9 +210,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service3_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -238,6 +226,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community4_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community3_layout">
@@ -253,10 +242,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community4_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/tertiary_healthcare_services"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -290,9 +279,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service4_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -306,6 +295,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community5_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community4_layout">
@@ -321,10 +311,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community5_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/mental_health_services"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -358,9 +348,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service5_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -374,6 +364,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community6_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community5_layout">
@@ -389,10 +380,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 
                     <TextView
                         android:id="@+id/community6_title"
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/nutrition_support_services"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -426,9 +417,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service6_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -442,6 +433,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 android:id="@+id/community7_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community6_layout">
@@ -460,7 +452,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:text="@string/amman_sahab"
+                        android:text="@string/vaccinations"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -494,9 +486,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@string/princess_basma_centre"
+                        android:text="@string/service7_desc"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
