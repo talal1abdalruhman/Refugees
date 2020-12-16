@@ -285,10 +285,12 @@ public class HomeFragment extends Fragment {
                         else if(hospitals_open) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
                             Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
+                            Navigation.findNavController(views).navigate(R.id.action_home_to_healthServicesFragment);
                         }
                         else if(x <= half) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
                             Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
+                            Navigation.findNavController(views).navigate(R.id.action_home_to_healthServicesFragment);
                         }
                         else {
                             //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
