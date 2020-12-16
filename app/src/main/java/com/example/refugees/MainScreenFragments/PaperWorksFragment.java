@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -149,7 +148,6 @@ public class PaperWorksFragment extends Fragment {
     }
     @SuppressLint("ClickableViewAccessibility")
     public void setup() {
-        fix_the_animate(0);
         for(int i = 0; i < descs.size(); i++) {
             descs.get(i).setPivotY(0);
             descs.get(i).setScaleY(0);
@@ -167,55 +165,7 @@ public class PaperWorksFragment extends Fragment {
         }
     }
     @SuppressLint("ClickableViewAccessibility")
-    public void fix_the_animate(int down) {
-        if(down == 0) {
-            scroller.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    scroller.requestDisallowInterceptTouchEvent(false);
-                    return true;
-                }
-            });
-            return;
-        }
-        scroller.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                scroller.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-        scroller.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if (scrollY > oldScrollY) {
-                int height = views.getHeight();
-                int curr_bottom = scrollY + height;
-                int conition = headers.get(0).getHeight() * headers.size() + down + 50;
-                if(curr_bottom >= conition) {
-                    Log.d("test", "there we go " + curr_bottom + " " + (headers.get(0).getHeight() * headers.size() + descs.get(0).getHeight()));
-                    scroller.setOnTouchListener(new View.OnTouchListener() {
-                        double y = -1;
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                                if(y == -1)
-                                    y = event.getY();
-                                double dis = event.getY() - y;
-                                y = event.getY();
-                                if(dis > 0) {
-                                    scroller.requestDisallowInterceptTouchEvent(true);
-                                    return false;
-                                }
-                            }
-                            scroller.requestDisallowInterceptTouchEvent(false);
-                            return true;
-                        }
-                    });
-                }
-            }
-        });
-    }
     public void animate(int index) {
-        fix_the_animate(descs.get(index).getHeight());
         for(int i = 0; i < steps.size(); i++) {
             if(i == index)
                 continue;
@@ -231,7 +181,6 @@ public class PaperWorksFragment extends Fragment {
         descs.get(index).animate().setDuration(300).scaleY(1);
     }
     public void animate_back(int index) {
-        fix_the_animate(0);
         scroller.requestDisallowInterceptTouchEvent(true);
         scroller.smoothScrollTo(0, 0);
         states.set(index, false);

@@ -1,7 +1,6 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -139,6 +137,7 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
                 public void onClick(View v) {
                     view = (ConstraintLayout)v;
                     int index = map.get(view);
+                    Log.d("test", "testing " + index);
                     if(!states.get(index))
                         animate(index);
                     else
@@ -156,7 +155,6 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
         }
     }
     public void animate(int index) {
-        fix_the_animate(descs.get(index).getHeight());
         for(int i = 0; i < places.size(); i++) {
             if(i == index)
                 continue;
@@ -173,7 +171,6 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
     }
 
     public void animate_back(int index) {
-        fix_the_animate(0);
         scroller.requestDisallowInterceptTouchEvent(true);
         scroller.smoothScrollTo(0, 0);
         states.set(index, false);
@@ -184,55 +181,6 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
         }
         descs.get(index).animate().setDuration(300).scaleY(0);
     }
-    @SuppressLint("ClickableViewAccessibility")
-    public void fix_the_animate(int down) {
-        if(down == 0) {
-            scroller.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    scroller.requestDisallowInterceptTouchEvent(false);
-                    return true;
-                }
-            });
-            return;
-        }
-        scroller.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                scroller.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-        scroller.setOnScrollChangeListener((ScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if (scrollY > oldScrollY) {
-                int height = views.getHeight();
-                int curr_bottom = scrollY + height;
-                int condition = headers.get(0).getHeight() * headers.size() + down + 50;
-                Log.d("test", "there we go " + height + " " + condition);
-                if(curr_bottom >= condition) {
-                    scroller.setOnTouchListener(new View.OnTouchListener() {
-                        double y = -1;
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                                if(y == -1)
-                                    y = event.getY();
-                                double dis = event.getY() - y;
-                                y = event.getY();
-                                if(dis > 0) {
-                                    scroller.requestDisallowInterceptTouchEvent(true);
-                                    return false;
-                                }
-                            }
-                            scroller.requestDisallowInterceptTouchEvent(false);
-                            return true;
-                        }
-                    });
-                }
-            }
-        });
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

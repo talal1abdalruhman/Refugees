@@ -7,16 +7,20 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.ImageView;
+import android.widget.ScrollView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.refugees.R;
 import com.google.android.gms.common.api.ApiException;
@@ -32,12 +36,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class CommunitySupportFragment extends Fragment implements View.OnClickListener {
     public CommunitySupportFragment() {
         // Required empty public constructor
     }
 
-    View view;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
     private LocationSettingsRequest.Builder builder;
     private final int REQUEST_CHECK_CODE = 123;
@@ -48,19 +54,193 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
             mapBtn11, mapBtn12, mapBtn13, mapBtn14, mapBtn15,
             mapBtn16, mapBtn17, mapBtn18, mapBtn19, mapBtn20,
             mapBtn21, mapBtn22;
+    public ArrayList<ConstraintLayout> layouts, descs, places, headers;
+    public ArrayList<ImageView> arrows;
+    public ArrayList<Boolean> states;
+    public ArrayList<Float> places_save;
+    public HashMap<View, Integer> map;
+    View view, views;
+    public ScrollView scroller;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return view = inflater.inflate(R.layout.fragment_community_support, container, false);
+        return views = view = inflater.inflate(R.layout.fragment_community_support, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final ConstraintLayout layout = view.findViewById(R.id.father);
+        ViewTreeObserver vto = layout.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                setup();
+            }
+        });
+        places_save = new ArrayList<>();
+        headers = new ArrayList<ConstraintLayout>();
+        descs = new ArrayList<ConstraintLayout>();
+        arrows = new ArrayList<ImageView>();
+        places = new ArrayList<>();
+        map = new HashMap<>();
+        states = new ArrayList<>();
+
+        headers.add(view.findViewById(R.id.community1_header));
+        headers.add(view.findViewById(R.id.community2_header));
+        headers.add(view.findViewById(R.id.community3_header));
+        headers.add(view.findViewById(R.id.community4_header));
+        headers.add(view.findViewById(R.id.community5_header));
+        headers.add(view.findViewById(R.id.community6_header));
+        headers.add(view.findViewById(R.id.community7_header));
+        headers.add(view.findViewById(R.id.community8_header));
+        headers.add(view.findViewById(R.id.community9_header));
+        headers.add(view.findViewById(R.id.community10_header));
+        headers.add(view.findViewById(R.id.community11_header));
+        headers.add(view.findViewById(R.id.community12_header));
+        headers.add(view.findViewById(R.id.community13_header));
+        headers.add(view.findViewById(R.id.community14_header));
+        headers.add(view.findViewById(R.id.community15_header));
+        headers.add(view.findViewById(R.id.community16_header));
+        headers.add(view.findViewById(R.id.community17_header));
+        headers.add(view.findViewById(R.id.community18_header));
+        headers.add(view.findViewById(R.id.community19_header));
+        headers.add(view.findViewById(R.id.community20_header));
+        headers.add(view.findViewById(R.id.community21_header));
+        headers.add(view.findViewById(R.id.community22_header));
+
+        places.add(view.findViewById(R.id.community1_layout));
+        places.add(view.findViewById(R.id.community2_layout));
+        places.add(view.findViewById(R.id.community3_layout));
+        places.add(view.findViewById(R.id.community4_layout));
+        places.add(view.findViewById(R.id.community5_layout));
+        places.add(view.findViewById(R.id.community6_layout));
+        places.add(view.findViewById(R.id.community7_layout));
+        places.add(view.findViewById(R.id.community8_layout));
+        places.add(view.findViewById(R.id.community9_layout));
+        places.add(view.findViewById(R.id.community10_layout));
+        places.add(view.findViewById(R.id.community11_layout));
+        places.add(view.findViewById(R.id.community12_layout));
+        places.add(view.findViewById(R.id.community13_layout));
+        places.add(view.findViewById(R.id.community14_layout));
+        places.add(view.findViewById(R.id.community15_layout));
+        places.add(view.findViewById(R.id.community16_layout));
+        places.add(view.findViewById(R.id.community17_layout));
+        places.add(view.findViewById(R.id.community18_layout));
+        places.add(view.findViewById(R.id.community19_layout));
+        places.add(view.findViewById(R.id.community20_layout));
+        places.add(view.findViewById(R.id.community21_layout));
+        places.add(view.findViewById(R.id.community22_layout));
+
+        descs.add(view.findViewById(R.id.community1_desc));
+        descs.add(view.findViewById(R.id.community2_desc));
+        descs.add(view.findViewById(R.id.community3_desc));
+        descs.add(view.findViewById(R.id.community4_desc));
+        descs.add(view.findViewById(R.id.community5_desc));
+        descs.add(view.findViewById(R.id.community6_desc));
+        descs.add(view.findViewById(R.id.community7_desc));
+        descs.add(view.findViewById(R.id.community8_desc));
+        descs.add(view.findViewById(R.id.community9_desc));
+        descs.add(view.findViewById(R.id.community10_desc));
+        descs.add(view.findViewById(R.id.community11_desc));
+        descs.add(view.findViewById(R.id.community12_desc));
+        descs.add(view.findViewById(R.id.community13_desc));
+        descs.add(view.findViewById(R.id.community14_desc));
+        descs.add(view.findViewById(R.id.community15_desc));
+        descs.add(view.findViewById(R.id.community16_desc));
+        descs.add(view.findViewById(R.id.community17_desc));
+        descs.add(view.findViewById(R.id.community18_desc));
+        descs.add(view.findViewById(R.id.community19_desc));
+        descs.add(view.findViewById(R.id.community20_desc));
+        descs.add(view.findViewById(R.id.community21_desc));
+        descs.add(view.findViewById(R.id.community22_desc));
+
+        arrows.add(view.findViewById(R.id.community1_arrow));
+        arrows.add(view.findViewById(R.id.community2_arrow));
+        arrows.add(view.findViewById(R.id.community3_arrow));
+        arrows.add(view.findViewById(R.id.community4_arrow));
+        arrows.add(view.findViewById(R.id.community5_arrow));
+        arrows.add(view.findViewById(R.id.community6_arrow));
+        arrows.add(view.findViewById(R.id.community7_arrow));
+        arrows.add(view.findViewById(R.id.community8_arrow));
+        arrows.add(view.findViewById(R.id.community9_arrow));
+        arrows.add(view.findViewById(R.id.community10_arrow));
+        arrows.add(view.findViewById(R.id.community11_arrow));
+        arrows.add(view.findViewById(R.id.community12_arrow));
+        arrows.add(view.findViewById(R.id.community13_arrow));
+        arrows.add(view.findViewById(R.id.community14_arrow));
+        arrows.add(view.findViewById(R.id.community15_arrow));
+        arrows.add(view.findViewById(R.id.community16_arrow));
+        arrows.add(view.findViewById(R.id.community17_arrow));
+        arrows.add(view.findViewById(R.id.community18_arrow));
+        arrows.add(view.findViewById(R.id.community19_arrow));
+        arrows.add(view.findViewById(R.id.community20_arrow));
+        arrows.add(view.findViewById(R.id.community21_arrow));
+        arrows.add(view.findViewById(R.id.community22_arrow));
+        for(int i = 0; i < places.size(); i++)
+            states.add(false);
+        for(int i = 0; i < headers.size(); i++)
+            map.put(headers.get(i), i);
         ButtonInitialize();
     }
 
+    public void setup() {
+        for(int i = 0; i < descs.size(); i++) {
+            descs.get(i).setPivotY(0);
+            descs.get(i).setScaleY(0);
+            descs.get(i).setAlpha(0);
+        }
+        places_save.add(0f);
+        for(int i = 0; i < headers.size(); i++)
+            headers.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    view = (ConstraintLayout)v;
+                    int index = map.get(view);
+                    if(!states.get(index))
+                        animate(index);
+                    else
+                        animate_back(index);
+                }
+            });
+        int cumulative_sum = descs.get(0).getHeight();
+        for(int i = 1; i < places.size(); i++) {
+            places.get(i).setTranslationY(cumulative_sum * -1);
+            cumulative_sum += descs.get(i).getHeight();
+        }
+        for(int i = 1; i < places.size(); i++) {
+            places_save.add(places.get(i).getTranslationY());
+            Log.d("testing this out ", "haha " + places_save.get(i) + " " + i);
+        }
+    }
+    public void animate(int index) {
+        for(int i = 0; i < places.size(); i++) {
+            if(i == index)
+                continue;
+            if(states.get(i))
+                animate_back(i);
+        }
+        states.set(index, true);
+        arrows.get(index).animate().setDuration(300).rotation(180);
+        descs.get(index).animate().setDuration(300).alpha(1);
+        for(int i = index + 1; i < places.size(); i++) {
+            places.get(i).animate().setDuration(300).translationY(places_save.get(i) + descs.get(index).getHeight());
+        }
+        descs.get(index).animate().setDuration(300).scaleY(1);
+    }
+    public void animate_back(int index) {
+        states.set(index, false);
+        arrows.get(index).animate().setDuration(300).rotation(0);
+        descs.get(index).animate().setDuration(300).alpha(0);
+        for(int i = index + 1; i < places.size(); i++) {
+            places.get(i).animate().setDuration(300).translationY(places_save.get(i));
+        }
+        descs.get(index).animate().setDuration(300).scaleY(0);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){

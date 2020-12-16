@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/father"
     android:background="@color/blue_light"
     tools:context=".MainScreenFragments.CommunitySupportFragment">
 
@@ -20,12 +21,13 @@
                 android:id="@+id/community1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community1_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -58,10 +60,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community1_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community1_header">
@@ -141,12 +143,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community1_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community2_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -179,10 +181,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community2_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community2_header">
@@ -262,12 +265,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community2_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community3_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -300,10 +303,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community3_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community3_header">
@@ -383,12 +387,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community3_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community4_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -421,10 +426,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community4_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community4_header">
@@ -504,12 +510,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community4_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community5_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -542,10 +548,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community5_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community5_header">
@@ -625,12 +632,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community5_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community6_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -663,10 +671,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community6_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community6_header">
@@ -746,12 +755,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community6_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community7_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -784,10 +794,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community7_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community7_header">
@@ -867,12 +878,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community7_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community8_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -905,10 +917,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community8_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community8_header">
@@ -988,12 +1001,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community8_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community9_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1026,10 +1040,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community9_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community9_header">
@@ -1109,12 +1124,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community9_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community10_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1147,10 +1163,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community10_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community10_header">
@@ -1230,12 +1247,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community10_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community11_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1268,10 +1286,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community11_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community11_header">
@@ -1351,12 +1370,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community11_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community12_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1389,10 +1409,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community12_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community12_header">
@@ -1472,12 +1493,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community12_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community13_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1510,10 +1532,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community13_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community13_header">
@@ -1593,12 +1616,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community13_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community14_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1631,10 +1655,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community14_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community14_header">
@@ -1714,12 +1739,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community14_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community15_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1752,10 +1778,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community15_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community15_header">
@@ -1835,12 +1862,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community15_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community16_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1873,10 +1901,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community16_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community16_header">
@@ -1956,12 +1985,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community16_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community17_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -1994,10 +2024,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community17_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community17_header">
@@ -2077,12 +2108,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community17_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community18_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2115,10 +2147,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community18_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community18_header">
@@ -2198,12 +2231,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community18_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community19_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2236,10 +2270,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community19_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community19_header">
@@ -2319,12 +2354,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community19_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community20_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2357,10 +2393,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community20_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community20_header">
@@ -2440,12 +2477,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community20_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community21_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2478,10 +2516,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community21_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community21_header">
@@ -2561,12 +2600,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
+                 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community21_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community22_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2599,10 +2639,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community22_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community22_header">

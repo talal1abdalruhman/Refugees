@@ -1,7 +1,6 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -11,7 +10,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -69,7 +67,6 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
         // Required empty public constructor
     }
 
-    View view;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
     private LocationSettingsRequest.Builder builder;
     private final int REQUEST_CHECK_CODE = 123;
@@ -369,7 +366,6 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
     }
 
     public void setup() {
-        fix_the_animate(0);
         for (int i = 0; i < descs.size(); i++) {
             descs.get(i).setPivotY(0);
             descs.get(i).setScaleY(0);
@@ -400,7 +396,6 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
     }
 
     public void animate(int index) {
-        fix_the_animate(descs.get(index).getHeight());
         for (int i = 0; i < places.size(); i++) {
             if (i == index)
                 continue;
@@ -417,7 +412,6 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
     }
 
     public void animate_back(int index) {
-        fix_the_animate(0);
         scroller.requestDisallowInterceptTouchEvent(true);
         scroller.smoothScrollTo(0, 0);
         states.set(index, false);
@@ -427,44 +421,5 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
             places.get(i).animate().setDuration(300).translationY(places_save.get(i));
         }
         descs.get(index).animate().setDuration(300).scaleY(0);
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void fix_the_animate(int down) {
-        scroller.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                scroller.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-        scroller.setOnScrollChangeListener((ScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if (scrollY > oldScrollY) {
-                int height = views.getHeight();
-                int curr_bottom = scrollY + height;
-                int condition = headers.get(0).getHeight() * headers.size() + down + 50;
-                Log.d("test", "there we go " + height + " " + condition);
-//                if(curr_bottom >= condition) {
-//                    scroller.setOnTouchListener(new View.OnTouchListener() {
-//                        double y = -1;
-//                        @Override
-//                        public boolean onTouch(View v, MotionEvent event) {
-//                            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-//                                if(y == -1)
-//                                    y = event.getY();
-//                                double dis = event.getY() - y;
-//                                y = event.getY();
-//                                if(dis > 0) {
-//                                    scroller.requestDisallowInterceptTouchEvent(true);
-//                                    return false;
-//                                }
-//                            }
-//                            scroller.requestDisallowInterceptTouchEvent(false);
-//                            return true;
-//                        }
-//                    });
-//                }
-            }
-        });
     }
 }
