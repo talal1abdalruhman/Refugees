@@ -57,11 +57,11 @@
     <string name="instructions">Instructions for all the paper works a refugee should do once he is in jordan so he can\'t miss a thing.</string>
     <string name="schools">SCHOOLS</string>
     <string name="school">List of schools that are for refugees and their locations.</string>
-    <string name="hospital">List of hospitals that are for refugees and their locations.</string>
+    <string name="hospital">List of health services for refugees and their locations.</string>
     <string name="UNs">UNHCR</string>
     <string name="UN">List of jobs that are for refugees only to give better change in getting a job and their details.</string>
     <string name="gc">List of the governmental circles in jordan and their locations.</string>
-    <string name="hospitals">HOSPITALS</string>
+    <string name="hospitals">HEALTH\nSERVICES</string>
     <string name="place_holder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="change_email_address">Change Email Address</string>
     <string name="settings_reset_password">Reset Password</string>
@@ -257,4 +257,75 @@
     <string name="service6_desc">Infant and Young Child feeding programmes and management of acute malnutrition for children under five, and pregnant and lactating working is available free of charge, regardless the level of vulnerability through all Caritas clinics supported by UNHCR.</string>
     <string name="vaccinations">Vaccinations</string>
     <string name="service7_desc">The routine vaccination services are available free of charge at any Ministry of Health public health centre. Please call UNHCR Helpline if you went to a public health centre and your children did not receive the relevant vaccinations.</string>
+    <string name="registration">Registration</string>
+    <string name="description">Description</string>
+    <string name="registration_desc">Registration is the first step in the relationship between asylum-seekers and UNHCR. If you cannot return to your home country because you fear for your life, and wish to seek international protection with UNHCR, you must first register. At registration, UNHCR records information relating to you and your family, as well as why you had to leave your home country.\n\nIn order to register, call the UNHCR Helpline and request a new registration appointment. \n\n
+        You do not need to bring your family when you come to request an appointment, but you need to bring all your family members for registration and bring all your documents, including:\n
+1. Identity documents: passport, national ID, driving license\n
+2. Ministry of Interior Service Card (for Syrians only)\n
+3. Family and military booklets\n
+4. Marriage or divorce certificates\n
+5. Birth certificates for children\n
+6. Education and employment certificates\n
+7. Work permit in Jordan\n
+8. Medical certificates\n
+9. Custody/guardianship documents\n\n
+        <b>Please note that if you only have one or two of the documents listed above, this is absolutely fine; bring what you have. You can register with UNHCR even if you do not have any documents. You will be asked why you do not have any documents, and then registration will continue. Please inform reception if this is the case.</b></string>
+    <string name="complate">Complated</string>
+    <string name="service_card_desc">The Ministry of Interior, in cooperation with the UNHCR has re-registered Syrians residing outside the camps in Jordan.\n
+
+By re-registering the data, every Syrian family residing outside the camps in Jordan will obtain a new document for each family member issued by the Ministry of Interior (the service card for the Syrian community), and the Jordanian authorities will also take an eye print for all Syrians, and it is worth noting that re-registration The data is free of charge and all information is treated with complete confidentiality.\n
+
+The service card will ensure that all Syrians and their families residing outside the camps continue to receive all kinds of services and aids, such as health and educational assistance ... etc., in order to preserve your legal status in Jordan, and as part of the data re-registration process, the Jordanian authorities will return all official documents Syrian refugees returning to Syrian refugees, which were temporarily saved upon entering Jordan through unofficial border crossings, so Syrian refugees must review the UNHCR prior to the process of re-registering the data in order to coordinate with the Jordanian authorities to start the document tracking process for the purpose of assistance for returning documents and documents in best time.\n\n
+
+<b>Where does the registration process take place?</b>\n
+
+Go to the nearest security center to your residence.\n\n
+
+<b>When does the data registration process start?</b>\n
+
+The data recording process will be continuous without deviating a period of time.</string>
+    <string name="service_card">Service card</string>
+    <string name="refugee_status_determination">Refugee Status</string>
+    <string name="refugee_status_desc"><b>Refugee status determination</b> is a unit within the protection team whereby staff members are extensively trained in interviewing refugees to obtain information on the reasons why individuals have left their homes and are seeking asylum, to enable them to accurately determine whether an individual is a refugee or not.\n\n
+
+Following registration, you may receive an appointment for a Refugee Status Determination interview, depending on the needs identified in your case. Appointments will occur according to the interview schedule and will consider your own circumstances.\n
+
+Asylum-seeker and refugee certificates grant the same level of protection against deportation (refoulement). Also access to services and assistance does not depend on refugee status.\n\n
+
+<b>What happens after the Refugee Status Determination interview?</b>\n
+Your case will be assessed, reviewed and decision reached whether you meet refugee definition or not.  You will be notified of the decision that UNHCR has made on your case. If your application for refugee status is rejected and you disagree with this, you have the right to appeal the decision. Information on the appeal procedures is included in the decision that you will receive.</string>
+    <string name="resettlement_desc"><b>What is Resettlement?</b>\n
+Resettlement is the transfer from the first country that a refugee flees to (i.e. Jordan), to another country which has screened the case and agreed to admit the individual/family and provide permanent residence (the Resettlement State).\n
+
+Resettlement is a process which results in a permanent third country solution for refugees who have no option to integrate locally or return to their home country and have protection needs in the country where they stay.\n
+
+Resettlement is available for refugees whose life, liberty, safety, health or fundamental human rights are at risk in the country where they sought refuge.\n\n
+
+<b>How are refugees identified for resettlement?</b>\n
+UNHCR identifies refugees for resettlement in accordance with resettlement categories based on their protection needs. Resettlement States set the criteria which determine which refugees will be admitted to their country.\n
+
+<b>Refugees do not apply for resettlement.</b> Cases are identified through the data and information that is shared with the office at registration level, as well as information gathered by partners and during home visits.\n
+
+Identification for resettlement <b>is not linked</b> to the date of registration with the office, nationality or any other profile.\n
+
+UNHCR identifies refugees based on their protection needs and continuously reviews the situation of highly vulnerable families to assess whether they meet resettlement criteria.\n
+
+<b>Resettlement is not a right</b> and is not available to everyone granted refugee status. Places are limited and Resettlement States choose how many refugees to resettle.\n\n
+
+<b><u>If your case enters the resettlement process, UNHCR will contact you.</u></b></string>
+    <string name="resettlement">Resettlement</string>
+    <string name="working_desc"><b>Under Jordanian law, employers of non-Jordanian workers are legally required to obtain a work permit from the local Labour Directorate of the Ministry of Labour. Syrian refugees have access to work permits in selected occupations.</b>\n\n
+
+<b>Documents required from Syrian refugees willing to obtain a work permit:</b>\n
+1-Valid Ministry of Interior (MoI) service card.\n
+2-One personal passport-size photo.\n
+3-Fees apply for processing and for private insurance (construction).\n\n
+
+<b>For job seekers in the agriculture and construction sectors (non-employer specific)</b>\n
+<b>For agricultural activities:</b> work permits have to be requested through agricultural cooperatives.\n
+<b>For construction sector:</b> work permits have to be requested through the General Federation of Jordanian Trade Unions, the only body authorized to facilitate the issuance of construction work permits not tied to an employer.\n\n
+
+<b>Work permits for Syrian refugees are free of charge. Processing fees only apply. Syrians applying for a work permit in the construction sector will also need to cover the cost of mandatory insurance.</b></string>
+    <string name="working_in_jordan">Working in Jordan</string>
 </resources>
