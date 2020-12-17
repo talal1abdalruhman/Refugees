@@ -142,6 +142,7 @@ public class PaperWorksFragment extends Fragment {
                 public void onClick(View view) {
                     view = view;
                     int index = map.get(view);
+                    ObjectAnimator.ofInt(scroller, "scrollY", 0).setDuration(500).start();
                     confirm(index);
                 }
             });
