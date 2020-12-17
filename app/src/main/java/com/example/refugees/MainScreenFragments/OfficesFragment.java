@@ -1,6 +1,7 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -153,6 +154,21 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
             places_save.add(places.get(i).getTranslationY());
             Log.d("testing this out ", "haha " + places_save.get(i) + " " + i);
         }
+    }
+    public void fix(int index) {
+        scroller.setOnScrollChangeListener((ScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY > oldScrollY) {
+                int height = views.getHeight();
+                int curr_bottom = scrollY + height;
+                int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight();
+                if(curr_bottom >= condition) {
+                    Log.d("test", "there we go " + curr_bottom + " " + condition + " " + index);
+                    scroller.smoothScrollTo(0, scrollY);
+                    ObjectAnimator.ofInt(scroller, "scrollY",  0).setDuration(1000).start();
+
+                }
+            }
+        });
     }
     public void animate(int index) {
         for(int i = 0; i < places.size(); i++) {

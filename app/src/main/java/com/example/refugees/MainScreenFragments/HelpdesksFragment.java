@@ -1,6 +1,8 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -364,8 +366,9 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
             states.add(false);
         for (int i = 0; i < headers.size(); i++)
             map.put(headers.get(i), i);
-    }
 
+    }
+    @SuppressLint("ClickableViewAccessibility")
     public void setup() {
         for (int i = 0; i < descs.size(); i++) {
             descs.get(i).setPivotY(0);
@@ -394,9 +397,26 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
             places_save.add(places.get(i).getTranslationY());
             Log.d("testing this out ", "haha " + places_save.get(i) + " " + i);
         }
+        fix(0);
     }
+    public void fix(int index) {
+        scroller.setOnScrollChangeListener((ScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY > oldScrollY) {
+                int height = views.getHeight();
+                int curr_bottom = scrollY + height;
+                int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight();
+                if(curr_bottom >= condition) {
+                    Log.d("test", "there we go " + curr_bottom + " " + condition + " " + index);
+                    scroller.fling(1);
+                    scroller.smoothScrollTo(0, scrollY);
+                    ObjectAnimator.ofInt(scroller, "scrollY",  0).setDuration(1000).start();
 
+                }
+            }
+        });
+    }
     public void animate(int index) {
+        fix(index);
         for (int i = 0; i < places.size(); i++) {
             if (i == index)
                 continue;
@@ -411,9 +431,8 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
         }
         descs.get(index).animate().setDuration(300).scaleY(1);
     }
-
     public void animate_back(int index) {
-        scroller.requestDisallowInterceptTouchEvent(true);
+        fix(0);
         scroller.smoothScrollTo(0, 0);
         states.set(index, false);
         arrows.get(index).animate().setDuration(300).rotation(0);

@@ -1,6 +1,8 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -89,6 +91,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
         places = new ArrayList<>();
         map = new HashMap<>();
         states = new ArrayList<>();
+        scroller = view.findViewById(R.id.scroller);
 
         headers.add(view.findViewById(R.id.community1_header));
         headers.add(view.findViewById(R.id.community2_header));
@@ -216,6 +219,45 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
             places_save.add(places.get(i).getTranslationY());
             Log.d("testing this out ", "haha " + places_save.get(i) + " " + i);
         }
+        fix(21, false);
+    }
+    @SuppressLint("ClickableViewAccessibility")
+    public void fix(int index, boolean open) {
+        scroller.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            ObjectAnimator anim;
+            boolean in = true;
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > oldScrollY) {
+                    int height = views.getHeight();
+                    int curr_bottom = scrollY + height;
+                    int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight() + 200;
+                    int position = 0;
+                    //TODO: make this multiplication you dumb
+                    for(int i = 0; i < index; i++)
+                        position += headers.get(i).getHeight();
+                    Log.d("test", "there we go f " + (position));
+                    if(position + height >= condition) {
+                        position -= height;
+                        position += headers.get(index).getHeight() * 2;
+                        position -= 2.5 * index - 10;
+                        if(open)
+                            position += descs.get(index).getHeight();
+                    }
+                    else
+                        position += 2.5 * index + 10;
+                    if(open)
+                        condition += descs.get(index).getHeight();
+                    anim = ObjectAnimator.ofInt(scroller, "scrollY", position).setDuration(500);
+                    if(curr_bottom >= condition && !anim.isRunning()) {
+                        Log.d("test", "there we go " + curr_bottom + " " + condition + " " + (position) + " " );
+                        scroller.smoothScrollTo(0, condition - height - 20);
+                        if(scroller.getScrollY() == condition - height - 20)
+                            anim.start();
+                    }
+                }
+            }
+        });
     }
     public void animate(int index) {
         for(int i = 0; i < places.size(); i++) {
@@ -224,6 +266,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
             if(states.get(i))
                 animate_back(i);
         }
+        fix(index, true);
         states.set(index, true);
         arrows.get(index).animate().setDuration(300).rotation(180);
         descs.get(index).animate().setDuration(300).alpha(1);
@@ -233,6 +276,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
         descs.get(index).animate().setDuration(300).scaleY(1);
     }
     public void animate_back(int index) {
+        fix(21, false);
         states.set(index, false);
         arrows.get(index).animate().setDuration(300).rotation(0);
         descs.get(index).animate().setDuration(300).alpha(0);
