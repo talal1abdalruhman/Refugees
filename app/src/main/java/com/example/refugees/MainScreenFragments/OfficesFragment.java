@@ -83,6 +83,7 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
             }
         });
         scroller = view.findViewById(R.id.scroller);
+        scroller.setVerticalScrollBarEnabled(false);
         places_save = new ArrayList<>();
         headers = new ArrayList<ConstraintLayout>();
         descs = new ArrayList<ConstraintLayout>();
@@ -154,29 +155,67 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
             places_save.add(places.get(i).getTranslationY());
             Log.d("testing this out ", "haha " + places_save.get(i) + " " + i);
         }
+        fix(headers.size() - 1, false);
     }
-    public void fix(int index) {
-        scroller.setOnScrollChangeListener((ScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if (scrollY > oldScrollY) {
-                int height = views.getHeight();
-                int curr_bottom = scrollY + height;
-                int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight();
-                if(curr_bottom >= condition) {
-                    Log.d("test", "there we go " + curr_bottom + " " + condition + " " + index);
-                    scroller.smoothScrollTo(0, scrollY);
-                    ObjectAnimator.ofInt(scroller, "scrollY",  0).setDuration(1000).start();
-
+    public void fix(int index, boolean open) {
+        scroller.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            ObjectAnimator anim;
+            boolean in = true;
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > oldScrollY) {
+                    int height = views.getHeight();
+                    int curr_bottom = scrollY + height;
+                    int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight() + 200;
+                    int position = 0;
+                    //TODO: make this multiplication you dumb
+                    position = headers.get(index).getHeight() * index;
+                    Log.d("test", "there we go f " + (position));
+                    if(position + height >= condition) {
+                        position -= height;
+                        position += headers.get(index).getHeight() * 2;
+                        position -= 2.5 * index - 10;
+                        if(open)
+                            position += descs.get(index).getHeight();
+                    }
+                    else
+                        position += 2.5 * index + 10;
+                    if(open)
+                        condition += descs.get(index).getHeight();
+                    condition = Math.max(height + 200, condition);
+                    anim = ObjectAnimator.ofInt(scroller, "scrollY", position).setDuration(500);
+                    if(curr_bottom >= condition && !anim.isRunning()) {
+                        Log.d("test", "there we go " + curr_bottom + " " + condition + " " + (position) + " " );
+                        scroller.smoothScrollTo(0, condition - height - 20);
+                        if(scroller.getScrollY() == condition - height - 20)
+                            anim.start();
+                    }
                 }
             }
         });
     }
+    public void check(int index) {
+        int bottom = (int)scroller.getScrollY() + views.getHeight();
+        int top = (int)scroller.getScrollY();
+        int position = headers.get(index).getHeight() * (index + 1) + descs.get(index).getHeight() + 30;
+        int position2 = headers.get(index).getHeight() * index;
+        Log.d("test", "this is it " + bottom + " " + position);
+        Log.d("test", "this is it 2 " + top + " " + position2);
+        if(position >= bottom) {
+            ObjectAnimator.ofInt(scroller, "scrollY", position - views.getHeight() + 40).setDuration(500).start();
+        }
+        else if(position2 <= top)
+            ObjectAnimator.ofInt(scroller, "scrollY", position2).setDuration(500).start();
+    }
     public void animate(int index) {
+        check(index);
         for(int i = 0; i < places.size(); i++) {
             if(i == index)
                 continue;
             if(states.get(i))
                 animate_back(i);
         }
+        fix(index, true);
         states.set(index, true);
         arrows.get(index).animate().setDuration(300).rotation(180);
         descs.get(index).animate().setDuration(300).alpha(1);
@@ -187,6 +226,7 @@ public class OfficesFragment extends Fragment implements View.OnClickListener {
     }
 
     public void animate_back(int index) {
+        fix(headers.size() - 1, false);
         scroller.requestDisallowInterceptTouchEvent(true);
         scroller.smoothScrollTo(0, 0);
         states.set(index, false);

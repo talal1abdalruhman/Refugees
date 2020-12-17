@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light"
+    android:id="@+id/father"
     tools:context=".MainScreenFragments.SHSFragment">
 
     <ScrollView
+        android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -38,9 +40,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_amman"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -62,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community1_header">
@@ -176,9 +179,10 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_hashimi"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -200,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community2_header">
@@ -314,9 +318,10 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_mafraq"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -338,7 +343,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community3_header">
@@ -440,9 +445,10 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_irbid"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -464,7 +470,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community4_header">
@@ -565,9 +571,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_helpdesk_jerash"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -589,7 +596,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community5_header">
@@ -690,9 +697,10 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_zarqaa"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -714,7 +722,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community6_header">
@@ -816,9 +824,10 @@
                         android:layout_width="199dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/caritas_karak"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -840,7 +849,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community7_header">
@@ -942,9 +951,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_amman"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -966,7 +976,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community8_header">
@@ -1067,9 +1077,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_as_salt"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1091,7 +1102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community9_header">
@@ -1193,9 +1204,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_zarqaa"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1217,7 +1229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community10_header">
@@ -1318,9 +1330,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_mafraq"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1342,7 +1355,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community11_header">
@@ -1443,9 +1456,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_irbid"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1467,7 +1481,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
+                     
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community12_header">
@@ -1568,9 +1582,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_irbid_2"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1592,7 +1607,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/blue"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community13_header">
@@ -1674,7 +1688,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community13_layout">
@@ -1683,6 +1696,7 @@
                     android:id="@+id/community14_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -1692,9 +1706,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_ramtha"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1715,7 +1730,7 @@
                     android:id="@+id/community14_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community14_header">
@@ -1797,7 +1812,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community14_layout">
@@ -1806,6 +1820,7 @@
                     android:id="@+id/community15_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -1815,9 +1830,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_ajloun"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1838,7 +1854,7 @@
                     android:id="@+id/community15_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community15_header">
@@ -1920,7 +1936,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community15_layout">
@@ -1928,6 +1943,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/community16_header"
                     android:layout_width="match_parent"
+                    android:background="@color/blue"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1938,9 +1954,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_jerash"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1961,7 +1978,7 @@
                     android:id="@+id/community16_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community16_header">
@@ -2043,13 +2060,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community16_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/community17_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -2061,9 +2078,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_karak"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2084,7 +2102,7 @@
                     android:id="@+id/community17_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community17_header">
@@ -2166,13 +2184,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community17_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/community18_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -2184,9 +2202,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_tafilah"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2207,7 +2226,7 @@
                     android:id="@+id/community18_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community18_header">
@@ -2289,12 +2308,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community18_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community19_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2307,9 +2326,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_ma_an"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2330,7 +2350,7 @@
                     android:id="@+id/community19_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community19_header">
@@ -2414,12 +2434,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community19_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community20_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2432,9 +2452,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_aqaba"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2452,10 +2473,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community20_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community20_header">
@@ -2538,12 +2560,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community20_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community21_header"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -2556,9 +2578,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_nzaatari_camp"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2576,10 +2599,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community21_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community21_header">
@@ -2661,13 +2685,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:background="@color/blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/community21_layout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/community22_header"
+                    android:background="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -2679,9 +2703,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
+                        android:layout_marginEnd="20dp"
                         android:text="@string/international_medical_corps_nazraq_camp"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="19.5sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -2699,10 +2724,10 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/blue"
                     android:id="@+id/community22_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/community22_header">

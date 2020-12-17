@@ -92,6 +92,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
         map = new HashMap<>();
         states = new ArrayList<>();
         scroller = view.findViewById(R.id.scroller);
+        scroller.setVerticalScrollBarEnabled(false);
 
         headers.add(view.findViewById(R.id.community1_header));
         headers.add(view.findViewById(R.id.community2_header));
@@ -189,6 +190,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
         for(int i = 0; i < headers.size(); i++)
             map.put(headers.get(i), i);
         ButtonInitialize();
+
     }
 
     public void setup() {
@@ -234,8 +236,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
                     int condition = headers.get(0).getHeight() * headers.size() + descs.get(index).getHeight() + 200;
                     int position = 0;
                     //TODO: make this multiplication you dumb
-                    for(int i = 0; i < index; i++)
-                        position += headers.get(i).getHeight();
+                    position = headers.get(index).getHeight() * index;
                     Log.d("test", "there we go f " + (position));
                     if(position + height >= condition) {
                         position -= height;
@@ -259,6 +260,19 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
             }
         });
     }
+    public void check(int index) {
+        int bottom = (int)scroller.getScrollY() + views.getHeight();
+        int top = (int)scroller.getScrollY();
+        int position = headers.get(index).getHeight() * (index + 1) + descs.get(index).getHeight() + 30;
+        int position2 = headers.get(index).getHeight() * index;
+        Log.d("test", "this is it " + bottom + " " + position);
+        Log.d("test", "this is it 2 " + top + " " + position2);
+        if(position >= bottom) {
+            ObjectAnimator.ofInt(scroller, "scrollY", position - views.getHeight() + 40).setDuration(500).start();
+        }
+        else if(position2 <= top)
+            ObjectAnimator.ofInt(scroller, "scrollY", position2).setDuration(500).start();
+    }
     public void animate(int index) {
         for(int i = 0; i < places.size(); i++) {
             if(i == index)
@@ -274,6 +288,7 @@ public class CommunitySupportFragment extends Fragment implements View.OnClickLi
             places.get(i).animate().setDuration(300).translationY(places_save.get(i) + descs.get(index).getHeight());
         }
         descs.get(index).animate().setDuration(300).scaleY(1);
+        check(index);
     }
     public void animate_back(int index) {
         fix(21, false);

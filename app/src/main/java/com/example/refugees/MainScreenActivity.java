@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -28,7 +27,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -92,7 +90,6 @@ public class MainScreenActivity extends AppCompatActivity {
         String lng = lang.getString("lang", "null");
         setApplocale(lng);
         setContentView(R.layout.activity_main_screen);
-
         setupNavDrawer();
         final DrawerLayout layout = findViewById(R.id.drawer_layout);
         ViewTreeObserver vto = layout.getViewTreeObserver();
