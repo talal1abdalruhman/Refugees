@@ -3,10 +3,12 @@ package com.example.refugees.MainScreenFragments;
 import android.content.IntentSender;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -35,6 +37,12 @@ public class UnhcrFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+
+    }
 
     View view;
     TabLayout tabLayout;
@@ -89,9 +97,15 @@ public class UnhcrFragment extends Fragment {
 
             }
         });
-
         return view;
     }
 
+
+    private final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            Navigation.findNavController(view).navigate(R.id.action_unhcrFragment_to_home);
+        }
+    };
 
 }

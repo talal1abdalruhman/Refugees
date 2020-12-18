@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.refugees.HelperClasses.HealthPagerAdapter;
@@ -22,6 +25,19 @@ public class HealthServicesFragment extends Fragment {
     TabLayout tabLayout;
     TabItem tabHS, tabSHS;
     ViewPager viewPager;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+
+    }
+    private final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+            Navigation.findNavController(view).navigate(R.id.action_healthServicesFragment_to_home);
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = view = inflater.inflate(R.layout.fragment_health_services, container, false);

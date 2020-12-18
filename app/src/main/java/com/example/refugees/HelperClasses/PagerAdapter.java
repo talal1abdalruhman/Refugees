@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.refugees.MainScreenFragments.CommunitySupportFragment;
 import com.example.refugees.MainScreenFragments.HelpdesksFragment;
 import com.example.refugees.MainScreenFragments.OfficesFragment;
 
-public class PagerAdapter extends FragmentPagerAdapter {
+import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+
+public class PagerAdapter extends FragmentStatePagerAdapter {
     private int numOfTabs;
 
     public PagerAdapter(@NonNull FragmentManager fm, int numOfTabs) {
