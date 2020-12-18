@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.refugees.MainScreenFragments.CommunitySupportFragment;
 import com.example.refugees.MainScreenFragments.HSFragment;
@@ -11,7 +12,7 @@ import com.example.refugees.MainScreenFragments.HelpdesksFragment;
 import com.example.refugees.MainScreenFragments.OfficesFragment;
 import com.example.refugees.MainScreenFragments.SHSFragment;
 
-public class HealthPagerAdapter extends FragmentPagerAdapter {
+public class HealthPagerAdapter extends FragmentStatePagerAdapter {
     private int numOfTabs;
 
     public HealthPagerAdapter(@NonNull FragmentManager fm, int numOfTabs) {
