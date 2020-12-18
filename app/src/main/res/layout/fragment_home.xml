@@ -274,12 +274,12 @@
                         android:text="@string/schools"
                         android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_bold"
-                        android:textSize="21.5sp"
+                        android:textSize="20sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_bias="0.87"
+                        app:layout_constraintHorizontal_bias="0.90"
                         app:layout_constraintVertical_bias="0.3"
                         />
                     <ImageView

@@ -234,8 +234,6 @@ public class HomeFragment extends Fragment {
                     y = event.getY();
                     x = event.getX();
                 }
-                if(event.getAction() == MotionEvent.ACTION_UP)
-                    if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
                 if (event.getAction() == MotionEvent.ACTION_UP)
                     if (Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
                         if (gov_open) {
@@ -255,6 +253,7 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 return false;
+
             }
         });
         motionLayouts.get(3).setOnTouchListener(new View.OnTouchListener() {
@@ -362,19 +361,6 @@ public class HomeFragment extends Fragment {
     }
 
     public void check(int index, int state) {
-        if (index == 2) {
-            if (state == START)
-                gov_open = UN_open = false;
-            else if (state == END1) {
-                gov_open = true;
-                UN_open = false;
-            } else if (state == END2) {
-                gov_open = false;
-                UN_open = true;
-            }
-        }
-        if (index == 3) {
-            if (state == START)
         if(index == 3) {
             if(state == START)
                 schools_open = hospitals_open = false;
