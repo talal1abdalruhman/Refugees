@@ -237,6 +237,8 @@ public class PaperWorksFragment extends Fragment {
             steps.get(i).animate().setDuration(300).translationY(steps_save.get(i) + descs.get(index).getHeight());
         }
         descs.get(index).animate().setDuration(300).scaleY(1);
+        if(headers.get(0).getHeight() * (index + 1) < headers.get(0).getHeight() * headers.size())
+            ObjectAnimator.ofInt(scroller, "scrollY", headers.get(0).getHeight() * index).setDuration(500).start();
     }
     public void animate_back(int index) {
         states.set(index, false);

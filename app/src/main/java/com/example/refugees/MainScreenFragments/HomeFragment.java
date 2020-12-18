@@ -1,3 +1,4 @@
+
 package com.example.refugees.MainScreenFragments;
 
 import android.animation.Animator;
@@ -113,7 +114,7 @@ public class HomeFragment extends Fragment {
         motionLayouts = new ArrayList<MotionLayout>(4);
         motionLayouts.add(view.findViewById(R.id.reunion));
         motionLayouts.add(view.findViewById(R.id.instructions));
-        motionLayouts.add(view.findViewById(R.id.options2));
+        motionLayouts.add(view.findViewById(R.id.uns));
         motionLayouts.add(view.findViewById(R.id.options1));
         scrollView = view.findViewById(R.id.scrollView);
         touch = ViewConfiguration.get(scrollView.getContext()).getScaledTouchSlop();
@@ -203,7 +204,6 @@ public class HomeFragment extends Fragment {
             }
         });
         motionLayouts.get(2).setOnTouchListener(new View.OnTouchListener() {
-            int half = motionLayouts.get(2).getWidth()/2 - 1;
             double x = -1;
             double y = -1;
             @SuppressLint("ClickableViewAccessibility")
@@ -229,24 +229,9 @@ public class HomeFragment extends Fragment {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP)
                     if(Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        if(gov_open) {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
-                        }
-                        else if(UN_open) {
                             //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
                             Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
                             Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
-                        }
-                        else if(x <= half) {
-                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
-                            Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
-                        }
-                        else {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
-                        }
                     }
                 return false;
             }
@@ -354,18 +339,6 @@ public class HomeFragment extends Fragment {
         return motionLayouts.get(0).animate();
     }
     public void check(int index, int state) {
-        if(index == 2) {
-            if(state == START)
-                gov_open = UN_open = false;
-            else if (state == END1) {
-                gov_open = true;
-                UN_open = false;
-            }
-            else if(state == END2) {
-                gov_open = false;
-                UN_open = true;
-            }
-        }
         if(index == 3) {
             if(state == START)
                 schools_open = hospitals_open = false;
@@ -379,7 +352,6 @@ public class HomeFragment extends Fragment {
             }
         }
     }
-
     public void AskForLocationPermission() {
         if (ActivityCompat.checkSelfPermission(getContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -406,6 +378,4 @@ public class HomeFragment extends Fragment {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
-
 }

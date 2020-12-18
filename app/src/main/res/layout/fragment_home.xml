@@ -166,154 +166,71 @@
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 <androidx.constraintlayout.motion.widget.MotionLayout
                     android:layout_marginTop="2dp"
-                    android:id="@+id/options2"
+                    android:id="@+id/uns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutDescription="@xml/second_row">
+                    app:layoutDescription="@xml/uns">
                     <LinearLayout
-                        android:id="@+id/Right2"
+                        android:id="@+id/background_uns"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:weightSum="1"
+                        android:layout_height="200dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:orientation="horizontal"
-                        android:layoutDirection="rtl"
-                        app:layout_constraintRight_toRightOf="parent">
+                        android:background="#80ACEF"
+                        android:weightSum="1">
                         <View
+                            android:id="@+id/background_uns_curv"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.495"
-                            android:background="@drawable/blue_dark_dark_inv"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/Right_upper2"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal"
-                        android:layoutDirection="rtl"
-                        app:layout_constraintRight_toRightOf="parent">
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.45"
-                            android:background="@drawable/blue_dark_inv"/>
+                            android:background="@drawable/blue_dark"
+                            android:layout_weight="0.8"
+                            />
                     </LinearLayout>
                     <TextView
-                        android:id="@+id/GCs"
+                        android:id="@+id/title_uns"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="GOVERMENT\nCIRCLES"
                         android:gravity="center"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_bold"
-                        android:textSize="21sp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="UNHCR"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_bias="0.96"
-                        app:layout_constraintVertical_bias="0.24"
-                        />
-                    <ImageView
-                        android:id="@+id/GC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/gc"
-                        app:layout_constraintRight_toRightOf="@id/GCs"
-                        app:layout_constraintLeft_toLeftOf="@id/GCs"
-                        app:layout_constraintTop_toBottomOf="@id/GCs"
-                        />
-                    <LinearLayout
-                        android:id="@+id/dis_gc"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:orientation="horizontal"
-                        android:layoutDirection="rtl"
-                        android:weightSum="1"
-                        android:alpha="0">
-                        <TextView
-                            android:layout_marginRight="15dp"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/gc_dis"
-                            android:layout_weight="0.45"
-                            android:textSize="16sp"
-                            android:text="@string/gc"
-                            android:textColor="@color/white"
-                            android:gravity="center"
-                            android:fontFamily="@font/montserrat"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/Left2"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal"
-                        android:layoutDirection="ltr"
-                        app:layout_constraintLeft_toLeftOf="parent">
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.495"
-                            android:background="@drawable/blue_dark_dark"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/Left_upper2"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:weightSum="1.0"
-                        android:orientation="horizontal"
-                        android:layoutDirection="ltr"
-                        app:layout_constraintLeft_toLeftOf="parent">
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.45"
-                            android:background="@drawable/blue_dark"/>
-                    </LinearLayout>
-                    <TextView
-                        android:id="@+id/UNs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/UNs"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/white"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textSize="21.5sp"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_bias="0.20"
-                        app:layout_constraintVertical_bias="0.3"
-                        />
+                        android:textSize="26sp"
+                        app:layout_constraintHorizontal_bias="0.55"/>
                     <ImageView
-                        android:id="@+id/UN"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/un_logo"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/job"
-                        app:layout_constraintRight_toRightOf="@id/UNs"
-                        app:layout_constraintLeft_toLeftOf="@id/UNs"
-                        app:layout_constraintTop_toBottomOf="@id/UNs"
-                        />
+                        android:src="@drawable/unhcr"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/title_uns"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
                     <LinearLayout
-                        android:id="@+id/dis_UN"
+                        android:id="@+id/dis_uns"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="200dp"
                         android:orientation="horizontal"
-                        android:layoutDirection="ltr"
-                        android:weightSum="1"
-                        android:alpha="0">
+                        android:gravity="center_vertical"
+                        android:alpha="0"
+                        android:weightSum="1">
                         <TextView
-                            android:layout_marginLeft="15dp"
+                            android:layout_weight="0.46"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:id="@+id/UN_dis"
-                            android:layout_weight="0.45"
-                            android:textSize="16sp"
+                            android:layout_height="160dp"
                             android:text="@string/UN"
+                            android:lineSpacingExtra="1dp"
                             android:textColor="@color/white"
+                            android:textSize="16sp"
                             android:gravity="center"
-                            android:fontFamily="@font/montserrat"/>
+                            android:fontFamily="@font/montserrat"
+                            />
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 <androidx.constraintlayout.motion.widget.MotionLayout
