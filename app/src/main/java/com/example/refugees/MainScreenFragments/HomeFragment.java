@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
     Dialog dialog;
     View views;
     boolean gov_open = false, UN_open = false, schools_open = false, hospitals_open = false;
-    private final int START = 2131296799, END1 = 2131296481, END2 = 2131296482;
+    private final int START = 2131297241, END1 = 2131296785, END2 = 2131296786;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -209,7 +209,6 @@ public class HomeFragment extends Fragment {
             }
         });
         motionLayouts.get(2).setOnTouchListener(new View.OnTouchListener() {
-            int half = motionLayouts.get(2).getWidth() / 2 - 1;
             double x = -1;
             double y = -1;
 
@@ -236,21 +235,9 @@ public class HomeFragment extends Fragment {
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP)
                     if (Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        if (gov_open) {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
-                        } else if (UN_open) {
-                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
-                            Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
-                        } else if (x <= half) {
-                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
-                            Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
-                        } else {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "GOVERMENT CIRCLES", Toast.LENGTH_SHORT / 20).show();
-                        }
+                        //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
+                        Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
+                        Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
                     }
                 return false;
 

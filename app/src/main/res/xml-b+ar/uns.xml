@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.50" />
+            app:layout_constraintHorizontal_bias="0.65" />
         <Constraint
             android:id="@+id/scroll"
             android:layout_width="wrap_content"

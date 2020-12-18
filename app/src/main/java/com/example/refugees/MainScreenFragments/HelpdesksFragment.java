@@ -57,6 +57,7 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     View view, views;
     public ArrayList<ConstraintLayout> layouts, descs, places, headers;
     public ArrayList<ImageView> arrows;
@@ -64,7 +65,7 @@ public class HelpdesksFragment extends Fragment implements View.OnClickListener 
     public ArrayList<Float> places_save;
     public HashMap<View, Integer> map;
     public ScrollView scroller;
-    public boolean allowRefresh = true;
+
     public HelpdesksFragment() {
         // Required empty public constructor
     }

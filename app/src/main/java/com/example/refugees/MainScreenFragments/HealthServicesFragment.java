@@ -41,7 +41,6 @@ public class HealthServicesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = view = inflater.inflate(R.layout.fragment_health_services, container, false);
-
         tabLayout = view.findViewById(R.id.healthServices_tabLayout);
         tabHS = view.findViewById(R.id.tab_health_service);
         tabSHS = view.findViewById(R.id.tab_supported_health_service);

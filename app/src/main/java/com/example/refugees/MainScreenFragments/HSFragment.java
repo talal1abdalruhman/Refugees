@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
@@ -77,9 +79,13 @@ public class HSFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         return views = view = inflater.inflate(R.layout.fragment_h_s, container, false);
     }
 
