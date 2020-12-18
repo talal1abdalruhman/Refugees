@@ -4,13 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import com.example.refugees.MainScreenFragments.HSFragment;
-import com.example.refugees.MainScreenFragments.SHSFragment;
+import com.example.refugees.MainScreenFragments.BasicEduFragment;
+import com.example.refugees.MainScreenFragments.HigherEduFragment;
 
-public class HealthPagerAdapter extends FragmentStatePagerAdapter {
+
+public class EducationPagerAdapter extends FragmentStatePagerAdapter {
+
     private int numOfTabs;
 
-    public HealthPagerAdapter(@NonNull FragmentManager fm, int numOfTabs) {
+    public EducationPagerAdapter(@NonNull FragmentManager fm, int numOfTabs) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numOfTabs = numOfTabs;
     }
@@ -20,9 +22,9 @@ public class HealthPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new HSFragment();
+                return new BasicEduFragment();
             case 1:
-                return new SHSFragment();
+                return new HigherEduFragment();
             default:
                 return null;
         }
