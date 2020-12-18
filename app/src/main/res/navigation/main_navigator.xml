@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_home_to_healthServicesFragment"
             app:destination="@id/healthServicesFragment" />
+        <action
+            android:id="@+id/action_home_to_educationFragment"
+            app:destination="@id/educationFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -144,6 +147,15 @@
         android:label="HealthServicesFragment" >
         <action
             android:id="@+id/action_healthServicesFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationFragment"
+        android:name="com.example.refugees.MainScreenFragments.EducationFragment"
+        android:label="fragment_education"
+        tools:layout="@layout/fragment_education" >
+        <action
+            android:id="@+id/action_educationFragment_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>

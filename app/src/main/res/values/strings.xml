@@ -55,8 +55,8 @@
     <string name="profile_updated">Profile Info Updated</string>
     <string name="check">Check if anyone of your family, your friends or anyone you know has used this app and send them a request to meet.</string>
     <string name="instructions">Instructions for all the paper works a refugee should do once he is in jordan so he can\'t miss a thing.</string>
-    <string name="schools">SCHOOLS</string>
-    <string name="school">List of schools that are for refugees and their locations.</string>
+    <string name="schools">EDUCATION</string>
+    <string name="school">A detailed explanation of basic and university education options in Jordan.</string>
     <string name="hospital">List of health services for refugees and their locations.</string>
     <string name="UNs">UNHCR</string>
     <string name="UN">Offices, helpdesks and community support everything you need to know about them, detailed description, phone numbers and their locations</string>
@@ -328,4 +328,49 @@ UNHCR identifies refugees based on their protection needs and continuously revie
 
 <b>Work permits for Syrian refugees are free of charge. Processing fees only apply. Syrians applying for a work permit in the construction sector will also need to cover the cost of mandatory insurance.</b></string>
     <string name="working_in_jordan">Working in Jordan</string>
+
+    <string name="basic_education">Basic Education</string>
+    <string name="higher_education">Higher Education</string>
+    <string name="formal_education_system">Formal Education System</string>
+    <string name="basicedu1_desc">The structure of the educational system in Jordan consists of one year of pre-school education or kindergarten, ten years of compulsory basic education (Grades 1-10), two years of academic or vocational secondary education (Grades 11-12). At the end of the second year of high school, students take the secondary education exam (Tawjihi) for a certificate.\n\n
+
+The instructions of the Ministry of Education allow children to be registered in formal education for those who have been out of school for less than three years.\n\n
+
+Register in the nearest public school. It is not required upon registration in any school to provide previous school certificates. A copy of the service card issued by the Ministry of Interior for the Syrian community must be presented when registering at the school. In cases of transfer from one school to another, the last school certificate must be presented, according to the Ministry of Education instructions applicable in the academic year 2019/2020.\n\n
+
+If you couldn’t register in a specific school, please go to the nearest neighbouring school that has absorptive capacity, and if you couldn’t register, please contact the Ministry of Education Helpdesk office 065607181 (ext. 2100) or UNICEF hotline 065509677.\n</string>
+    <string name="catch_up_program">Catch Up program</string>
+    <string name="basicedu2_desc">The Catch Up programme is scattered into three intensive educational levels for the first six basic grades (from the first to the sixth grade), implemented and supervised by the Ministry of Education. After undergoing diagnostic tests, the child accepted and enrolled in the level of the Catch Up programme according to his capabilities, and each student gets a school certificate issued by the Ministry. Children aged 9 to 12 who have not attended formal education permanently (do not have any reading, writing or mathematical skills) or have dropped out of education for a period exceeding three years, could register and enroll in the Catch Up programme.\n\n
+
+To register in the Catch Up programme, please check with the nearest Directorate of Education on the date of the diagnostic exam. Bring a copy of the service card issued by the Ministry of Interior for the Syrian community.\n</string>
+    <string name="basicedu_desc">This programme provides an opportunity for students who have been out of school for 3 years or more and are in the age group between 13 and 18 years for males, and 13 and 20 years for females, where they can join and register in the available Drop Out programme.\n\n
+
+The student is enrolled in the Drop Out programme after undergoing diagnostic exams to place him/her in the suitable level in the programme.\n\n
+
+After graduation from the programme, the child can obtain a document equivalent to the tenth grade for the purposes of continuing in vocational training or home schooling.\n\n
+
+The Drop Out programme is characterized by a participatory approach that encourages youth leadership and critical thinking, and also helps them to continue their education and set their future goals.\n</string>
+    <string name="drop_out_program">Drop Out Program</string>
+    <string name="al_al_bayt_university">Al al Bayt University</string>
+    <string name="higheredu1_desc">Al al Bayt University announced the opportunity for Syrian students in Jordan to enroll in the university at Jordanian students’ rates under the Parallel Jordanian System.\n
+The student must provide the Service Card issued by the Ministry of Interior and the Asylum Seeker Certificate issued by UNHCR Jordan.\n</string>
+    <string name="tafila_technical_university">Tafila Technical University</string>
+    <string name="higheredu2_desc">Tafila Technical University announced the opportunity for foreign students in Jordan (Syrian AND non-Syrian) to enroll in the university at Jordanian students’ rates under the Parallel System. The student must provide the Asylum Seeker Certificate issued by UNHCR Jordan and Service Card issued by the Ministry of Interior (for Syrian students).\n</string>
+    <string name="al_ahliyya_amman_university">Al-Ahliyya Amman University</string>
+    <string name="higheredu_desc">Al-Ahliyya Amman University offers Syrian students in Jordan to enroll in the university with discounted rates up to 30% for Bachelor’s degree programmes (depending on the major). The student must provide the Service Card issued by the Ministry of Interior and the Asylum Seeker Certificate issued by UNHCR Jordan.\n</string>
+    <string name="hashemite_university">Hashemite University</string>
+    <string name="higheredu4_desc">The Hashemite University offers Syrian students in Jordan to enroll in the university with discounted rates of 20% for Bachelor’s degree programmes under the Parallel International System. The student must provide the Asylum Seeker Certificate issued by UNHCR Jordan and Service Card issued by the Ministry of Interior (for Syrian students).\n</string>
+    <string name="higheredu5_desc">higheredu5 desc</string>
+    <string name="show_discounts">Show discounts</string>
+    <string name="zarqa_university">Zarqa University offers Syrian students in Jordan to enroll in the university with discounted rates for Bachelor’s, Master’s and PhD degree programmes. The student must provide the Asylum Seeker Certificate issued by UNHCR Jordan.\n\n</string>
+    <string name="amman_arab_university">Amman Arab University</string>
+    <string name="higheredu6_desc">Amman Arab University offers refugee students in Jordan of different nationalities to enroll in the university with discounted rates for Bachelor’s and Master’s degree programmes. The student must provide the Asylum Seeker Certificate issued by UNHCR Jordan.\n\n</string>
+    <string name="in_country_scholarships">In-Country Scholarships</string>
+    <string name="higheredu7_desc"><b>UNHCR works to strengthen access to tertiary education through supporting scholarship programmes:</b>\n\n
+
+1- DAFI Scholarship – The Albert Einstein German Academic Refugee Initiative – funded by the German Government and private donors to cover bachelor’s level, is announced by July to September of each year, following Tawiji exams. <b><u>WILL BE ANNOUNCED WHEN OPEN.</u></b>\n
+2- EDU-SYRIA scholarship programme, funded by the European Union Trust Fund “Madad” offers bachelor’s degree scholarships for Syrian refugee students in Jordan. <b><u>WILL BE ANNOUNCED WHEN OPEN.</u></b>\n
+3- EDU-SYRIA scholarship programme, funded by the European Union Trust Fund “Madad” offers diploma degree scholarships for Syrian refugee students in Jordan. <b><u>WILL BE ANNOUNCED WHEN OPEN.</u></b>\n
+4- EDU-SYRIA scholarship programme, funded by the European Union Trust Fund “Madad” offers bridging for bachelor’s degree scholarships for Syrian refugee students in Jordan. <b><u>WILL BE ANNOUNCED WHEN OPEN.</u></b>\n</string>
+
 </resources>
