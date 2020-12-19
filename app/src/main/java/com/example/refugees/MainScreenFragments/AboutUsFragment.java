@@ -1,10 +1,12 @@
 package com.example.refugees.MainScreenFragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.transition.Slide;
 
 import com.example.refugees.R;
 
+import static android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD;
 import static com.example.refugees.MainScreenActivity.navView;
 
 
@@ -24,7 +27,7 @@ public class AboutUsFragment extends Fragment {
     public AboutUsFragment() {
         // Required empty public constructor
     }
-
+    TextView mainTxt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,5 +51,9 @@ public class AboutUsFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+        mainTxt = view.findViewById(R.id.main_text);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mainTxt.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
     }
 }
