@@ -27,7 +27,7 @@
     <string name="send">Send</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
     <string name="invalid_email_address">Invalid email address</string>
-    <string name="password_is_too_weak">Password is too weak</string>
+    <string name="password_is_too_weak">Password must be at least 6 character without spaces</string>
     <string name="email_address_not_register">Email address not registered</string>
     <string name="incorrect_password">Incorrect password</string>
     <string name="email_already_used">Email already used</string>

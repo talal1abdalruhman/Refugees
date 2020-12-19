@@ -5,11 +5,14 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -111,7 +114,7 @@ public class Splash extends AppCompatActivity {
                 } else {
                     FirebaseAuth mAuth = FirebaseAuth.getInstance();
                     FirebaseUser user = mAuth.getCurrentUser();
-                    if(user != null && user.isEmailVerified()) {
+                    if(user != null && user.isEmailVerified() && isConnect()) {
 //                if(true) {
                         findViewById(R.id.anime_mid).animate().setDuration(100).alpha(1);
                         animate_main();
@@ -153,5 +156,16 @@ public class Splash extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         overridePendingTransition(0, 0);
+    }
+
+    public boolean isConnect() {
+        ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(context, "No Internet Connection!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }
