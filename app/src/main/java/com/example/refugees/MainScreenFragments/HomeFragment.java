@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -84,7 +83,7 @@ public class HomeFragment extends Fragment {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
                 } else {
-//                TODO: ask the user if he want to exit the application or get him back to l~ogOtions
+//                TODO: ask the user if he want to exit the application or get him back to logOtions
 //                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
                     ViewPropertyAnimator anim;
                     String lang  = getResources().getConfiguration().locale.getLanguage();
@@ -177,8 +176,7 @@ public class HomeFragment extends Fragment {
                         } else {
                             dialog.show();
                         }
-                        //TODO: this one is for the REUNION YOUR FAMILY FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                        Toast.makeText(getActivity(), "Reunion your family", Toast.LENGTH_SHORT / 20).show();
+//                        Toast.makeText(getActivity(), "Reunion your family", Toast.LENGTH_SHORT / 20).show();
                     }
                 return false;
             }
@@ -210,8 +208,7 @@ public class HomeFragment extends Fragment {
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP)
                     if (Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        //TODO: this one is for the PAPER WORK INSTRUCTIONS FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                        Toast.makeText(getActivity(), "PAPER WORK INSTRUCTIONS", Toast.LENGTH_SHORT / 20).show();
+//                        Toast.makeText(getActivity(), "PAPER WORK INSTRUCTIONS", Toast.LENGTH_SHORT / 20).show();
                         Navigation.findNavController(views).navigate(R.id.action_home_to_paperWorksFragment);
                     }
                 return false;
@@ -244,8 +241,7 @@ public class HomeFragment extends Fragment {
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP)
                     if (Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
-                        //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                        Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
+//                        Toast.makeText(getActivity(), "UNHCR", Toast.LENGTH_SHORT / 20).show();
                         Navigation.findNavController(views).navigate(R.id.action_home_to_unhcrFragment);
                     }
                 return false;
@@ -281,20 +277,16 @@ public class HomeFragment extends Fragment {
                 if (event.getAction() == MotionEvent.ACTION_UP)
                     if (Math.abs(y - event.getY()) <= touch * 0.7 && Math.abs(x - event.getX()) < touch * 0.7) {
                         if (schools_open) {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
+//                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
                             Navigation.findNavController(views).navigate(R.id.action_home_to_educationFragment);
                         } else if (hospitals_open) {
-                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
+//                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
                             Navigation.findNavController(views).navigate(R.id.action_home_to_healthServicesFragment);
                         } else if (x <= half) {
-                            //TODO: this one is for the UNHCR FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
+//                            Toast.makeText(getActivity(), "HOSPITALS", Toast.LENGTH_SHORT / 20).show();
                             Navigation.findNavController(views).navigate(R.id.action_home_to_healthServicesFragment);
                         } else {
-                            //TODO: this one is for the GOVERMENT CIRCLES FUNCTION TO GO TO A NEW FRAGMENT AND START THE ANIMATION FOR THAT
-                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
+//                            Toast.makeText(getActivity(), "SCHOOLS", Toast.LENGTH_SHORT / 20).show();
                             Navigation.findNavController(views).navigate(R.id.action_home_to_educationFragment);
                         }
                     }

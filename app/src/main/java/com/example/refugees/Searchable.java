@@ -118,7 +118,6 @@ public class Searchable extends AppCompatActivity {
 
 
     public void SelectSearchStatus(View view) {
-        // TODO: uncommit this
         int id = view.getId();
         String userId = getIntent().getStringExtra("user_id");
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);

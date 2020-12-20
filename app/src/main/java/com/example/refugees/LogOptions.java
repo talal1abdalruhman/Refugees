@@ -58,7 +58,6 @@ public class LogOptions extends AppCompatActivity {
             setApplocale(lng);
             if(isConnect()) {
                 if (user != null && user.isEmailVerified()) {
-//                TODO: uncommit this
 //            if(false) {
                     Intent intent = new Intent(this, MainScreenActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

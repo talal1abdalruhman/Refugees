@@ -193,7 +193,6 @@ public class SearchFragment extends Fragment implements UsersSearchAdapter.OnPer
                     adapter = new UsersSearchAdapter(personArrayList, SearchFragment.this);
                     recycler.setAdapter(adapter);
                 } else {
-                    // TODO: if the name does Not found in our DB
                     Log.d("founded","NOT founded");
                     personArrayList.clear();
                     adapter = new UsersSearchAdapter(personArrayList, SearchFragment.this);

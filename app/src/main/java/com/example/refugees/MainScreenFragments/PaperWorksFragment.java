@@ -201,7 +201,6 @@ public class PaperWorksFragment extends Fragment {
                     int curr_bottom = scrollY + height;
                     int condition = headers.get(0).getHeight() * headers.size() + 200;
                     int position = 0;
-                    //TODO: make this multiplication you dumb
                     position = headers.get(index).getHeight() * index;
                     Log.d("test", "there we go f " + (position));
                     if (position + height >= condition) {

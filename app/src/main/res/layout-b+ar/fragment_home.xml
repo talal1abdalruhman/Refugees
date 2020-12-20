@@ -383,11 +383,6 @@
                             android:fontFamily="@font/montserrat"/>
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
-<!--                TODO: gonna keep this for testing only -->
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="200dp"-->
-<!--                    android:background="@color/white"/>-->
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

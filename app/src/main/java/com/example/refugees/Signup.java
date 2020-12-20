@@ -243,7 +243,6 @@ public class Signup extends AppCompatActivity {
         textPassword = password.getText().toString();
         textGovern = gover.getText().toString();
         textCity = city.getText().toString();
-//      TODO: uncommit this
         Validation validator = new Validation(getResources());
 
         if(!isConnect()) return;
@@ -325,7 +324,6 @@ public class Signup extends AppCompatActivity {
 
 
     private void UploadUserInfo() {
-        // TODO : add guides for this so the user know he should do this cause really facing troubles in this
         if (imageUri != null) {
             final String userId = mAuth.getCurrentUser().getUid();
             StorageReference imgRef = mStorageRef.child(userId + ".jpg");
