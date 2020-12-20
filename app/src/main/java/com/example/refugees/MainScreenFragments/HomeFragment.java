@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        String lang  = getResources().getConfiguration().locale.getLanguage();
         views = view;
         Slide slide = new Slide();
         slide.setSlideEdge(Gravity.LEFT);

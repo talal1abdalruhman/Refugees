@@ -1,6 +1,7 @@
 package com.example.refugees.MainScreenFragments;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.transition.Slide;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.refugees.HelperClasses.HealthPagerAdapter;
@@ -40,6 +42,11 @@ public class HealthServicesFragment extends Fragment {
     };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.LEFT);
+        setEnterTransition(slide);
+        slide.setSlideEdge(Gravity.LEFT);
+        setExitTransition(slide);
         views = view = inflater.inflate(R.layout.fragment_health_services, container, false);
         tabLayout = view.findViewById(R.id.healthServices_tabLayout);
         tabHS = view.findViewById(R.id.tab_health_service);
