@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="تعليمات \nالعمل الورقي"
+                        android:text="تعليمات \nالأعمال الورقية"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
