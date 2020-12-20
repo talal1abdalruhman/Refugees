@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -243,6 +246,8 @@ public class Signup extends AppCompatActivity {
 //      TODO: uncommit this
         Validation validator = new Validation(getResources());
 
+        if(!isConnect()) return;
+
         if (imageUri == null) {
             TapTargetView.showFor(this, TapTarget.forView(profileImg,
                     getString(R.string.profile_imag), getString(R.string.pofile_image_error_msg))
@@ -264,10 +269,9 @@ public class Signup extends AppCompatActivity {
                     );
             return;
         }
-        // TODO: bring back the password validation
-        // !validator.validatePassword(passwordLayout)
+
         if (!validator.validateName(nameLayout) | !validator.validateEmail(emailLayout) | !validator.validatePhoneNo(phoneLayout) |
-                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout))
+                !validator.validateNotEmpty(governatorLayout) | !validator.validateNotEmpty(cityLayout) |!validator.validatePassword(passwordLayout))
             return;
         VerifyUserByEmail();
         // animation("2");
@@ -409,5 +413,14 @@ public class Signup extends AppCompatActivity {
             }
         }
     }
+    public boolean isConnect() {
+        ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(context, "No Internet Connection!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
 }

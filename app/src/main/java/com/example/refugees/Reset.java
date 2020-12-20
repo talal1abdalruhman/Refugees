@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -145,6 +148,7 @@ public class Reset extends AppCompatActivity {
     }
 
     public void SendResetEmail(View view) {
+        if(!isConnect()) return;
         email.setError(null);
         email.setErrorEnabled(false);
         Validation validator =  new Validation(getResources());
@@ -171,5 +175,15 @@ public class Reset extends AppCompatActivity {
                 }
             }
         });
+    }
+    public boolean isConnect() {
+        ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(context, "No Internet Connection!", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }

@@ -114,11 +114,14 @@ public class MainScreenActivity extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         if (user != null) {
             navView.getMenu().findItem(R.id.login).setVisible(false);
+            navView.getMenu().findItem(R.id.contact_us).setVisible(false);
             retrieveUserInfo();
         } else {
             navView.getMenu().findItem(R.id.profile).setVisible(false);
             navView.getMenu().findItem(R.id.notification).setVisible(false);
             navView.getMenu().findItem(R.id.logout).setVisible(false);
+            navView.getMenu().findItem(R.id.friends).setVisible(false);
+            navView.getMenu().findItem(R.id.contact_us).setVisible(false);
         }
 
     }
