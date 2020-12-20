@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,7 +28,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.transition.Slide;
 
 import com.example.refugees.LogOptions;
 import com.example.refugees.R;
@@ -68,9 +66,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         String lang  = getResources().getConfiguration().locale.getLanguage();
         views = view;
-        Slide slide = new Slide();
-        slide.setSlideEdge(Gravity.LEFT);
-        setExitTransition(slide);
         return view;
     }
 
@@ -403,6 +398,7 @@ public class HomeFragment extends Fragment {
         upperLeft.animate().setDuration(1000).translationX(left.getWidth() * -1);
         textView.animate().setDuration(1000).translationX(left.getWidth() * -1);
         imageView.animate().setDuration(1000).translationX(left.getWidth() * -1);
+        views.findViewById(R.id.dis_hospital).animate().setDuration(1000).translationX(left.getWidth() * -1);
 
         right = views.findViewById(R.id.Right);
         upperRight = views.findViewById(R.id.Right_upper);
@@ -413,6 +409,7 @@ public class HomeFragment extends Fragment {
         upperRight.animate().setDuration(1000).translationX(right.getWidth());
         textView.animate().setDuration(1000).translationX(right.getWidth());
         imageView.animate().setDuration(1000).translationX(right.getWidth());
+        views.findViewById(R.id.dis_school).animate().setDuration(1000).translationX(right.getWidth());
     }
     public ViewPropertyAnimator out_animation() {
         for (int i = 0; i < 3; i++)
@@ -432,7 +429,6 @@ public class HomeFragment extends Fragment {
         unsplit();
         return motionLayouts.get(0).animate();
     }
-
     public void check(int index, int state) {
         if(index == 3) {
             if(state == START)
