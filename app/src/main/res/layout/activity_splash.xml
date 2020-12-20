@@ -19,18 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="317dp"
-        android:layout_marginTop="30dp"
-        android:transitionName="logo"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top"
-        app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/bottom_light"
@@ -65,6 +53,18 @@
         app:lottie_fileName="loadings.json"
         app:lottie_loop="true"
         android:alpha="0"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="317dp"
+        android:transitionName="logo"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top"
+        app:srcCompat="@drawable/logo" />
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anime_mid"
         android:layout_width="match_parent"
