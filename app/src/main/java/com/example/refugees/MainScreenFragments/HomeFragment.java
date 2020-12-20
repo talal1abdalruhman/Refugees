@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -88,7 +90,13 @@ public class HomeFragment extends Fragment {
                 } else {
 //                TODO: ask the user if he want to exit the application or get him back to l~ogOtions
 //                Navigation.findNavController(view).navigate(R.id.action_settings_to_home);
-                    out_animation().setListener(new Animator.AnimatorListener() {
+                    ViewPropertyAnimator anim;
+                    String lang  = getResources().getConfiguration().locale.getLanguage();
+                    if(lang.equals("ar"))
+                        anim = out_animation_ar();
+                    else
+                        anim = out_animation();
+                    anim.setListener(new Animator.AnimatorListener() {
                         @Override
                         public void onAnimationStart(Animator animation) {
                         }
@@ -99,6 +107,7 @@ public class HomeFragment extends Fragment {
                                 mAuth.signOut();
                             Intent intent = new Intent(getContext(), LogOptions.class);
                             startActivity(intent);
+                            getActivity().finish();
                         }
 
                         @Override
@@ -128,7 +137,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                setup();
+                String lang = getResources().getConfiguration().locale.getLanguage();
+                if(lang.equals("ar"))
+                    setup_ar();
+                else
+                    setup();
             }
         });
 
@@ -324,26 +337,98 @@ public class HomeFragment extends Fragment {
 
     public void setup() {
         motionLayoutTouch();
-        for (int i = 0; i < motionLayouts.size(); i++)
+        for (int i = 0; i < 3; i++)
             if (i % 2 == 0)
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth() * -1);
             else
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth());
-
+        split();
         for (int i = 0; i < motionLayouts.size(); i++)
             motionLayouts.get(i).animate().setDuration(1000).translationX(0);
     }
-
-    public ViewPropertyAnimator out_animation() {
+    public void setup_ar() {
+        motionLayoutTouch();
+        for (int i = 0; i < 3; i++)
+            if (i % 2 != 0)
+                motionLayouts.get(i).setX(motionLayouts.get(i).getWidth() * -1);
+            else
+                motionLayouts.get(i).setX(motionLayouts.get(i).getWidth());
+        split();
         for (int i = 0; i < motionLayouts.size(); i++)
-            if (i % 2 == 0 && i == motionLayouts.size() - 1)
-                return motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth() * -1);
-            else if (i == motionLayouts.size() - 1)
-                return motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
-            else if (i % 2 == 0)
+            motionLayouts.get(i).animate().setDuration(1000).translationX(0);
+    }
+    public void split() {
+        LinearLayout left, upperLeft, right, upperRight;
+        TextView textView;
+        ImageView imageView;
+
+        textView = views.findViewById(R.id.hospitals);
+        imageView = views.findViewById(R.id.hospital);
+        left = views.findViewById(R.id.Left);
+        upperLeft = views.findViewById(R.id.Left_upper);
+        left.setTranslationX(left.getWidth() * -1);
+        upperLeft.setTranslationX(left.getWidth() * -1);
+        textView.setTranslationX(left.getWidth() * -1);
+        imageView.setTranslationX(left.getWidth() * -1);
+        left.animate().setDuration(1000).translationX(0);
+        upperLeft.animate().setDuration(1000).translationX(0);
+        textView.animate().setDuration(1000).translationX(0);
+        imageView.animate().setDuration(1000).translationX(0);
+
+        right = views.findViewById(R.id.Right);
+        upperRight = views.findViewById(R.id.Right_upper);
+        textView = views.findViewById(R.id.schools);
+        imageView = views.findViewById(R.id.school);
+
+        right.setTranslationX(right.getWidth());
+        upperRight.setTranslationX(right.getWidth());
+        textView.setTranslationX(right.getWidth());
+        imageView.setTranslationX(right.getWidth());
+        right.animate().setDuration(1000).translationX(0);
+        upperRight.animate().setDuration(1000).translationX(0);
+        textView.animate().setDuration(1000).translationX(0);
+        imageView.animate().setDuration(1000).translationX(0);
+    }
+    public void unsplit() {
+        LinearLayout left, upperLeft, right, upperRight;
+        TextView textView;
+        ImageView imageView;
+
+        textView = views.findViewById(R.id.hospitals);
+        imageView = views.findViewById(R.id.hospital);
+        left = views.findViewById(R.id.Left);
+        upperLeft = views.findViewById(R.id.Left_upper);
+        left.animate().setDuration(1000).translationX(left.getWidth() * -1);
+        upperLeft.animate().setDuration(1000).translationX(left.getWidth() * -1);
+        textView.animate().setDuration(1000).translationX(left.getWidth() * -1);
+        imageView.animate().setDuration(1000).translationX(left.getWidth() * -1);
+
+        right = views.findViewById(R.id.Right);
+        upperRight = views.findViewById(R.id.Right_upper);
+        textView = views.findViewById(R.id.schools);
+        imageView = views.findViewById(R.id.school);
+
+        right.animate().setDuration(1000).translationX(right.getWidth());
+        upperRight.animate().setDuration(1000).translationX(right.getWidth());
+        textView.animate().setDuration(1000).translationX(right.getWidth());
+        imageView.animate().setDuration(1000).translationX(right.getWidth());
+    }
+    public ViewPropertyAnimator out_animation() {
+        for (int i = 0; i < 3; i++)
+            if (i % 2 == 0)
                 motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth() * -1);
             else
                 motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
+        unsplit();
+        return motionLayouts.get(0).animate();
+    }
+    public ViewPropertyAnimator out_animation_ar() {
+        for (int i = 0; i < 3; i++)
+            if (i % 2 != 0)
+                motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth() * -1);
+            else
+                motionLayouts.get(i).animate().translationX(motionLayouts.get(i).getWidth());
+        unsplit();
         return motionLayouts.get(0).animate();
     }
 

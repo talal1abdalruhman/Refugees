@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/title_ins"
+            app:layout_constraintRight_toLeftOf="@id/title_ins"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/dis_ins"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.05"
             android:scaleX="0.8"
             android:scaleY="0.8"
             app:layout_constraintVertical_bias="0.2" />
@@ -79,7 +79,7 @@
         app:duration="1000">
         <OnSwipe
             app:touchAnchorId="@id/scroll"
-            app:dragDirection="dragLeft"
-            app:touchAnchorSide="left"/>
+            app:dragDirection="dragRight"
+            app:touchAnchorSide="right"/>
     </Transition>
 </MotionScene>

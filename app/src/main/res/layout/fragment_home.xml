@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#80ACEf"
     tools:context=".MainScreenFragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/father"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_light_dark">
+         >
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
@@ -41,7 +41,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:orientation="horizontal"
-                        android:background="#788AEA"
                         android:weightSum="1">
                         <View
                             android:id="@+id/background_ren_curv"
@@ -59,7 +58,7 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/reunion_your_n_family"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -96,7 +95,6 @@
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 <androidx.constraintlayout.motion.widget.MotionLayout
-                    android:layout_marginTop="2dp"
                     android:id="@+id/instructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,13 +108,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:orientation="horizontal"
-                        android:background="#80ACEF"
-                        android:weightSum="1">
+                        android:weightSum="1"
+                        android:layoutDirection="rtl">
                         <View
                             android:id="@+id/background_ins_curv"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/blue_dark"
+                            android:background="@drawable/blue_dark_inv"
                             android:layout_weight="0.8"
                             />
                     </LinearLayout>
@@ -132,15 +130,15 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/white"
-                        android:textSize="26sp"
+                        android:textSize="24sp"
                         app:layout_constraintHorizontal_bias="0.55"/>
                     <ImageView
                         android:id="@+id/scroll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/scroll"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/title_ins"
+                        app:layout_constraintLeft_toLeftOf="@id/title_ins"
+                        app:layout_constraintRight_toLeftOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
                     <LinearLayout
@@ -150,6 +148,7 @@
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:alpha="0"
+                        android:layoutDirection="rtl"
                         android:weightSum="1">
                         <TextView
                             android:layout_weight="0.46"
@@ -165,7 +164,6 @@
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 <androidx.constraintlayout.motion.widget.MotionLayout
-                    android:layout_marginTop="2dp"
                     android:id="@+id/uns"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -179,7 +177,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:orientation="horizontal"
-                        android:background="#80ACEF"
                         android:weightSum="1">
                         <View
                             android:id="@+id/background_uns_curv"
@@ -201,7 +198,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/white"
-                        android:textSize="26sp"
+                        android:textSize="24sp"
                         app:layout_constraintHorizontal_bias="0.55"/>
                     <ImageView
                         android:id="@+id/un_logo"
@@ -234,7 +231,7 @@
                     </LinearLayout>
                 </androidx.constraintlayout.motion.widget.MotionLayout>
                 <androidx.constraintlayout.motion.widget.MotionLayout
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="0.5dp"
                     android:id="@+id/options1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -274,7 +271,7 @@
                         android:text="@string/schools"
                         android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_bold"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -346,7 +343,7 @@
                         android:text="@string/hospitals"
                         android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_bold"
-                        android:textSize="21.5sp"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"

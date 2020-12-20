@@ -82,7 +82,6 @@ public class LogOptions extends AppCompatActivity {
                 getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 ScreenWidth = displayMetrics.widthPixels;
                 ScreenHeight = displayMetrics.heightPixels;
-
                 setup();
             }
         });
