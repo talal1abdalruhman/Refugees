@@ -56,7 +56,7 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:text="اجتمع مع\n عائلتك"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -129,7 +129,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/white"
-                        android:textSize="26sp"
+                        android:textSize="24sp"
                         app:layout_constraintHorizontal_bias="0.50"/>
                     <ImageView
                         android:id="@+id/scroll"
@@ -199,7 +199,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textColor="@color/white"
-                        android:textSize="26sp"
+                        android:textSize="24sp"
                         app:layout_constraintHorizontal_bias="0.55"/>
                     <ImageView
                         android:id="@+id/un_logo"

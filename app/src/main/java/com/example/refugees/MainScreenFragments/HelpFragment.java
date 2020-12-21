@@ -37,7 +37,6 @@ public class HelpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         Slide slide = new Slide();
         slide.setSlideEdge(Gravity.LEFT);
         setEnterTransition(slide);
