@@ -135,16 +135,26 @@ public class HomeFragment extends Fragment {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 String lang = getResources().getConfiguration().locale.getLanguage();
                 TextView floats = views.findViewById(R.id.floats);
-                floats.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        swipe_help();
-                    }
-                });
-                if(lang.equals("ar"))
+
+                if(lang.equals("ar")) {
                     setup_ar();
-                else
+                    floats.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            swipe_help_ar();
+                        }
+                    });
+                }
+                else {
                     setup();
+                    floats.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            swipe_help();
+                        }
+                    });
+                }
+
             }
         });
 
@@ -302,7 +312,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
     public void motionLayoutStuff() {
         for (int i = 0; i < motionLayouts.size(); i++) {
             int index = i;
@@ -330,7 +339,6 @@ public class HomeFragment extends Fragment {
             });
         }
     }
-
     public void swipe_help() {
         if(motionLayouts.get(0).getCurrentState() == motionLayouts.get(0).getEndState()) {
             motionLayouts.get(0).transitionToStart();
@@ -402,6 +410,86 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTransitionCompleted(MotionLayout motionLayout, int i) {
                 motionLayouts.get(0).setTransitionListener(null);
+                swipe.animate().alpha(0);
+            }
+
+            @Override
+            public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+
+            }
+        });
+    }
+    public void swipe_help_ar() {
+        if(motionLayouts.get(1).getCurrentState() == motionLayouts.get(1).getEndState()) {
+            motionLayouts.get(1).transitionToStart();
+            motionLayouts.get(1).setTransitionListener(new MotionLayout.TransitionListener() {
+                @Override
+                public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+
+                }
+
+                @Override
+                public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+
+                }
+
+                @Override
+                public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+                    motionLayouts.get(1).setTransitionListener(null);
+                    swipe_help_ar();
+                }
+
+                @Override
+                public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+
+
+                }
+            });
+            return;
+        }
+        scrollView.smoothScrollTo(0, 0);
+        LottieAnimationView swipe = views.findViewById(R.id.anime);
+        swipe.animate().setDuration(150).alpha(1);
+        swipe.setMinAndMaxProgress(0.2f, 0.73f);
+        swipe.playAnimation();
+        swipe.addAnimatorListener(new Animator.AnimatorListener() {
+            int counter = 0;
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+//                swipe.animate().alpha(0f);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+        motionLayouts.get(1).transitionToEnd();
+        motionLayouts.get(1).setTransitionListener(new MotionLayout.TransitionListener() {
+            @Override
+            public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+
+            }
+
+            @Override
+            public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+
+            }
+
+            @Override
+            public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+                motionLayouts.get(1).setTransitionListener(null);
                 swipe.animate().alpha(0);
             }
 
