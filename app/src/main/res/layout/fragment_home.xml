@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
          >
+
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
@@ -384,5 +385,33 @@
                 </androidx.constraintlayout.motion.widget.MotionLayout>
             </LinearLayout>
         </ScrollView>
+        <TextView
+            android:id="@+id/floats"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="?"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/circle"
+            android:scaleX="0"
+            android:scaleY="0"
+            />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anime"
+            android:alpha="0"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            app:lottie_fileName="swipe.json" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

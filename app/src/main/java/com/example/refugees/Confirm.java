@@ -113,7 +113,22 @@ public class Confirm extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
     public void onClick(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+        if(pressed)
+            return;
+        findViewById(R.id.anime).animate().setDuration(500).alpha(0f);
+        findViewById(R.id.anime_mid).animate().setDuration(150).alpha(1);
+        pressed = true;
+        animate(direction).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Intent intent = new Intent(context, Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("direction", -1);
+                String message = getResources().getConfiguration().locale.getLanguage();
+                intent.putExtra("language", message);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

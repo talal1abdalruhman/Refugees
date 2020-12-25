@@ -23,6 +23,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.transition.Slide;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.refugees.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -275,7 +276,6 @@ public class PaperWorksFragment extends Fragment {
 
     public void confirm(int index) {
         animate_back(index);
-        com.airbnb.lottie.LottieAnimationView check = views.findViewById(R.id.step_one_status);
         status.get(index).animate().setDuration(150).scaleX(0).scaleY(0).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {

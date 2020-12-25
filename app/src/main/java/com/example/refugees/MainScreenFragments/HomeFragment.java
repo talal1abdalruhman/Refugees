@@ -28,6 +28,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.refugees.LogOptions;
 import com.example.refugees.R;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -133,6 +134,13 @@ public class HomeFragment extends Fragment {
             public void onGlobalLayout() {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 String lang = getResources().getConfiguration().locale.getLanguage();
+                TextView floats = views.findViewById(R.id.floats);
+                floats.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        swipe_help();
+                    }
+                });
                 if(lang.equals("ar"))
                     setup_ar();
                 else
@@ -323,7 +331,90 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public void swipe_help() {
+        if(motionLayouts.get(0).getCurrentState() == motionLayouts.get(0).getEndState()) {
+            motionLayouts.get(0).transitionToStart();
+            motionLayouts.get(0).setTransitionListener(new MotionLayout.TransitionListener() {
+                @Override
+                public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+
+                }
+
+                @Override
+                public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+
+                }
+
+                @Override
+                public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+                    motionLayouts.get(0).setTransitionListener(null);
+                    swipe_help();
+                }
+
+                @Override
+                public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+
+
+                }
+            });
+            return;
+        }
+        scrollView.smoothScrollTo(0, 0);
+        LottieAnimationView swipe = views.findViewById(R.id.anime);
+        swipe.animate().setDuration(150).alpha(1);
+        swipe.setMinAndMaxProgress(0.2f, 0.73f);
+        swipe.playAnimation();
+        swipe.addAnimatorListener(new Animator.AnimatorListener() {
+            int counter = 0;
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+//                swipe.animate().alpha(0f);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+        motionLayouts.get(0).transitionToEnd();
+        motionLayouts.get(0).setTransitionListener(new MotionLayout.TransitionListener() {
+            @Override
+            public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+
+            }
+
+            @Override
+            public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+
+            }
+
+            @Override
+            public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+                motionLayouts.get(0).setTransitionListener(null);
+                swipe.animate().alpha(0);
+            }
+
+            @Override
+            public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+
+            }
+        });
+    }
+
+
     public void setup() {
+        views.findViewById(R.id.floats).animate().scaleX(1f).scaleY(1f).setDuration(1200);
         motionLayoutTouch();
         for (int i = 0; i < 3; i++)
             if (i % 2 == 0)
@@ -331,10 +422,12 @@ public class HomeFragment extends Fragment {
             else
                 motionLayouts.get(i).setX(motionLayouts.get(i).getWidth());
         split();
+        ViewPropertyAnimator anim = null;
         for (int i = 0; i < motionLayouts.size(); i++)
-            motionLayouts.get(i).animate().setDuration(1000).translationX(0);
+            anim = motionLayouts.get(i).animate().setDuration(1000).translationX(0);
     }
     public void setup_ar() {
+        views.findViewById(R.id.floats).animate().scaleX(1f).scaleY(1f).setDuration(1200);
         motionLayoutTouch();
         for (int i = 0; i < 3; i++)
             if (i % 2 != 0)
