@@ -23,3 +23,7 @@ It's a free application, which serves as a comprehensive guide for every refugee
 ## Application languages:
 * #### English
 * #### Arabic
+
+
+
+#### This project was done in collaboration with [Fox-Immortal](https://github.com/Fox-Immortal)
