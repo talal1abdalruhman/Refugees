@@ -1,3 +1,5 @@
+
+![Image description](https://github.com/talal1abdalruhman/Refugees/blob/master/footer.png)
 # Refugees
 By participating in "The Crown Prince Award for Best Government Service Application"
 competition (2020). I have designed and built the "Refugees" app, which was designed to help
