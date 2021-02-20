@@ -1,5 +1,5 @@
 
-![Image description](https://github.com/talal1abdalruhman/Refugees/blob/master/footer.png)
+![Image description](https://drive.google.com/file/d/11hOAUACMhUPUHHr3foxLL3AJoOorxn2h/view?usp=sharing)
 # Refugees
 By participating in *"The Crown Prince Award for Best Government Service Application"*
 competition (2020). I have designed and built the "Refugees" app, which was designed to help
@@ -25,9 +25,9 @@ It's a free application, which serves as a comprehensive guide for every refugee
 * #### Arabic
 
 ## Screenshots
-<img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/1.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/2.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/3.jpeg"> 
-<img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/4.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/7.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/8.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/29.jpeg">  <img width="200" src="https://github.com/talal1abdalruhman/Refugees/blob/master/15.jpeg">
+<img width="200" src="https://drive.google.com/file/d/1g4b-NkZ9GPC5nN7aAvsIFK_r7ApB9U3j/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1rs0N4LSLefM5utK5BXlP3AOXlrtain7Z/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1KByRbMISeRHUknS2kJZzw7NzHyWfthXD/view?usp=sharing"> 
+<img width="200" src="https://drive.google.com/file/d/1O_ndIE-soJphRBQGX3Nzw3FHpdd9FBm9/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1OI3Bf_ImQm0_qBdnbqzut72zc8uaLpyn/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1MNX41hG6U2IO27of0huCsq_ufdtYNcul/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1E7mHRI1cI1NWk_9zLxd8E9TrCqi0RmQe/view?usp=sharing">  <img width="200" src="https://drive.google.com/file/d/1RlvhsVpS2Ut-E5fVJ-u7dfmUEKffdl7t/view?usp=sharing">
 
 # 
 ### This project was done in collaboration with [Fox-Immortal](https://github.com/Fox-Immortal)
-### Link of APK: [Here](https://drive.google.com/drive/u/1/folders/1ple4IUtaawCs9oktrVo3zyMQLI75cjlR)
+### APK Link: [Here](https://drive.google.com/drive/u/1/folders/1ple4IUtaawCs9oktrVo3zyMQLI75cjlR)
